@@ -1,0 +1,6 @@
+D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\졸업작품\GitHub\MinJi_C#_Study\EmptySolution1\ConsoleApp24\obj\Debug\ConsoleApp24.csproj.CoreCompileInputs.cache
+D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\졸업작품\GitHub\MinJi_C#_Study\EmptySolution1\ConsoleApp24\bin\Debug\ConsoleApp24.exe.config
+D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\졸업작품\GitHub\MinJi_C#_Study\EmptySolution1\ConsoleApp24\bin\Debug\ConsoleApp24.exe
+D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\졸업작품\GitHub\MinJi_C#_Study\EmptySolution1\ConsoleApp24\bin\Debug\ConsoleApp24.pdb
+D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\졸업작품\GitHub\MinJi_C#_Study\EmptySolution1\ConsoleApp24\obj\Debug\ConsoleApp24.exe
+D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\졸업작품\GitHub\MinJi_C#_Study\EmptySolution1\ConsoleApp24\obj\Debug\ConsoleApp24.pdb
