@@ -1,0 +1,7 @@
+D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp13\bin\Debug\ConsoleApp13.exe.config
+D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp13\bin\Debug\ConsoleApp13.exe
+D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp13\bin\Debug\ConsoleApp13.pdb
+D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp13\obj\Debug\ConsoleApp13.csprojAssemblyReference.cache
+D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp13\obj\Debug\ConsoleApp13.csproj.CoreCompileInputs.cache
+D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp13\obj\Debug\ConsoleApp13.exe
+D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp13\obj\Debug\ConsoleApp13.pdb

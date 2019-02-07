@@ -1,0 +1,6 @@
+D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp17\bin\Debug\ConsoleApp17.exe.config
+D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp17\bin\Debug\ConsoleApp17.exe
+D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp17\bin\Debug\ConsoleApp17.pdb
+D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp17\obj\Debug\ConsoleApp17.csproj.CoreCompileInputs.cache
+D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp17\obj\Debug\ConsoleApp17.exe
+D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp17\obj\Debug\ConsoleApp17.pdb
