@@ -45,6 +45,7 @@ namespace ConsoleApp24
                 for (int j = 0; j < 3; ++j)
                     Console.Write(array2[i, j] + "  ");
             Console.WriteLine();
+            Console.WriteLine();
         }
     }
 }
