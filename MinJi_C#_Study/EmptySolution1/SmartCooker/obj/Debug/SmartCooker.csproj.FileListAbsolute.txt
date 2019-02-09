@@ -1,0 +1,7 @@
+D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\EmptySolution1\SmartCooker\obj\Debug\SmartCooker.csprojAssemblyReference.cache
+D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\EmptySolution1\SmartCooker\obj\Debug\SmartCooker.csproj.CoreCompileInputs.cache
+D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\EmptySolution1\SmartCooker\bin\Debug\SmartCooker.exe.config
+D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\EmptySolution1\SmartCooker\bin\Debug\SmartCooker.exe
+D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\EmptySolution1\SmartCooker\bin\Debug\SmartCooker.pdb
+D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\EmptySolution1\SmartCooker\obj\Debug\SmartCooker.exe
+D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\EmptySolution1\SmartCooker\obj\Debug\SmartCooker.pdb
