@@ -34,8 +34,7 @@ namespace FreeNet
 		}
 
 		public void set_peer(IPeer peer)
-		{
-			this.peer = peer;
+		{ 
 		}
 
 		public void set_event_args(SocketAsyncEventArgs receive_event_args, SocketAsyncEventArgs send_event_args)
