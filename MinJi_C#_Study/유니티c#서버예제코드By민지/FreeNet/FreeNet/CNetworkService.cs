@@ -26,7 +26,7 @@ namespace FreeNet
         BufferManager buffer_manager;
 
         //클라이언트의 접속이 이루어졌을 때 호출되는 델리게이트
-        public delegate void SessionHandler(CUserTocken token);
+        public delegate void SessionHandler(CUserToken token);
         public SessionHandler session_created_callback { get; set; }
 
 
@@ -137,7 +137,7 @@ namespace FreeNet
         //공유자원에 접근할 때는 주의해야 합니다.
         void on_new_client(Socket client_socket, object token)
         {
-            Interlocked.Increment(ref this.connect_count);
+            Interlocked.Increment(ref this.connected_count);
 
             Console.WriteLine(string.Format("[{0}] A client connected. handle {1},  count {2}",
                 Thread.CurrentThread.ManagedThreadId, client_socket.Handle,

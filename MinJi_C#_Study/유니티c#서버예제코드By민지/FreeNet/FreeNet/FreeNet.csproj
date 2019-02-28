@@ -40,10 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BufferManager.cs" />
     <Compile Include="CListener.cs" />
     <Compile Include="CNetworkService.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="CUserToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SocketAsyncEventArgsPool.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
