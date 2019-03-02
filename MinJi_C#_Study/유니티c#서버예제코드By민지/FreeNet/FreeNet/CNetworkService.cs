@@ -51,7 +51,7 @@ namespace FreeNet
             this.max_connections = 10000;
             this.buffer_size = 1024;
 
-            this.buffer_manager = new BufferManager(this.max_connections * this.buffer_size * this.pre_alloc_count);
+            this.buffer_manager = new BufferManager(this.max_connections * this.buffer_size * this.pre_alloc_count, this.buffer_size);
             this.receive_event_args_pool = new SocketAsyncEventArgsPool(this.max_connections);
             this.send_event_args_pool = new SocketAsyncEventArgsPool(this.max_connections);
 
@@ -150,8 +150,8 @@ namespace FreeNet
             CUserToken user_token = null;
             if(this.session_created_callback != null)
             {
-                user_token = receive_event_args_pool.UserToken as CUserToken;
-                this.session_created_callback(user_token.token);
+                user_token = receive_args.UserToken as CUserToken;
+                this.session_created_callback(user_token);
             }
 
             begin_receive(client_socket, receive_args, send_args);
