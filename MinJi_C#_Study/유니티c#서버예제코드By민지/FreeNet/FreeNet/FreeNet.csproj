@@ -41,11 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BufferManager.cs" />
+    <Compile Include="CConnector.cs" />
     <Compile Include="CListener.cs" />
     <Compile Include="CMessageResolver.cs" />
     <Compile Include="CNetworkService.cs" />
     <Compile Include="Const.cs" />
     <Compile Include="CPacket.cs" />
+    <Compile Include="CPacketBufferManager.cs" />
     <Compile Include="CUserToken.cs" />
     <Compile Include="IPeer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

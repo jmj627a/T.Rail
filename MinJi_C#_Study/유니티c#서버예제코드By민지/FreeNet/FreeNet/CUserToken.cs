@@ -8,7 +8,7 @@ using System.Net.Sockets;
 
 namespace FreeNet
 {
-    class CUserToken
+    public class CUserToken
     {
         public Socket socket { get; set; }
 

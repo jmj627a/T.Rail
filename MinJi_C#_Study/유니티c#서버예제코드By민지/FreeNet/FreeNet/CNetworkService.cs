@@ -9,7 +9,7 @@ using System.Net.Sockets;
 
 namespace FreeNet
 {
-    class CNetworkService
+    public class CNetworkService
     {
         //연결된 숫자 카운트
         int connected_count;
