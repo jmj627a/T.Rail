@@ -17,7 +17,7 @@ namespace FreeNet
         //패킷 생성
         public static CPacket create(Int16 protocol_id)
         {
-            CPacket packet = CPacketBufferManager.Pop();
+            CPacket packet = CPacketBufferManager.pop();
             packet.set_protocol(protocol_id);
             return packet;
         }
@@ -109,7 +109,7 @@ namespace FreeNet
             push_int16(protocol_id);
         }
 
-        public void recore_size()
+        public void record_size()
         {
             Int16 body_size = (Int16)(this.position - Defines.HEADERSIZE);
             byte[] header = BitConverter.GetBytes(body_size);
