@@ -1,7 +1,0 @@
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp19\bin\Debug\ConsoleApp19.exe.config
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp19\bin\Debug\ConsoleApp19.exe
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp19\bin\Debug\ConsoleApp19.pdb
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp19\obj\Debug\ConsoleApp19.csprojAssemblyReference.cache
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp19\obj\Debug\ConsoleApp19.csproj.CoreCompileInputs.cache
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp19\obj\Debug\ConsoleApp19.exe
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp19\obj\Debug\ConsoleApp19.pdb
