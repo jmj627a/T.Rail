@@ -15,6 +15,7 @@ namespace FreeNet
 		{
 			pool = new Stack<CPacket>();
 			pool_capacity = capacity;
+            
 			allocate();
 		}
 
