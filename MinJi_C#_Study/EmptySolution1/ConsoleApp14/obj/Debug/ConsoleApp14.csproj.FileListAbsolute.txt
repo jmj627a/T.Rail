@@ -1,6 +1,0 @@
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp14\bin\Debug\ConsoleApp14.exe.config
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp14\bin\Debug\ConsoleApp14.exe
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp14\bin\Debug\ConsoleApp14.pdb
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp14\obj\Debug\ConsoleApp14.csproj.CoreCompileInputs.cache
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp14\obj\Debug\ConsoleApp14.exe
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp14\obj\Debug\ConsoleApp14.pdb

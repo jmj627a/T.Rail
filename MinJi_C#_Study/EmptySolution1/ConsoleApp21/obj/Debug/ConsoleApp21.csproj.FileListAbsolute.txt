@@ -1,7 +1,0 @@
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp21\bin\Debug\ConsoleApp21.exe.config
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp21\bin\Debug\ConsoleApp21.exe
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp21\bin\Debug\ConsoleApp21.pdb
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp21\obj\Debug\ConsoleApp21.csprojAssemblyReference.cache
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp21\obj\Debug\ConsoleApp21.csproj.CoreCompileInputs.cache
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp21\obj\Debug\ConsoleApp21.exe
-D:\Study_.NetFramwork\test\EmptySolution1\ConsoleApp21\obj\Debug\ConsoleApp21.pdb

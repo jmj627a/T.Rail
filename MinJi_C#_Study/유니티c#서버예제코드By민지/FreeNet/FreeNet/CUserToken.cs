@@ -37,10 +37,10 @@ namespace FreeNet
         }
 
         //비워둘꺼면 왜 함수를 만들어둔걸까??
-        //public void set_peer(IPeer peer)
-        //{
-        //
-        //}
+        public void set_peer(IPeer peer)
+        {
+        
+        }
 
         public void set_event_args(SocketAsyncEventArgs receive_event_args, SocketAsyncEventArgs send_event_args)
         {
@@ -95,7 +95,7 @@ namespace FreeNet
 
                 //큐에 무언가가 들어있다면 아직 이전 전송이 완료되지 않은 상태이므로 큐에 추가만 하고 리턴한다.
                 //현재 수행중인 SendAsync가 완료된 이후에 큐를 검사하여 데이가 있으면 SendAsync를 호출하여 전송해줄 것임.
-                Console.WriteLine("Queue is not empty. Copy and Enqueue a msg. protocol id : " + msg.protocl_id);
+                Console.WriteLine("Queue is not empty. Copy and Enqueue a msg. protocol id : " + msg.protocol_id);
                 this.sending_queue.Enqueue(clone);
             }
         }
@@ -132,7 +132,7 @@ namespace FreeNet
         //비동기 전송 완료 시 호출되는 콜백 메소드 
         public void process_send(SocketAsyncEventArgs e)
         {
-            if (e.BytesTransferred <= 0 || e.SocketError != Socket.Success)
+            if (e.BytesTransferred <= 0 || e.SocketError != SocketError.Success)
             {
                 //Console.WriteLine(string.Format("Failed to send. error {0}, transferred {1}", e.SocketError, e.BytesTransferred));
                 return;

@@ -1,3 +1,0 @@
-12
-3.14
-hello world

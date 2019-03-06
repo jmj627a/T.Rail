@@ -1,7 +1,0 @@
-D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\EmptySolution1\ConsoleApp25\bin\Debug\ConsoleApp25.exe.config
-D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\EmptySolution1\ConsoleApp25\bin\Debug\ConsoleApp25.exe
-D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\EmptySolution1\ConsoleApp25\bin\Debug\ConsoleApp25.pdb
-D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\EmptySolution1\ConsoleApp25\obj\Debug\ConsoleApp25.csprojAssemblyReference.cache
-D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\EmptySolution1\ConsoleApp25\obj\Debug\ConsoleApp25.csproj.CoreCompileInputs.cache
-D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\EmptySolution1\ConsoleApp25\obj\Debug\ConsoleApp25.exe
-D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\EmptySolution1\ConsoleApp25\obj\Debug\ConsoleApp25.pdb
