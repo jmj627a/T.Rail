@@ -97,7 +97,6 @@ namespace FreeNet
                     this.send_event_args_pool.Push(arg);
                 }
             }
-
         }
 
 
