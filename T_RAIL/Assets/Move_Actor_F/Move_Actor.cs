@@ -32,7 +32,7 @@ public class Move_Actor
     public pos M_Pos { get; set; }
     public string Name { get; set; }
     public int HP { get; set; }
-    public float speed { get; set; }
+    public float speed { get; set; }vv
 
     public int now_anim { get; set; }
 
@@ -55,7 +55,7 @@ public class Move_Actor
 
     virtual public void Init_Setting()
     {
-        M_Pos.x = 0;
+     
         Name = null;
         HP = 0;
         Coin = 0;
