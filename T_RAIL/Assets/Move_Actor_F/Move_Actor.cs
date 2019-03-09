@@ -32,7 +32,7 @@ public class Move_Actor
     public pos M_Pos { get; set; }
     public string Name { get; set; }
     public int HP { get; set; }
-    public float speed { get; set; }vv
+    public float speed { get; set; }
 
     public int now_anim { get; set; }
 
