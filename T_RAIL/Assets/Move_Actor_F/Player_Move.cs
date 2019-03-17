@@ -10,8 +10,23 @@ public class Player_Move : MonoBehaviour {
 
         // switch- case는 쓰는데
         // 키 동시에 입력되면?
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            // x = -1
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            // x = +1  
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            // y = -1
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            // y = +1
+        }
 
 
-        
     }
 }
