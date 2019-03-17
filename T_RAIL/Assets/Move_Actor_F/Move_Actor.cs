@@ -27,16 +27,14 @@ public struct pos
 public class Move_Actor
 {
     Actor act;
-    enum State { Idle, Walk, Run, Attack };
+    enum A_State { Idle, Walk, Run, Attack };
 
     public pos M_Pos { get; set; }
     public string Name { get; set; }
     public int HP { get; set; }
     public float speed { get; set; }
 
-    public int now_anim { get; set; }
-
-    public int Actor_State { get; set; }
+    public int Actor_State { get; set; } // A_State 값을 담을 변수
     public int Actor_Property { get; set; } // 승객, 몬스터, 플레이어 구분
 
     public int Damage { get; set; } // 공격력
@@ -74,6 +72,30 @@ public class Move_Actor
     {
         // 이름짓기 
         Name = _name;
+    }
+
+    protected virtual void Animate_State(int state)
+    {
+        switch (state)
+        {
+            case (int)A_State.Idle:
+                Actor_State = 0;
+                break;
+
+            case (int)A_State.Walk:
+                Actor_State = 1;
+                break;
+
+            case (int)A_State.Run:
+                Actor_State = 2;
+                break;
+
+            case (int)A_State.Attack:
+                Actor_State = 3;
+                break;
+
+        }
+        
     }
 
     //public virtual void Animate_Act()
