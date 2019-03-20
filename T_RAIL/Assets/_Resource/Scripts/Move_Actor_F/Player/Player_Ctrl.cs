@@ -16,9 +16,10 @@ public class Player_Ctrl : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
+        Quaternion rot = Quaternion.identity;
+        rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
         this.gameObject.transform.position = new Vector3(player.position.x, player.position.y, player.position.z);
-
+        this.gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 5.0f);
         if(player.Actor_State== 2)
         {
             //2는 jump상태

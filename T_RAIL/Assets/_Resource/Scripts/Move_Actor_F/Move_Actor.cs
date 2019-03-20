@@ -50,10 +50,10 @@ public class Move_Actor
     Actor act;
     public enum A_State { Idle, Walk,Jump, Run, Attack };
    
+    // 그리고 애니메이션 속도랑 얘 속도도 묶어
 
-
-    public Pos position = new Pos(0,0,0);
-    public Rot rotate = new Rot(0, 0, 0);
+    public Pos position = new Pos(-1,3.3f,-2.5f); // 이거 이렇게 하면 안되는데.. 일단 나중에 수정
+    public Rot rotate = new Rot(0, 180.0f, 0);
 
     public string Name { get; set; }
     public int HP { get; set; }
