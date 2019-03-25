@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Train.unity
+- path: Assets/Item_Import/RPG_inventory_icons/Item_Test_Scene.unity
   isLoaded: 1
   isActive: 1
