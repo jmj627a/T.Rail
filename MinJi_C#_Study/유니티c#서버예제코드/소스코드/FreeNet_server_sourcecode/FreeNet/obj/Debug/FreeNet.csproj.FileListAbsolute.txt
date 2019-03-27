@@ -1,6 +1,0 @@
-D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\유니티c#서버예제코드\소스코드\FreeNet_server_sourcecode\FreeNet\bin\Debug\FreeNet.dll
-D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\유니티c#서버예제코드\소스코드\FreeNet_server_sourcecode\FreeNet\bin\Debug\FreeNet.pdb
-D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\유니티c#서버예제코드\소스코드\FreeNet_server_sourcecode\FreeNet\obj\Debug\FreeNet.csprojAssemblyReference.cache
-D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\유니티c#서버예제코드\소스코드\FreeNet_server_sourcecode\FreeNet\obj\Debug\FreeNet.csproj.CoreCompileInputs.cache
-D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\유니티c#서버예제코드\소스코드\FreeNet_server_sourcecode\FreeNet\obj\Debug\FreeNet.dll
-D:\정민지\1.하꾜새호ㅏ!        ㅇ ㄹ\T.Rail\MinJi_C#_Study\유니티c#서버예제코드\소스코드\FreeNet_server_sourcecode\FreeNet\obj\Debug\FreeNet.pdb
