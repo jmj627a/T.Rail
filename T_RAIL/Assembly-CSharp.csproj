@@ -62,12 +62,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Resource\Scripts\Ctrl\Mouse_Ctrl.cs" />
-    <Compile Include="Assets\_Resource\Scripts\Map\Map_background.cs" />
+    <Compile Include="Assets\_Resource\Scripts\Map\Map_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Move_Actor.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Passenger\Passenger_Actor.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player\Player_Actor.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player\Player_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player_Move.cs" />
+    <Compile Include="Assets\_Resource\Scripts\Train\Train_Ctrl.cs" />
+    <Compile Include="Assets\_Resource\Scripts\Train\Train_Object.cs" />
     <Compile Include="Assets\ItemImport\Inventory.cs" />
     <Compile Include="Assets\ItemImport\Item.cs" />
     <Compile Include="Assets\ItemImport\ItemDatabase.cs" />
