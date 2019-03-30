@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
 {
 
     public static Inventory instance;
-
+    public GameObject Item_Inventory;
     public Transform slot;
 
     public List<Slot> slotScripts = new List<Slot>();
@@ -17,56 +17,54 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
-        // 이거를 instance시키지말고 아예 오브젝트풀로할까 슬롯?
 
+        Item_Inventory.SetActive(true); // 꼴보기 싫으니까 꺼놓은 상태에서
+        // 스크립트에서 켜주는걸로해ㅎ..; 나중에 켜놓고 이 코드 지워도 되고
         for (int i = 0; i < 5; i++)
         {
             for (int j = 0; j < 5; j++)
             {
-                Transform newSlot = Instantiate(slot);
-                newSlot.name = "Slot" + (i + 1) + "." + (j + 1);
-                newSlot.parent = transform;
-                RectTransform slotRect = newSlot.GetComponent<RectTransform>();
+
+                // slot 수정 시 이거 키면 slot 생성.
+
+                //  Transform newSlot = Instantiate(slot);
+                //  newSlot.name = "Slot" + (i + 1) + "." + (j + 1);
+                // newSlot.parent = Item_Inventory.transform;
+                //  RectTransform slotRect = newSlot.GetComponent<RectTransform>();
 
 
-                // 수정사항 -> 이 좌표들을 마우스 클릭받은 그 위치로
-                slotRect.anchorMin = new Vector2(0.2f * j + 0.05f, 1 - (0.2f * (i + 1) - 0.05f));
-                slotRect.anchorMax = new Vector2(0.2f * (j + 1) - 0.05f, 1 - (0.2f * i + 0.05f));
 
-                slotRect.offsetMin = Vector2.zero;
-                slotRect.offsetMax = Vector2.zero;
+                //  slotRect.anchorMin = new Vector2(0.2f * j + 0.05f, 1 - (0.2f * (i + 1) - 0.05f));
+                //   slotRect.anchorMax = new Vector2(0.2f * (j + 1) - 0.05f, 1 - (0.2f * i + 0.05f));
 
-                slotScripts.Add(newSlot.GetComponent<Slot>());
-                newSlot.GetComponent<Slot>().number = i * 5 + j;
+                //   slotRect.offsetMin = Vector2.zero;
+                //   slotRect.offsetMax = Vector2.zero;
+                // slotScripts.Add(newSlot.GetComponent<Slot>());
+                // newSlot.GetComponent<Slot>().number = i * 5 + j;
+
+
+                // 제대로 잘 들어감
+                Transform newSlot = Item_Inventory.transform.GetChild(i * 5 + j);
+                 slotScripts.Add(newSlot.GetComponent<Slot>());
+                 newSlot.GetComponent<Slot>().number = i * 5 + j;  
+                // 수정사항 추가할 거 -> 애초에 인벤토리 창을 마우스 클릭받은 그 위치로
+
             }
         }
 
         // 만약에 이 위에서 오류나면 밑에 additem이 진행됐는데 itemdatabase의 items가 추가되지 않았을 때ㅐ
         // 그니까 itemdatabase의 add가 발동 안됐을 때 items에 접근하면 비어있는 상태라서 오류발생
 
-        AddItem(0, 1);
-        AddItem(1, 1);
-        AddItem(1, 99);
-        AddItem(1, 5);
+
+        Item_Inventory.SetActive(false); // 다 넣고 꺼놓기 클릭할 때마다 true
+
+        // test를 위한 add
+        //AddItem(0, 1);
+        //AddItem(1, 1);
+        //AddItem(1, 99);
+        //AddItem(1, 5);
     }
 
-    //void AddItem(int number)
-    //{
-
-
-    //    for (int i = 0; i < slotScripts.Count; i++)
-    //    {
-    //        if (slotScripts[i].item.itemValue == 0)
-    //        {
-
-    //            //slotScripts[i], 즉 i 번째 Slot의 itemValue가 0일 때 ItemDatabase의 items에서 number 번째의 아이템을 추가시킴
-    //            slotScripts[i].item = ItemDatabase.instance.items[number];
-    //            ItemImageChange(slotScripts[i].transform);
-    //            // 그니까 만약에 0번 슬롯에 아이템 있으면 건너뛰고 1번 슬롯에 아이템 추가하고 for문 끝냄
-    //            break;
-    //        }
-    //    }
-    //}
     void AddItem(int number, int itemCount)
     {
 
