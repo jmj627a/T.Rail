@@ -16,6 +16,9 @@ public class Player_Ctrl : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        
+        
+
         Quaternion rot = Quaternion.identity;
         rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
         this.gameObject.transform.position = new Vector3(player.position.x, player.position.y, player.position.z);

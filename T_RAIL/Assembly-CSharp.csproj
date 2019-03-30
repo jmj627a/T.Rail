@@ -61,16 +61,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Resource\Scripts\Ctrl\Mouse_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Map\Map_background.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Move_Actor.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Passenger\Passenger_Actor.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player\Player_Actor.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player\Player_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player_Move.cs" />
-    <Compile Include="Assets\Item_Import\Inventory.cs" />
-    <Compile Include="Assets\Item_Import\Item.cs" />
-    <Compile Include="Assets\Item_Import\ItemDatabase.cs" />
-    <Compile Include="Assets\Item_Import\Slot.cs" />
+    <Compile Include="Assets\ItemImport\Inventory.cs" />
+    <Compile Include="Assets\ItemImport\Item.cs" />
+    <Compile Include="Assets\ItemImport\ItemDatabase.cs" />
+    <Compile Include="Assets\ItemImport\Slot.cs" />
+    <Compile Include="Assets\ReadMe.cs" />
+    <Compile Include="Assets\Todo_Memo.cs" />
     <None Include="Assets\_Resource\Shader\Train_shader.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>E:/졸업작품/T.Rail/T_RAIL/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
