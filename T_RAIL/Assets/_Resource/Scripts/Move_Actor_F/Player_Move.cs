@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player_Move : MonoBehaviour {
 
+
+    // 플레이어 움직일라고 키 입력받는 스크립트입니다요
+
+
     public GameObject player;
     Animator anim; // player animator component
     Player_Ctrl pc;
@@ -63,14 +67,15 @@ public class Player_Move : MonoBehaviour {
             // 공격
         }
 
+            ///////// 일단 점프 보류!
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    // Jump
+        //    pc.Jump();
+        //    anim.SetBool("IsJump", true);
+        //    Debug.Log("jump");
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // Jump
-
-            anim.SetBool("IsJump", true);
-            pc.Jump();
-        }
+        //}
 
         if (Input.GetKey(KeyCode.C))
         {

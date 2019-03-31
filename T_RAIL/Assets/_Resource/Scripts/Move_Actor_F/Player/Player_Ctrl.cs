@@ -8,21 +8,37 @@ public class Player_Ctrl : MonoBehaviour {
    
     Player_Actor player;
 
+    Animator anim;
+
     // Use this for initialization
     void Start()
     {
         player = new Player_Actor();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update () {
+        
+        
+
         Quaternion rot = Quaternion.identity;
         rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
         this.gameObject.transform.position = new Vector3(player.position.x, player.position.y, player.position.z);
         this.gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 5.0f);
+
         if(player.Actor_State== 2)
         {
             //2는 jump상태
+
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("IsJump"))
+            {
+                player.Jump();
+                if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+                {
+                    anim.SetBool("IsJump", false);
+                }
+            }
         }
      
 	}
@@ -34,6 +50,7 @@ public class Player_Ctrl : MonoBehaviour {
     }
 
     public void Move(char key) {
+
         player.Move(key);
         player.Animate_State(1); // walk로 state바꾸기
         // 아 c#에서는 enum을 어떻게 써야되는지 모르겠네
@@ -43,6 +60,8 @@ public class Player_Ctrl : MonoBehaviour {
     public void Jump()
     {
         player.Animate_State(2);
+        player.Jump();
+        Debug.Log("2");
     }
 
 }

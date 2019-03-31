@@ -65,6 +65,7 @@ public class Move_Actor
     public int Damage { get; set; } // 공격력
     public int Coin { get; set; } // 돈
 
+    public int Direction { get; set; } // 방향
 
 
 
