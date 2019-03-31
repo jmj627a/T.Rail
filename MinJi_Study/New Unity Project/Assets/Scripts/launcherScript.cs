@@ -13,7 +13,7 @@ namespace Com.myGame
         //방에 참여할 수 있는 최대 인원 수 
         [Tooltip("The maximum number of players per room. When a room is full, it can't be joined by new players, and so new room will be created")]
         [SerializeField]
-        private byte maxPlayersPerRoom = 3;
+        private byte maxPlayersPerRoom = 4;
 
         #endregion
 
@@ -25,6 +25,7 @@ namespace Com.myGame
         //클라이언트의 버전 숫자. 그냥 게임 버전.  
         string gameVersion = "1";
 
+        bool isConnecting;
         #endregion
 
 
@@ -53,6 +54,8 @@ namespace Com.myGame
         // - 아직 연결되지 않은 경우이 애플리케이션 인스턴스를 Photon Cloud Network에 연결합니다.
         public void Connect()
         {
+            isConnecting = true; 
+
             progressLabel.SetActive(true);
             controlPanel.SetActive(false);
 
@@ -82,7 +85,8 @@ namespace Com.myGame
         public override void OnConnectedToMaster()
         {
             Debug.Log("PUN Basics Tutorial/Launcher: OnConnectedToMaster() was called by PUN");
-            PhotonNetwork.JoinRandomRoom();
+            if(isConnecting)
+                PhotonNetwork.JoinRandomRoom();
         }
 
         public override void OnDisconnected(DisconnectCause cause)
@@ -96,13 +100,22 @@ namespace Com.myGame
         {
             Debug.Log("PUN Basics Tutorial/Launcher:OnJoinRandomFailed() was called by PUN. No random room available, so we create one.\nCalling: PhotonNetwork.CreateRoom");
 
-            // #Critical: we failed to join a random room, maybe none exists or they are all full. No worries, we create a new room.
+            //참여할 랜덤 방이 없을때. 아무도 존재하지 않거나, 모두 꽉 챘을때 새로 만든다.
             //PhotonNetwork.CreateRoom(null, new RoomOptions());
             PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = maxPlayersPerRoom });
         }
 
         public override void OnJoinedRoom()
         {
+            if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
+            {
+                Debug.Log("We load the 'Room for 1' ");
+
+
+                // #Critical
+                // 룸 레벨 로드
+                PhotonNetwork.LoadLevel("Room for 1");
+            }
             Debug.Log("PUN Basics Tutorial/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
         }
         #endregion
