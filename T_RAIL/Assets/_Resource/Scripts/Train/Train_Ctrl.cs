@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Train_Ctrl : MonoBehaviour {
 
@@ -14,6 +15,5 @@ public class Train_Ctrl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
 }

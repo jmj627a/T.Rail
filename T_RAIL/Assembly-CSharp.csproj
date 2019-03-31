@@ -62,20 +62,55 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Resource\Scripts\Ctrl\Mouse_Ctrl.cs" />
+    <Compile Include="Assets\_Resource\Scripts\GameValue.cs" />
+    <Compile Include="Assets\_Resource\Scripts\Item\Inventory.cs" />
+    <Compile Include="Assets\_Resource\Scripts\Item\Item.cs" />
+    <Compile Include="Assets\_Resource\Scripts\Item\ItemDatabase.cs" />
+    <Compile Include="Assets\_Resource\Scripts\Item\Slot.cs" />
     <Compile Include="Assets\_Resource\Scripts\Map\Map_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Move_Actor.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Passenger\Passenger_Actor.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player\Player_Actor.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player\Player_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player_Move.cs" />
+    <Compile Include="Assets\_Resource\Scripts\SceneManager.cs" />
+    <Compile Include="Assets\_Resource\Scripts\State_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Train\Train_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Train\Train_Object.cs" />
-    <Compile Include="Assets\ItemImport\Inventory.cs" />
-    <Compile Include="Assets\ItemImport\Item.cs" />
-    <Compile Include="Assets\ItemImport\ItemDatabase.cs" />
-    <Compile Include="Assets\ItemImport\Slot.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterBase.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterConstant.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterFlashing.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterInteractive.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterOccluder.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterSpectrum.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlightingUpgrade.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\HighlighterFilterAdvanced.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\HighlighterInteractionDemo.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\HighlighterRevealer.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\HighlighterRevealerManager.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\HighlighterToggle.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\HighlightingPresetLoop.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Basic\HighlighterBasic.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Basic\HighlighterFilterBasic.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Basic\HighlighterHover.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Helpers\BehaviourToggle.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Helpers\CompoundObjectController.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Helpers\GameObjectToggle.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Helpers\MovementController.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Helpers\RotationController.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Service\CameraFlyController.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Service\RaycastController.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\UI\ControlsUI.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\UI\FPSCounter.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\UI\PresetSelector.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\UI\SceneLoader.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\UI\UI.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\ReadMe.cs" />
     <Compile Include="Assets\Todo_Memo.cs" />
+    <None Include="Assets\HighlightingSystemDemo\Assets\Shaders\InstancedSurface.shader" />
+    <None Include="Assets\HighlightingSystemDemo\Assets\Shaders\InstancedTransparent.shader" />
+    <None Include="Assets\HighlightingSystemDemo\Assets\Shaders\Dither.shader" />
     <None Include="Assets\_Resource\Shader\Train_shader.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>E:/졸업작품/T.Rail/T_RAIL/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
@@ -320,6 +355,12 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:/Program Files/Unity 2018.2.13/Editor/Data/MonoBleedingEdge/lib/mono/unity/Boo.Lang.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{A218CFD5-AF1C-90F3-D51E-BADEFB52BD0D}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
