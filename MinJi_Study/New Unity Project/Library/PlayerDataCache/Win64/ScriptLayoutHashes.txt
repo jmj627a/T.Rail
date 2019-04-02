@@ -1,12 +1,8 @@
 WindowsStandalone
 PlayerPath?
-D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/4-1/내서버공부,,,/New Unity Project/sampleCodeBuild/New Unity Project.exe
+D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/trail/MinJi_Study/New Unity Project/New Unity Project.exe
 SceneListBegin?
-Assets/Scenes/SampleScene.unity
-Assets/Scenes/Room for 1.unity
-Assets/Scenes/Room for 2.unity
-Assets/Scenes/Room for 3.unity
-Assets/Scenes/Room for 4.unity
+Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scenes/DemoAsteroids-GameScene.unity
 SceneListEnd?
 7cf989b6fa3ec024d70b9d1040febe5b Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.PlayerListCell
 486cd95c82d8305219c352c06b776e1f PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.PunTeams
@@ -118,6 +114,7 @@ feacaee5ed4058b236c5f853a8f9af21 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.Roo
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:Photon.Pun.Demo.Procedural.IngameControlPanel
 3d9992eb9e8452d2fb21ba548bd4aca1 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.CountOfPlayersProperty
 b87489ab766d13f2828c3b682a0e5806 Assembly-CSharp.dll:Photon.Pun.Demo.SlotRacer.Utils.BezierCurve
+7242721f928ca3132247b245c99ca1a3 Assembly-CSharp.dll:Com.myGame.CameraWork
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:Photon.Pun.Demo.Hub.ToDemoHubButton
 9f03c0a4cccd0560c7c48bd8874c83fb PhotonUnityNetworking.dll:Photon.Pun.PhotonHandler
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:Photon.Pun.Demo.Procedural.Block
@@ -172,6 +169,7 @@ d41af92d60a614749bef8643b9d5aae2 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.For
 96f3ea9f23b6f08e60710ebb4af49174 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 323ce01f91533a9e50a9b8d351054637 Assembly-CSharp.dll:Photon.Pun.Demo.SlotRacer.PlayerControl
 3d9992eb9e8452d2fb21ba548bd4aca1 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.BestRegionInPrefsProperty
+1789d23d78c54844d441eb47971c080f Assembly-CSharp.dll:Com.myGame.PlayerUI
 3d9992eb9e8452d2fb21ba548bd4aca1 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.CurrentRoomPlayerTtlProperty
 8ba0a5ff0517fc43d26b4c59601bf5b9 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.InfosPanelPlaceholder
 f16835701e71dd5d6fb1fed4b7aff1d8 Unity.TextMeshPro.dll:TMPro.TMP_Asset
@@ -255,6 +253,7 @@ a5c0922eaefc590249dcc174ad61b107 Assembly-CSharp.dll:.FriendItem
 70f7dc248db3379548a88e8d4fa049f8 UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioRoom
 28a95668dd28649297d595834fe8417e UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSoundfieldExtension
 28a95668dd28649297d595834fe8417e UnityEngine.GoogleAudioSpatializer.dll:UnityEngine.Experimental.Audio.Google.GvrAudioSourceExtension
+f93359966c964731f8ceb197a306341b Assembly-CSharp.dll:Com.myGame.PlayerManager
 fa262644fac0869ddef8222cdcdc1af7 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.SendRateField
 3d9992eb9e8452d2fb21ba548bd4aca1 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.CurrentRoomNameProperty
 6878a4522a488c586f62d26402b1e3e0 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.RoomListView
@@ -269,6 +268,7 @@ dfd33ff9ae3ce8d7ca1f22b475ec2387 UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 5c31437a93d3edab30a7d21c677ce307 PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.OnJoinedInstantiate
 d82fdf4162f893f3bd7bdc0d5f56ac0e Assembly-CSharp.dll:Photon.Pun.Demo.PunBasics.LoaderAnime
 aac9c55ae7ba4b95b852a7d9c191acd1 Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
+780b48c324777ab9780d78117842e0bb Assembly-CSharp.dll:Com.myGame.PlayerAnimatorManager
 d0606feb8b47c6fefec42c8c771d7ed7 Assembly-CSharp.dll:.ScoreHelper
 7118d15d7cec04577716227ddfd140b8 Assembly-CSharp.dll:Photon.Pun.Demo.SlotRacer.SlotLanes
 3477c69e0b15b8f129a31de36a9d17fb Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.IntInputField
@@ -313,7 +313,3 @@ d1eaa3d26bc8f6c963d62aa0b45c5d1a Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.Fri
 f1d2955b217f217e8ae21c91116e86e4 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.Forms.UserIdUiForm
 3d9992eb9e8452d2fb21ba548bd4aca1 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.CountOfRoomsProperty
 424f3aad821677fab5a6a08fbbf773db Assembly-CSharp.dll:Photon.Pun.Demo.Asteroids.LobbyTopPanel
-780b48c324777ab9780d78117842e0bb Assembly-CSharp.dll:Com.myGame.PlayerAnimatorManager
-7242721f928ca3132247b245c99ca1a3 Assembly-CSharp.dll:Com.myGame.CameraWork
-f93359966c964731f8ceb197a306341b Assembly-CSharp.dll:Com.myGame.PlayerManager
-1789d23d78c54844d441eb47971c080f Assembly-CSharp.dll:Com.myGame.PlayerUI

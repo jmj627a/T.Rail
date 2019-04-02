@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Room for 4.unity
+- path: Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scenes/DemoAsteroids-GameScene.unity
   isLoaded: 1
   isActive: 1

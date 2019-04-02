@@ -41,6 +41,7 @@ namespace Com.myGame
             if(string.IsNullOrEmpty(value))
             {
                 Debug.LogError("player name is null or empty");
+                //value = playerNamePrefKey;
                 return;
             }
 
