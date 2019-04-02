@@ -46,8 +46,7 @@ public class ReadMe
     //   - Import 시에 언제나 "Optimize Mesh" 옵션을 사용한다.
     //-> 변환 전/ 변환 후 버텍스 캐쉬를 최적화 해준다
 
-
-
+    
 
     // 그리고 문자열은 readonly혹은 const 키워드를 써서 가비지 컬렉션에 안먹히게 사용ㅎㅏ자
 

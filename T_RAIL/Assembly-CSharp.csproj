@@ -72,9 +72,9 @@
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Passenger\Passenger_Actor.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player\Player_Actor.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player\Player_Ctrl.cs" />
-    <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player_Move.cs" />
+    <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player\Player_Move.cs" />
     <Compile Include="Assets\_Resource\Scripts\SceneManager.cs" />
-    <Compile Include="Assets\_Resource\Scripts\State_Ctrl.cs" />
+    <Compile Include="Assets\_Resource\Scripts\Setting\UI_StateBook.cs" />
     <Compile Include="Assets\_Resource\Scripts\Train\Train_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Train\Train_Object.cs" />
     <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterBase.cs" />

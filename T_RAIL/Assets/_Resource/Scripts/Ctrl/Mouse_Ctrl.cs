@@ -9,8 +9,8 @@ public class Mouse_Ctrl : MonoBehaviour
     // 말그대로 마우스로 클릭해서 하는 것들 관리
     // UI 제외
 
-    float ScreenWidth;
-    float ScreenHeight;
+  //  float ScreenWidth;
+  //  float ScreenHeight;
 
     public GameObject Inventory;
 
@@ -18,8 +18,8 @@ public class Mouse_Ctrl : MonoBehaviour
 
     private void Start()
     {
-        ScreenWidth = Screen.width;
-        ScreenHeight = Screen.height;
+       // ScreenWidth = Screen.width;
+       // ScreenHeight = Screen.height;
     }
 
     // Update is called once per frame
@@ -31,7 +31,7 @@ public class Mouse_Ctrl : MonoBehaviour
         // 그러면 결국 maincamera에 태그 달아줬는데
         // 이 ray가 카메라를 태그로 인식하는거면
         // 얘도 결국 태그연산 아니야?
-       
+
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -50,11 +50,11 @@ public class Mouse_Ctrl : MonoBehaviour
                 if (hit.collider.gameObject.layer.Equals(GameValue.itembox_layer))
                 {
                     // 상자일 경우!
-                  Inventory.SetActive(true);
+                    Inventory.SetActive(true);
                     // Vector3 m_Position = Input.mousePosition;
 
                     Inventory.transform.position = Input.mousePosition;
-                        //new Vector3(m_Position.x, m_Position.y, m_Position.z);
+                    //new Vector3(m_Position.x, m_Position.y, m_Position.z);
                 }
 
                 else if (hit.collider.gameObject.layer.Equals(GameValue.passenger_layer))

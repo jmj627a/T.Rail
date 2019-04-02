@@ -3701,7 +3701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlighter: {fileID: 471677002}
-  color: {r: 1, g: 1, b: 1, a: 1}
+  color: {r: 0.8867924, g: 0.73202205, b: 0.73202205, a: 1}
 --- !u!1 &484484656
 GameObject:
   m_ObjectHideFlags: 0
@@ -4348,7 +4348,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b765e0b5af3bcf4a9deb5895e477da8, type: 3}
   m_Name: 
@@ -4425,7 +4425,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3abd6366bed4634d8ad951c4eda5116, type: 3}
   m_Name: 
@@ -6596,13 +6596,13 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 889943306}
-  m_LocalRotation: {x: -0.7059441, y: -0.0013796984, z: 0.00053673977, w: 0.7082661}
+  m_LocalRotation: {x: -0.6665941, y: 0.2324036, z: 0.23498072, w: 0.66815054}
   m_LocalPosition: {x: 0.032304704, y: -0.043452263, z: -0.7949219}
   m_LocalScale: {x: 35, y: 34.999985, z: 34.999985}
   m_Children: []
   m_Father: {fileID: 471677001}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -89.758, y: -39.569, z: 39.5}
+  m_LocalEulerAnglesHint: {x: -89.759, y: -39.571003, z: 78.16901}
 --- !u!23 &889943308
 MeshRenderer:
   m_ObjectHideFlags: 0

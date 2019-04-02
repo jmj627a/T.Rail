@@ -13,5 +13,11 @@ static class GameValue {
     public const float furnitureY = 0.35f;
 
 
+    // 기차의 기본 체력
+    public const int Train_Standard_HP = 300;
+    // 기차 속성의 기본값 
+    public const float Durability = 100.0f;
+    public const float speed = 10.0f;
+    public const float noise = 100.0f;
 
 }

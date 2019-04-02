@@ -47,6 +47,8 @@ public class Rot
 }
 public class Move_Actor
 {
+    // 움직이는 것들의 기본이 되는 클래스
+
     Actor act;
     public enum A_State { Idle, Walk,Jump, Run, Attack };
    
