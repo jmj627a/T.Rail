@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Photon/PhotonUnityNetworking/Demos/DemoAsteroids/Scenes/DemoAsteroids-GameScene.unity
+- path: Assets/Scenes/Kyle Test.unity
   isLoaded: 1
   isActive: 1
