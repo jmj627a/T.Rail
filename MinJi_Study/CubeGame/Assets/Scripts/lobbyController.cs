@@ -6,6 +6,10 @@ using Photon.Pun;
 
 public class lobbyController : MonoBehaviourPunCallbacks {
 
+    public string gameVersion = "1.0";
+    //public string nickName = "player";
+
+    bool isConnecting;
 
     #region Game UI
     public InputField playerNameInputField;
@@ -13,6 +17,7 @@ public class lobbyController : MonoBehaviourPunCallbacks {
     
     void setPlayerRandomName()
     {
+        //랜덤 닉네임 생성
         playerNameInputField.text = "Player " + Random.Range(1000, 10000);
     }
 
@@ -25,9 +30,35 @@ public class lobbyController : MonoBehaviourPunCallbacks {
     private void Awake()
     {
         setPlayerRandomName();
+
+        //하나의 클라이언트가 룸 내의 모든 클라이언트들에게 로드해야할 레벨을 정의
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
+    private void Start()
+    {
+      
+    }
 
+    #endregion
+
+    #region public Method
+    public void Connect()
+    {
+        string playerName = playerNameInputField.text;
+        isConnecting = true;
+
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.JoinRandomRoom();
+        }
+        else
+        {
+            PhotonNetwork.LocalPlayer.NickName = playerName;
+            PhotonNetwork.GameVersion = gameVersion;
+            PhotonNetwork.ConnectUsingSettings();
+        }
+    }
     #endregion
 
 
@@ -36,26 +67,50 @@ public class lobbyController : MonoBehaviourPunCallbacks {
     public void OnLoginButtonClicked()
     {
         string playerName = playerNameInputField.text;
-
         if (!playerName.Equals(""))
         {
-            PhotonNetwork.LocalPlayer.NickName = playerName;
-            PhotonNetwork.ConnectUsingSettings();
+            Connect();
         }
         else
         {
             Debug.LogError("Player Name is invalid.");
         }
+    }
+ 
 
+    public override void OnConnectedToMaster()
+    {
+        base.OnConnectedToMaster();
+        Debug.Log("Connected!!!!!!!! " + playerNameInputField.text);
+        if (isConnecting)
+            PhotonNetwork.JoinRandomRoom();
+    }
 
-        //플레이어가 ready!를 누르면 이 버튼이 활성화 되고, 이걸 누르면 게임시작
-        //public void OnStartGameButtonClicked()
+    public override void OnJoinRandomFailed(short returnCode, string message)
+    {
+        base.OnJoinRandomFailed(returnCode, message);
+        Debug.Log("PUN Basics Tutorial/Launcher:OnJoinRandomFailed() was called by PUN. No random room available, so we create one.\nCalling: PhotonNetwork.CreateRoom");
+
+        this.CreateRoom();
+    }
+
+    public override void OnJoinedRoom()
+    {
+        base.OnJoinedRoom();
+        Debug.Log("join room!!!!!!!! ");
+        if (PhotonNetwork.CurrentRoom.PlayerCount == 1)
         {
-            //PhotonNetwork.CurrentRoom.IsOpen = false;           //더이상 플레이어들이 참여 못하게
-            //PhotonNetwork.CurrentRoom.IsVisible = false;        //더이상 다른 사람에게 로비가 보이지도 않게
+            Debug.Log("We load the 'MainScene' ");
 
             PhotonNetwork.LoadLevel("MainScene"); //겜 시작하면 게임화면 씬 로드
         }
+        Debug.Log("PUN Basics Tutorial/Launcher: OnJoinedRoom() called by PUN. Now this client is in a room.");
+    }
+
+    void CreateRoom()
+    {
+        //CreateRoom(방이름, 방옵션)
+        PhotonNetwork.CreateRoom(null, new Photon.Realtime.RoomOptions { MaxPlayers = 3 });
     }
 
     #endregion
