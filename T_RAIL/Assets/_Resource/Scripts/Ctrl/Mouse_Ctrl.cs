@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Mouse_Ctrl : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class Mouse_Ctrl : MonoBehaviour
   //  float ScreenHeight;
 
     public GameObject Inventory;
+    public GameObject ChoiceButton;
 
     //   layerMask = (1 << LayerMask.NameToLayer("Furniture")); 
 
@@ -61,7 +63,13 @@ public class Mouse_Ctrl : MonoBehaviour
                 {
                     // 승객일 경우 
                 }
+                else if (hit.collider.gameObject.layer.Equals(GameValue.choice_layer))
+                {
+                    ChoiceButton.SetActive(true);
+                    ChoiceButton.transform.position = Input.mousePosition;
+                    ChoiceButton.GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
 
+                }
             }
         }
     }

@@ -67,6 +67,7 @@
     <Compile Include="Assets\_Resource\Scripts\Item\Item.cs" />
     <Compile Include="Assets\_Resource\Scripts\Item\ItemDatabase.cs" />
     <Compile Include="Assets\_Resource\Scripts\Item\Slot.cs" />
+    <Compile Include="Assets\_Resource\Scripts\Made\InTrainObjectMake.cs" />
     <Compile Include="Assets\_Resource\Scripts\Map\Map_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Move_Actor.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Passenger\Passenger_Actor.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player\Player_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player\Player_Move.cs" />
     <Compile Include="Assets\_Resource\Scripts\SceneManager.cs" />
+    <Compile Include="Assets\_Resource\Scripts\Setting\UI_ChoiceButton.cs" />
     <Compile Include="Assets\_Resource\Scripts\Setting\UI_StateBook.cs" />
     <Compile Include="Assets\_Resource\Scripts\Train\Train_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Train\Train_Object.cs" />
