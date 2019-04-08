@@ -20,31 +20,31 @@ public class Inventory : MonoBehaviour
 
         Item_Inventory.SetActive(true); // 꼴보기 싫으니까 꺼놓은 상태에서
         // 스크립트에서 켜주는걸로해ㅎ..; 나중에 켜놓고 이 코드 지워도 되고
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 2; i++)
         {
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < 3; j++)
             {
 
                 // slot 수정 시 이거 키면 slot 생성.
 
-                //  Transform newSlot = Instantiate(slot);
-                //  newSlot.name = "Slot" + (i + 1) + "." + (j + 1);
-                // newSlot.parent = Item_Inventory.transform;
-                //  RectTransform slotRect = newSlot.GetComponent<RectTransform>();
+                Transform newSlot = Instantiate(slot);
+                newSlot.name = "Slot" + (i + 1) + "." + (j + 1);
+                newSlot.parent = Item_Inventory.transform;
+                RectTransform slotRect = newSlot.GetComponent<RectTransform>();
 
-                //  slotRect.anchorMin = new Vector2(0.2f * j + 0.05f, 1 - (0.2f * (i + 1) - 0.05f));
-                //   slotRect.anchorMax = new Vector2(0.2f * (j + 1) - 0.05f, 1 - (0.2f * i + 0.05f));
+                slotRect.anchorMin = new Vector2(0.2f * j + 0.05f, 1 - (0.2f * (i + 1) - 0.05f));
+                slotRect.anchorMax = new Vector2(0.2f * (j + 1) - 0.05f, 1 - (0.2f * i + 0.05f));
 
-                //   slotRect.offsetMin = Vector2.zero;
-                //   slotRect.offsetMax = Vector2.zero;
-                // slotScripts.Add(newSlot.GetComponent<Slot>());
-                // newSlot.GetComponent<Slot>().number = i * 5 + j;
+                slotRect.offsetMin = Vector2.zero;
+                slotRect.offsetMax = Vector2.zero;
+                slotScripts.Add(newSlot.GetComponent<Slot>());
+                newSlot.GetComponent<Slot>().number = i * 3 + j;
 
 
                 // 제대로 잘 들어감
-                Transform newSlot = Item_Inventory.transform.GetChild(i * 5 + j);
-                 slotScripts.Add(newSlot.GetComponent<Slot>());
-                 newSlot.GetComponent<Slot>().number = i * 5 + j;  
+              //  Transform newSlot = Item_Inventory.transform.GetChild(i * 5 + j);
+               //  slotScripts.Add(newSlot.GetComponent<Slot>());
+               //  newSlot.GetComponent<Slot>().number = i * 5 + j;  
                 // 수정사항 추가할 거 -> 애초에 인벤토리 창을 마우스 클릭받은 그 위치로
 
             }
@@ -56,11 +56,6 @@ public class Inventory : MonoBehaviour
 
         Item_Inventory.SetActive(false); // 다 넣고 꺼놓기 클릭할 때마다 true
 
-        // test를 위한 add
-        //AddItem(0, 1);
-        //AddItem(1, 1);
-        //AddItem(1, 99);
-        //AddItem(1, 5);
     }
 
     void AddItem(int number, int itemCount)

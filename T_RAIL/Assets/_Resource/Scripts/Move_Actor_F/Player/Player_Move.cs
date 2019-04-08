@@ -8,23 +8,18 @@ public class Player_Move : MonoBehaviour {
     // 플레이어 움직일라고 키 입력받는 스크립트입니다요
 
 
-    public GameObject player;
+    
     Animator anim; // player animator component
     Player_Ctrl pc;
 
     private void Start()
     {
-        pc = player.GetComponent<Player_Ctrl>();
+        pc = this.GetComponent<Player_Ctrl>();
 
-        anim = player.GetComponent<Animator>();
+        anim = this.GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update () {
-
-        // switch- case는 쓰는데
-        // 키 동시에 입력되면?
-
-
 
 
         if (Input.GetKey(KeyCode.A))
@@ -33,9 +28,7 @@ public class Player_Move : MonoBehaviour {
             // 임시 이동
             pc.Move('a');
             anim.SetBool("IsWalk", true);
-            
-
-
+ 
         }
         if (Input.GetKey(KeyCode.D))
         {
@@ -62,9 +55,11 @@ public class Player_Move : MonoBehaviour {
             anim.SetBool("IsWalk", false);
         }
 
-            if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             // 공격
+
+            
         }
 
             ///////// 일단 점프 보류!

@@ -27,7 +27,7 @@ public class Map_Ctrl : MonoBehaviour
 
     float map_speed; // 맵이 움직이는 스피드
 
-    float Run_Meter; // 달린 미터. 여기서 계산하는 이유는 여기서 speed해서 맵을 움직이기 때문에
+    float Run_Meter; // 달린 미터. Train_Ctrl에서 받아올거임
 
     int[] on_objectindex;
     Vector3[] Object_InitPosition; // 중요! 순서는 저장된 순서대로임!
@@ -130,11 +130,14 @@ public class Map_Ctrl : MonoBehaviour
         MapObject_PositionChange();
 
         // 나중에 옮길 부분 ㄱ
-        Run_Meter += (map_speed*0.2f) * Time.deltaTime;
+
+        Run_Meter = TrainCtrl.Run_Meter;
         RunMeterText.GetComponent<Text>().text = "달린 거리 : " + Run_Meter.ToString("N1") + "M";
         // ㄱ
 
+        
         // 휠애니메이션의 속도 
+        // 이거 아예 trainctrl로 옮길거임
         TrainCtrl.Wheel_Animation_Speed();
     }
 }

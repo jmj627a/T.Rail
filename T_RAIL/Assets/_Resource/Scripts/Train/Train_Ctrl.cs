@@ -16,6 +16,7 @@ public class Train_Ctrl : MonoBehaviour {
     public int InTrain_Passenger; // 기차안에 승객이 몇명있는지
 
     int speed_count=1; // 스피드 몇단계인지 스피드 [1~4]단계
+    public float Run_Meter { get; set; } // 달린미터
 
     public List<Train_Object> train = new List<Train_Object>();
     public GameObject Train_Prefab;
@@ -38,13 +39,19 @@ public class Train_Ctrl : MonoBehaviour {
     void Start () {
         
 	}
-	
+
+    private void Update()
+    {
+        Run_Meter += (speed * 0.2f) * Time.deltaTime;
+    }
+
     // 기차 추가하기
     public void Train_Add()
     {
         // 사실 얘는 이렇게 add하면 안된다..
         // instantiate로 기차 생성하고 그 기차에 달린 trainobject를 넣어야해..
         // 근데 ㅇㅏ직 그거 필요업스니 안한다.
+        // 아니면 그 오브젝트따로 컴포넌트 캐싱한거 따로?
         train.Add(new Train_Object());
     }
 
@@ -90,6 +97,20 @@ public class Train_Ctrl : MonoBehaviour {
         for (int i = 0; i < Wheel_Anim.Length; i++)
         {
             Wheel_Anim[i].speed = speed / 20;
+        }
+    }
+
+    // TrainAnimation_all
+    void TrainAnimation()
+    {
+        // no contain Wheel
+    }
+
+    public void Train_HPMinus()
+    {
+        for (int i = 0; i < train.Count; i++)
+        {
+            train[i].Run_TrainHPMinus(Run_Meter);
         }
     }
 
