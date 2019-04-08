@@ -3,20 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class playerController : MonoBehaviourPunCallbacks
+public class playerController : MonoBehaviourPunCallbacks, IPunObservable
 {
 
     public static GameObject LocalPlayerInstance;
+    public Material[] materials;
 
-
+    bool isPush = false;
     #region private 
 
     Transform thisObject;
-
+    PhotonView photonView;
     #endregion
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            //우리는 이 플레이어를 소유중- 다른사람에게 우리의 데이터를 send
+
+            if(isPush ==true)
+                stream.SendNext("hello");  //총알을 발사 했는지
+
+
+        }
+        else
+        {
+            //네트워크 플레이어, receive data
+            string str = (string)stream.ReceiveNext();
+            Debug.Log(str);
+        }
+
+    }
 
     private void Awake()
     {
+        thisObject = this.GetComponent<Transform>();
+        photonView = this.GetComponent<PhotonView>();
+
         //used in GameManager.cs : 레벨이 동기화 될 때 인스턴스화를 방지하기 위해 localPlayer 인스턴스를 추적함.?
         if (photonView.IsMine)
         {
@@ -28,7 +51,14 @@ public class playerController : MonoBehaviourPunCallbacks
 
     void Start () {
 
-        thisObject = this.GetComponent<Transform>();
+        if (photonView.IsMine)
+        {
+            this.GetComponent<Renderer>().material = materials[0];
+        }
+        else //if(photonView.ViewID == 2001)
+        {
+            this.GetComponent<Renderer>().material = materials[1];
+        }
 
     }
 
@@ -42,6 +72,7 @@ public class playerController : MonoBehaviourPunCallbacks
         if(Input.GetKey(KeyCode.W))
         {
             thisObject.position += new Vector3(0, 0, 5) * Time.deltaTime;
+            isPush = true;
         }
         else if (Input.GetKey(KeyCode.A))
         {
