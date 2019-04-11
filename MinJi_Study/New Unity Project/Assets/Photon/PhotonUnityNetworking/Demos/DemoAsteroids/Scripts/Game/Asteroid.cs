@@ -18,11 +18,8 @@ namespace Photon.Pun.Demo.Asteroids
     public class Asteroid : MonoBehaviour
     {
         public bool isLargeAsteroid;
-
         private bool isDestroyed;
-
         private PhotonView photonView;
-
         private new Rigidbody rigidbody;
 
         #region UNITY
@@ -49,7 +46,8 @@ namespace Photon.Pun.Demo.Asteroids
                 return;
             }
 
-            if (Mathf.Abs(transform.position.x) > Camera.main.orthographicSize * Camera.main.aspect || Mathf.Abs(transform.position.z) > Camera.main.orthographicSize)
+            if (Mathf.Abs(transform.position.x) > Camera.main.orthographicSize * Camera.main.aspect || 
+                Mathf.Abs(transform.position.z) > Camera.main.orthographicSize)
             {
                 // Out of the screen
                 PhotonNetwork.Destroy(gameObject);
@@ -104,7 +102,8 @@ namespace Photon.Pun.Demo.Asteroids
                     Vector3 torque = Random.insideUnitSphere * Random.Range(500.0f, 1500.0f);
                     object[] instantiationData = {force, torque, false, PhotonNetwork.Time};
 
-                    PhotonNetwork.InstantiateSceneObject("SmallAsteroid", transform.position + force.normalized * 10.0f, Quaternion.Euler(0, Random.value * 180.0f, 0), 0, instantiationData);
+                    PhotonNetwork.InstantiateSceneObject("SmallAsteroid", transform.position + force.normalized * 10.0f, 
+                                                        Quaternion.Euler(0, Random.value * 180.0f, 0), 0, instantiationData);
                 }
             }
 

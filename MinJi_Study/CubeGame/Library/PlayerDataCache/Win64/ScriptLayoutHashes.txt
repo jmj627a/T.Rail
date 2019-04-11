@@ -40,6 +40,7 @@ f6637497451c9a030c421de4a1ad5cdb Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventH
 87abed22423e51b0c6286d343f1b0837 PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.TextToggleIsOnTransition
 486cd95c82d8305219c352c06b776e1f PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.ButtonInsideScrollList
 b14b4630cc47b6e9ea8a644551a6a8cc Unity.TextMeshPro.dll:TMPro.TMP_Text
+dbc40438a976f85ca073e24ed3879482 Assembly-CSharp.dll:.gameManager
 486cd95c82d8305219c352c06b776e1f PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.CullingHandler
 18765c071f43d8ab1adba7d7ec2afc1c Assembly-CSharp.dll:Photon.Pun.Demo.Hub.DemoHubManager
 53cefe5d98cadefbab750835e70b89c0 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
@@ -151,7 +152,7 @@ fc061f3ae8a876c0687e86378d4a447c UnityEngine.Networking.dll:UnityEngine.Networki
 7ca56e063bd071986fff4f513cc4f477 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
 0a006f3734181ba8b26758f0866152c0 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 ae74fc196a06f796692fe7705044f8ec PhotonUnityNetworking.dll:Photon.Pun.PhotonRigidbody2DView
-486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:.playerController
+c4d40c1eb193d7822fc77ef2369da48f Assembly-CSharp.dll:.playerController
 486cd95c82d8305219c352c06b776e1f PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.OnStartDelete
 d28578e98a6ae48d33d593052d12c700 PhotonUnityNetworking.Utilities.dll:Photon.Pun.UtilityScripts.CullArea
 1dca0d5c070a81b999c7ca894a27052a Assembly-CSharp.dll:.NamePickGui
@@ -229,6 +230,7 @@ fc061f3ae8a876c0687e86378d4a447c UnityEngine.Networking.dll:UnityEngine.Networki
 3d8a783c9155b4476bc800f8481d21b2 Assembly-CSharp.dll:Photon.Pun.Demo.SlotRacer.Utils.SplineWalker
 72a8523b432c0a5317826b7a9e0a0e79 Unity.TextMeshPro.dll:TMPro.PackageResourceImporterWindow
 90b610cd5eec5e561071cf7a403fdfe9 Assembly-CSharp.dll:Photon.Pun.Demo.Asteroids.LobbyMainPanel
+97a4c3ca44a70789c8a23975bafb3206 Assembly-CSharp.dll:.photonInit
 e53cc67d84060d628c7f03fc725766d8 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 486cd95c82d8305219c352c06b776e1f Assembly-CSharp.dll:Photon.Pun.Demo.Procedural.Cluster
 392c5b921098bd4c139d9146d0efa6d7 Unity.TextMeshPro.dll:TMPro.TMP_Settings
@@ -309,5 +311,3 @@ d1eaa3d26bc8f6c963d62aa0b45c5d1a Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.Fri
 f1d2955b217f217e8ae21c91116e86e4 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.Forms.UserIdUiForm
 3d9992eb9e8452d2fb21ba548bd4aca1 Assembly-CSharp.dll:Photon.Pun.Demo.Cockpit.CountOfRoomsProperty
 424f3aad821677fab5a6a08fbbf773db Assembly-CSharp.dll:Photon.Pun.Demo.Asteroids.LobbyTopPanel
-97a4c3ca44a70789c8a23975bafb3206 Assembly-CSharp.dll:.photonInit
-dbc40438a976f85ca073e24ed3879482 Assembly-CSharp.dll:.gameManager
