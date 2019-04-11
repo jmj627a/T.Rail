@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+public class temp
+{
+    public int a;
+    public string b;
+}
+
 public class playerController : MonoBehaviourPunCallbacks, IPunObservable
 {
 
@@ -15,13 +21,15 @@ public class playerController : MonoBehaviourPunCallbacks, IPunObservable
     Transform thisObject;
     PhotonView photonView;
     #endregion
+
+
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
         {
             //우리는 이 플레이어를 소유중- 다른사람에게 우리의 데이터를 send
 
-            if(isPush ==true)
+            if (isPush == true)
                 stream.SendNext("hello");  //총알을 발사 했는지
 
 
@@ -34,6 +42,17 @@ public class playerController : MonoBehaviourPunCallbacks, IPunObservable
         }
 
     }
+    
+
+
+    [PunRPC]
+    void LogTest(object[] str)
+    {        
+        Debug.Log(str[0]);
+        Debug.Log(str[1]);
+        Debug.Log(str[2]);
+    }
+
 
     private void Awake()
     {
@@ -73,7 +92,13 @@ public class playerController : MonoBehaviourPunCallbacks, IPunObservable
         {
             thisObject.position += new Vector3(0, 0, 5) * Time.deltaTime;
             isPush = true;
-        }
+
+            object[] newTemp = new object[3];
+            newTemp[0] = 3;
+            newTemp[1] = "logTest";
+            newTemp[2] = 5;
+            photonView.RPC("LogTest", RpcTarget.All, newTemp);
+        } 
         else if (Input.GetKey(KeyCode.A))
         {
             thisObject.position += new Vector3(-5, 0, 0) * Time.deltaTime;
