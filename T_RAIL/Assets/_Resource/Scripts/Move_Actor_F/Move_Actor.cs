@@ -50,11 +50,11 @@ public class Move_Actor
     // 움직이는 것들의 기본이 되는 클래스
 
     Actor act;
-    public enum A_State { Idle, Walk,Jump, Run, Attack };
-   
+    public enum A_State { Idle, Walk, Jump, Run, Attack };
+
     // 그리고 애니메이션 속도랑 얘 속도도 묶어
 
-    public Pos position = new Pos(-1,3.3f,-2.5f); // 이거 이렇게 하면 안되는데.. 일단 나중에 수정
+    public Pos position { get; set; } 
     public Rot rotate = new Rot(0, 180.0f, 0);
 
     public string Name { get; set; }
@@ -87,6 +87,7 @@ public class Move_Actor
     {
         HP = 0;
         Coin = 0;
+        
     }
 
 

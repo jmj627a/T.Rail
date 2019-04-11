@@ -72,9 +72,14 @@
     <Compile Include="Assets\Plugins\HighlightingSystem\Scripts\Internal\HighlightingPreset.cs" />
     <Compile Include="Assets\Plugins\HighlightingSystem\Scripts\Internal\MaterialExtensions.cs" />
     <Compile Include="Assets\Plugins\HighlightingSystem\Scripts\Internal\ShaderPropertyID.cs" />
+    <Compile Include="Assets\Plugins\Pixelplacement\iTween\iTween.cs" />
+    <Compile Include="Assets\Plugins\Pixelplacement\iTween\Sample\MoveSample.cs" />
+    <Compile Include="Assets\Plugins\Pixelplacement\iTween\Sample\RotateSample.cs" />
+    <Compile Include="Assets\Plugins\Pixelplacement\iTween\Sample\SampleInfo.cs" />
     <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingBlur.shader" />
     <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingTransparent.shader" />
     <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingComposite.shader" />
+    <None Include="Assets\Plugins\Pixelplacement\iTween\ReadMe!\ReadMe!.txt" />
     <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingOpaque.shader" />
     <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingCut.shader" />
     <Reference Include="UnityEditor.StandardEvents">
