@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Passenger_Ctrl : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	

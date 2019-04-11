@@ -7,6 +7,8 @@ public class Train_Object : MonoBehaviour{
 
 
     public float HP { get; set; } //  (기차의 체력) 
+
+    [SerializeField]
     int index; // 몇번째 기차인지 
 
     Transform tr;
@@ -15,9 +17,16 @@ public class Train_Object : MonoBehaviour{
     Vector3 Position_Set_Destination;
 
     float Coroutine_calltime; // 코루틴 안끄곸ㅋㅋㅋㅋ 그 안에 호출할 상황이면 0.01
-    // 호출안할 상황이면 0.5
+                              // 호출안할 상황이면 0.5
 
     // 그러니까 position_set이 trrue가 되고 dest를 확인해서 거기까지 lerp
+
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     private void Start()
     {
         tr = gameObject.transform;
@@ -30,7 +39,6 @@ public class Train_Object : MonoBehaviour{
         HP = GameValue.Train_Standard_HP; // 기차의 기본 체력
         Position_Set_Go = true;
         CoroutineCallTimeSet(Position_Set_Go);
-
         // 처음 기차의 초깃값 설정 
         // 여기로 처음에는 가야돼
      }
@@ -41,12 +49,12 @@ public class Train_Object : MonoBehaviour{
         HP -= meter;
     }
 
-    public void InitSetting(int _index)
+    public void ChangeTrainSetting(int _index)
     {
-        index = _index;
 
-        Position_Set_Destination = new Vector3(GameValue.Train_distance * (index - 1),
-              GameValue.Train_y, GameValue.Train_z);
+        SetIndex(_index);
+
+        // 근데 만약에 1번 기차가 떨어지면??
 
 
         if (index == 1)
@@ -58,11 +66,20 @@ public class Train_Object : MonoBehaviour{
             StopCoroutine(Train_Position_Setting_Change());
             // 코루틴도 껐음 1번기차는
         }
+        else
+        {
+            Position_Set_Go = true;
+            Position_Set_Destination = new Vector3(GameValue.Train_distance * (_index - 1),
+            GameValue.Train_y, GameValue.Train_z);
 
-    
-   
+        }
+
     }
 
+    public void SetIndex(int _index)
+    {
+        index = _index;
+    }
     void CoroutineCallTimeSet(bool _Position_Set_Go)
     {
         // position_set_go를 넣을거임

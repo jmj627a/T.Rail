@@ -9,7 +9,10 @@ public class Player_Ctrl : MonoBehaviour {
     Player_Actor player;
 
     Animator anim;
-
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     // Use this for initialization
     void Start()
     {

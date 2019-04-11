@@ -9,9 +9,9 @@ public class Train_Ctrl : MonoBehaviour {
     // 여기서 기차의 속성을 총 감독
     // 기차의 Train_Object에는 기차의 '체력' 을 관리.
 
-    public float Durability { get; set; } // 기차의 내구도
-    public float speed { get; set; } // 현재 기차가 달리는 스피드 -> 맵에서 사용할거임
-    public float noise { get; set; } // 현재 기차가 내는 소음
+    //public float Durability { get; set; } // 기차의 내구도
+    //public float speed { get; set; } // 현재 기차가 달리는 스피드 -> 맵에서 사용할거임
+    //public float noise { get; set; } // 현재 기차가 내는 소음
 
     public int InTrain_Passenger; // 기차안에 승객이 몇명있는지
 
@@ -25,57 +25,69 @@ public class Train_Ctrl : MonoBehaviour {
     public List<Train_Object> trainscript = new List<Train_Object>();
     public Animator[] Wheel_Anim;
 
-    int train_index; // 기차 지금 몇개 붙어있는지
-    
     // 기차 처음 시작할 때 슬슬 빨라지는 애니메이션 추가하자
     // Mathf 로 계산해서
     
+       
     private void Awake()
     {
         // 기본 초기화
-        Durability = GameValue.Durability;
+        GameManager.instance.Durability = GameValue.Durability;
         // speed = GameValue.speed;
-        speed = 0;
-        noise = GameValue.noise;
+        GameManager.instance.speed = 0;
+        GameManager.instance.noise = GameValue.noise;
     }
 
     void Start () {
         Train_Add();
-
     }
 
     private void Update()
     {
-        Run_Meter += (speed * 0.2f) * Time.deltaTime;
+        Run_Meter += (GameManager.instance.speed * 0.2f) * Time.deltaTime;
+
     }
 
     // 기차 추가하기
     public void Train_Add()
     {
-        if  (train_index < GameValue.MaxTrainNumber)
+        if (GameManager.instance.trainindex < GameValue.MaxTrainNumber)
         {
             // 나중에 과부하 너무크면 
             GameObject newTrain = Instantiate(Train_Prefab);
             train.Add(newTrain);
-            train_index = train.Count;
-            trainscript.Add(train[train_index-1].GetComponent<Train_Object>());
-            trainscript[train_index- 1].InitSetting(train.Count);
+            GameManager.instance.trainindex = train.Count;
+            trainscript.Add(train[GameManager.instance.trainindex - 1].GetComponent<Train_Object>());
+            trainscript[GameManager.instance.trainindex - 1].ChangeTrainSetting(train.Count);
             // -14만큼 더 멀리 생성됨
 
-            if (train_index != 1)
+            if (GameManager.instance.trainindex != 1)
             {
-                train[train_index - 1].transform.position = new Vector3(GameValue.Train_distance * (train.Count),
-    GameValue.Train_y, GameValue.Train_z);
+                train[GameManager.instance.trainindex - 1].transform.position = new Vector3(GameValue.Train_distance * (train.Count), GameValue.Train_y, GameValue.Train_z);
             }
-            else if(train_index == 1)
+            else if (GameManager.instance.trainindex == 1)
             {
-                train[train_index - 1].transform.position = new Vector3(GameValue.Train_distance * (train.Count - 1),
-    GameValue.Train_y, GameValue.Train_z);
+                train[GameManager.instance.trainindex - 1].transform.position = new Vector3(GameValue.Train_distance * (train.Count - 1), GameValue.Train_y, GameValue.Train_z);
             }
 
 
         }
     }
+
+    public void Train_Delete(int _removeindex)
+    {
+        // 세상에나..! 기차의 hp가 다 떨어져서 끝났어
+
+        for(int i = GameManager.instance.trainindex - 1; i >= _removeindex ; i--)
+        {
+            Destroy(train[i]);
+            train.RemoveAt(i);
+            trainscript.RemoveAt(i);
+        }
+
+        GameManager.instance.trainindex = train.Count;
+    }
+
 
     public void SpeedUp()
     {
@@ -83,7 +95,7 @@ public class Train_Ctrl : MonoBehaviour {
         {
             speed_count += 1;
         }
-        speed = 10.0f*speed_count;
+        GameManager.instance.speed = 10.0f*speed_count;
     }
     public void SpeedDown()
     {
@@ -91,7 +103,7 @@ public class Train_Ctrl : MonoBehaviour {
         {
             speed_count -= 1;
         }
-        speed = 10.0f * speed_count;
+        GameManager.instance.speed = 10.0f * speed_count;
     }
 
     public void Passenger_In()
@@ -107,18 +119,18 @@ public class Train_Ctrl : MonoBehaviour {
 
     public void RunStartTrain()
     {
-        speed = GameValue.speed;
-        speed = 10.0f * speed_count;
+        GameManager.instance.speed = GameValue.speed;
+        GameManager.instance.speed = 10.0f * speed_count;
     }
     public void StopTrain()
     {
-        speed = 0.0f;
+        GameManager.instance.speed = 0.0f;
     }
     public void Wheel_Animation_Speed()
     {
         for (int i = 0; i < Wheel_Anim.Length; i++)
         {
-            Wheel_Anim[i].speed = speed / 20;
+            Wheel_Anim[i].speed = GameManager.instance.speed / 20;
         }
     }
 
@@ -136,4 +148,7 @@ public class Train_Ctrl : MonoBehaviour {
         }
     }
 
+
+    // hp 체크 코루틴
+    // 얘를 gamemanger로 해야되나?
 }

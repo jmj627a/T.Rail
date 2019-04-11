@@ -109,7 +109,7 @@ public class Map_Ctrl : MonoBehaviour
     {
 
         // 맵의 스피드는 항상 기차의 스피드를 받아오고 있다
-        map_speed = TrainCtrl.speed;
+        map_speed = GameManager.instance.speed;
 
         for (int i = 0; i < map_object.Count; i += 2)
         {

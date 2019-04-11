@@ -251,7 +251,7 @@ namespace HighlightingSystem
 		[SerializeField] protected bool _occluder;
 
 		// Hover (do not serialize this!)
-		protected Color _hoverColor = Color.red;
+		protected Color _hoverColor = Color.white;
 		protected int _hoverFrame = -1;
 
 		// Tween
@@ -260,8 +260,8 @@ namespace HighlightingSystem
 		{
 			colorKeys = new GradientColorKey[]
 			{
-				new GradientColorKey(new Color(0f, 1f, 1f, 1f), 0f), 
-				new GradientColorKey(new Color(0f, 1f, 1f, 1f), 1f), 
+				new GradientColorKey(new Color(0f, 0f, 0f, 1f), 0f), 
+				new GradientColorKey(new Color(0f, 0f, 0f, 1f), 1f), 
 			}, 
 			alphaKeys = new GradientAlphaKey[]
 			{
