@@ -21,4 +21,15 @@ static class GameValue {
     public const float speed = 10.0f;
     public const float noise = 100.0f;
 
+
+    // 기차 간격
+    public const float Train_distance = -14.0f;
+
+    // 기차의 기본 위치
+    public const float Train_y = 2.5f;
+    public const float Train_z = -2.0f;
+
+
+    public const int MaxTrainNumber = 13;
+
 }

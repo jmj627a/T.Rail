@@ -8,9 +8,14 @@ public class Player_Actor : Move_Actor {
     public Player_Actor()
     {
         base.Actor_Property = (int)Actor.Player; // property에 player 라고 정의
-
+        position = new Pos(-1, 3.3f, -2.5f);
         speed = 3.0f; // speed 는 km/h 로 따지나 
+        
     }
+
+
+    
+
 
     public override void Move(char key)
     {
@@ -47,34 +52,7 @@ public class Player_Actor : Move_Actor {
 
  
     }
-    public void Jump()
-    {
-        Debug.Log("3");
-        if (Actor_State == 2)
-        {
-            position.y += 0.05f * speed;
-            switch (Direction)
-            {
-                case 1:
-                    // a
-                    position.x -= 0.03f * speed;
-                    break;
-                case 2:
-                    //s
-                    position.z -= 0.03f * speed;
-                    break;
-                case 3:
-                    //d 
-                    position.x += 0.03f * speed;
-                    break;
-                case 4:
-                    //w
-                    position.z += 0.03f * speed;
-                    break;
-            }
-
-        }
-    }
+    
 
     public void Animate_State(int _key)
     {
