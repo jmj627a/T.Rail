@@ -4396,6 +4396,10 @@ GameObject:
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
   - component: {fileID: 534669906}
+  - component: {fileID: 534669909}
+  - component: {fileID: 534669908}
+  - component: {fileID: 534669907}
+  - component: {fileID: 534669910}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4476,6 +4480,138 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Inventory: {fileID: 537197169}
   ChoiceButton: {fileID: 1270815215}
+--- !u!114 &534669907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b765e0b5af3bcf4a9deb5895e477da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fillAlpha: 0
+  _downsampleFactor: 4
+  _iterations: 4
+  _blurMinSpread: 0.65
+  _blurSpread: 0.25
+  _blurIntensity: 0.3
+  _blurDirections: 0
+  _blitter: {fileID: 0}
+  _antiAliasing: 0
+  _presets:
+  - _name: Default
+    _fillAlpha: 0
+    _downsampleFactor: 4
+    _iterations: 2
+    _blurMinSpread: 0.65
+    _blurSpread: 0.25
+    _blurIntensity: 0.3
+    _blurDirections: 0
+  - _name: Wide
+    _fillAlpha: 0
+    _downsampleFactor: 4
+    _iterations: 4
+    _blurMinSpread: 0.65
+    _blurSpread: 0.25
+    _blurIntensity: 0.3
+    _blurDirections: 0
+  - _name: Strong
+    _fillAlpha: 0
+    _downsampleFactor: 4
+    _iterations: 2
+    _blurMinSpread: 0.5
+    _blurSpread: 0.15
+    _blurIntensity: 0.325
+    _blurDirections: 0
+  - _name: Speed
+    _fillAlpha: 0
+    _downsampleFactor: 4
+    _iterations: 1
+    _blurMinSpread: 0.75
+    _blurSpread: 0
+    _blurIntensity: 0.35
+    _blurDirections: 0
+  - _name: Quality
+    _fillAlpha: 0
+    _downsampleFactor: 2
+    _iterations: 3
+    _blurMinSpread: 0.5
+    _blurSpread: 0.5
+    _blurIntensity: 0.28
+    _blurDirections: 0
+  - _name: Solid 1px
+    _fillAlpha: 0
+    _downsampleFactor: 1
+    _iterations: 1
+    _blurMinSpread: 1
+    _blurSpread: 0
+    _blurIntensity: 1
+    _blurDirections: 2
+  - _name: Solid 2px
+    _fillAlpha: 0
+    _downsampleFactor: 1
+    _iterations: 2
+    _blurMinSpread: 1
+    _blurSpread: 0
+    _blurIntensity: 1
+    _blurDirections: 2
+--- !u!114 &534669908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3abd6366bed4634d8ad951c4eda5116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverColor: {r: 0.9528302, g: 0.91237986, b: 0.91237986, a: 1}
+--- !u!114 &534669909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef461167744658345a46344ed5a0c0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateEvent: 1
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  rayLength: -1
+  onHover:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 534669908}
+        m_MethodName: OnHover
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: HighlightingSystem.Demo.RaycastEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &534669910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd543efa9f21e4d18bcb9f73168fae56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &537197169
 GameObject:
   m_ObjectHideFlags: 0
@@ -17765,6 +17901,8 @@ GameObject:
   - component: {fileID: 1942930287}
   - component: {fileID: 1942930289}
   - component: {fileID: 1942930288}
+  - component: {fileID: 1942930292}
+  - component: {fileID: 1942930290}
   m_Layer: 0
   m_Name: stairs2
   m_TagString: Untagged
@@ -17832,6 +17970,79 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1942930286}
   m_Mesh: {fileID: 4300000, guid: 427f219f74cb6ee4f9fda68c8a09c7c1, type: 3}
+--- !u!114 &1942930290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1942930286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d4de287b46eb34e83a61e4f9115070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  forceRender: 0
+  color: {r: 1, g: 1, b: 1, a: 1}
+  _overlay: 0
+  _occluder: 0
+  _tween: 0
+  _tweenGradient:
+    serializedVersion: 2
+    key0: {r: 0, g: 1, b: 1, a: 0}
+    key1: {r: 0, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
+  _tweenDuration: 1
+  _tweenReverse: 0
+  _tweenLoop: 2
+  _tweenEasing: 0
+  _tweenDelay: 0
+  _tweenRepeatCount: -1
+  _tweenUseUnscaledTime: 0
+  _constant: 0
+  _constantColor: {r: 0.8962264, g: 0.87231, b: 0.5960751, a: 1}
+  _constantFadeInTime: 0.1
+  _constantFadeOutTime: 0.25
+  _constantEasing: 0
+  _constantUseUnscaledTime: 0
+  _filterMode: 0
+  _filterList: []
+--- !u!65 &1942930292
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1942930286}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03442002, y: 0.020118538, z: 0.8392992}
+  m_Center: {x: -0.007210015, y: -0.000000039206995, z: 0.35451224}
 --- !u!1 &1952692385
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour {
 
     public List<Train_Object> trainHP = new List<Train_Object>(); // ??
 
+    
+
     // 여기서 각 플레이어들 체력 관리해야되나?
     // 여기서 뭐해야될까
 
