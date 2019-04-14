@@ -10,6 +10,12 @@ public class Player_Ctrl : MonoBehaviour {
 
     Animator anim;
 
+    bool stair_up; // 사다리 올라가고 있는 중
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     // Use this for initialization
     void Start()
     {
@@ -21,9 +27,12 @@ public class Player_Ctrl : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        // 키보드 입력
-        Player_key();
 
+        if (!stair_up)
+        {
+            // 키보드 입력
+            Player_key();
+        }
         Quaternion rot = Quaternion.identity;
         rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
         this.gameObject.transform.position = new Vector3(player.position.x, player.position.y, player.position.z);

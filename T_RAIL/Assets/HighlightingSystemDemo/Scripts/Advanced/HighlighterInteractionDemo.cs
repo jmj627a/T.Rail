@@ -7,7 +7,7 @@ namespace HighlightingSystem.Demo
 	public class HighlighterInteractionDemo : MonoBehaviour
 	{
 		// Hover color
-		public Color hoverColor = Color.red;
+		public Color hoverColor = Color.white;
 
 		// Button names (for Input Manager)
 		static private readonly string buttonFire1 = "Fire1";
