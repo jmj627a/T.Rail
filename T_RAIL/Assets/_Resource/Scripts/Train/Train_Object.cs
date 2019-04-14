@@ -16,6 +16,11 @@ public class Train_Object : MonoBehaviour{
     bool Position_Set_Go; // 포지션을 세팅하면서 달려와서 붙는거
     Vector3 Position_Set_Destination;
 
+
+    int passenger; // 이 기차에 승객이 몇명있는지
+    int box;  // 이 기차에 박스 몇개있는지
+
+
     float Coroutine_calltime; // 코루틴 안끄곸ㅋㅋㅋㅋ 그 안에 호출할 상황이면 0.01
                               // 호출안할 상황이면 0.5
 
