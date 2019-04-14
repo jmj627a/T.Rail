@@ -15,13 +15,34 @@ public class Enemy1_Ctrl : MonoBehaviour {
     void Start()
     {
         anim = GetComponent<Animator>();
+
+        enemy.speed = 10.0f;  // enemy1은 스피드 기본고정
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
 
     }
+
+    public void Enemy1_Appear_Condition()
+    {
+        // enemy1이 등장할 조건같은거
+
+        // 1. 기차의 소음 확률
+
+        //if(GameManager.instance.noise)
+        {
+
+        }
+
+        
+
+    }
+
+
 
     // 
 }

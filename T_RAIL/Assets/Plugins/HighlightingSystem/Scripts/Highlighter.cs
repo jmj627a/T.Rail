@@ -251,7 +251,7 @@ namespace HighlightingSystem
 		[SerializeField] protected bool _occluder;
 
 		// Hover (do not serialize this!)
-		protected Color _hoverColor = Color.red;
+		protected Color _hoverColor = Color.white;
 		protected int _hoverFrame = -1;
 
 		// Tween
@@ -260,8 +260,8 @@ namespace HighlightingSystem
 		{
 			colorKeys = new GradientColorKey[]
 			{
-				new GradientColorKey(new Color(0f, 1f, 1f, 1f), 0f), 
-				new GradientColorKey(new Color(0f, 1f, 1f, 1f), 1f), 
+				new GradientColorKey(new Color(0f, 0f, 0f, 1f), 0f), 
+				new GradientColorKey(new Color(0f, 0f, 0f, 1f), 1f), 
 			}, 
 			alphaKeys = new GradientAlphaKey[]
 			{
@@ -479,7 +479,7 @@ namespace HighlightingSystem
 		// 
 		public void TweenStart()
 		{
-			TweenSet(true);
+			//TweenSet(true);
 		}
 
 		// 
@@ -491,10 +491,10 @@ namespace HighlightingSystem
 		// Updates tween state. (!) Sets _tween value. 
 		public void TweenSet(bool value)
 		{
-			_tween = value;
+			//_tween = value;
 			if (_tweenEnabled != _tween)
 			{
-				_tweenEnabled = _tween;
+				//_tweenEnabled = _tween;
 				_tweenStart = GetTweenTime();
 			}
 		}
@@ -529,7 +529,7 @@ namespace HighlightingSystem
 		// Helper
 		protected void TweenSet()
 		{
-			TweenSet(_tween);
+			//TweenSet(_tween);
 		}
 
 		// Helper
@@ -827,10 +827,10 @@ namespace HighlightingSystem
 		[System.Obsolete]
 		public void FlashingParams(Color color1, Color color2, float freq)
 		{
-			flashingColorKeys[0].color = color1;
-			flashingColorKeys[1].color = color2;
-			_tweenGradient.SetKeys(flashingColorKeys, flashingAlphaKeys);
-			_tweenDuration = 1f / freq;
+			//flashingColorKeys[0].color = color1;
+			//flashingColorKeys[1].color = color2;
+			//_tweenGradient.SetKeys(flashingColorKeys, flashingAlphaKeys);
+			//_tweenDuration = 1f / freq;
 		}
 
 		/// <summary>
@@ -839,7 +839,7 @@ namespace HighlightingSystem
 		[System.Obsolete]
 		public void FlashingOn()
 		{
-			TweenSet(true);
+			//TweenSet(true);
 		}
 		
 		/// <summary>
@@ -848,10 +848,10 @@ namespace HighlightingSystem
 		[System.Obsolete]
 		public void FlashingOn(Color color1, Color color2)
 		{
-			flashingColorKeys[0].color = color1;
-			flashingColorKeys[1].color = color2;
-			_tweenGradient.SetKeys(flashingColorKeys, flashingAlphaKeys);
-			TweenSet(true);
+			//flashingColorKeys[0].color = color1;
+		//	flashingColorKeys[1].color = color2;
+			//_tweenGradient.SetKeys(flashingColorKeys, flashingAlphaKeys);
+			//TweenSet(true);
 		}
 		
 		/// <summary>
@@ -860,11 +860,11 @@ namespace HighlightingSystem
 		[System.Obsolete]
 		public void FlashingOn(Color color1, Color color2, float freq)
 		{
-			flashingColorKeys[0].color = color1;
-			flashingColorKeys[1].color = color2;
-			_tweenGradient.SetKeys(flashingColorKeys, flashingAlphaKeys);
-			_tweenDuration = 1f / freq;
-			TweenSet(true);
+			//flashingColorKeys[0].color = color1;
+			//flashingColorKeys[1].color = color2;
+			//_tweenGradient.SetKeys(flashingColorKeys, flashingAlphaKeys);
+			//_tweenDuration = 1f / freq;
+			//TweenSet(true);
 		}
 
 		/// <summary>
@@ -873,8 +873,8 @@ namespace HighlightingSystem
 		[System.Obsolete]
 		public void FlashingOn(float freq)
 		{
-			_tweenDuration = 1f / freq;
-			TweenSet(true);
+			//_tweenDuration = 1f / freq;
+			//TweenSet(true);
 		}
 
 		/// <summary>

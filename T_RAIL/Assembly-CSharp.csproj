@@ -62,6 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Resource\Scripts\Ctrl\Mouse_Ctrl.cs" />
+    <Compile Include="Assets\_Resource\Scripts\Else\CamCtrl.cs" />
+    <Compile Include="Assets\_Resource\Scripts\GameManager.cs" />
     <Compile Include="Assets\_Resource\Scripts\GameValue.cs" />
     <Compile Include="Assets\_Resource\Scripts\Item\Inventory.cs" />
     <Compile Include="Assets\_Resource\Scripts\Item\Item.cs" />
@@ -76,9 +78,11 @@
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Passenger\Passenger_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player\Player_Actor.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player\Player_Ctrl.cs" />
+    <Compile Include="Assets\_Resource\Scripts\ObjectPooled\PooledObject.cs" />
     <Compile Include="Assets\_Resource\Scripts\SceneManager.cs" />
     <Compile Include="Assets\_Resource\Scripts\Setting\UI_ChoiceButton.cs" />
     <Compile Include="Assets\_Resource\Scripts\Setting\UI_StateBook.cs" />
+    <Compile Include="Assets\_Resource\Scripts\StateCtrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Train\Train_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Train\Train_Object.cs" />
     <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterBase.cs" />
