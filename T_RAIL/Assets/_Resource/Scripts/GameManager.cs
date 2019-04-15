@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour {
 
     public List<Train_Object> trainHP = new List<Train_Object>(); // ??
 
+    bool player_die = false; // 죽었는지
     
 
     // 여기서 각 플레이어들 체력 관리해야되나?
@@ -18,13 +19,17 @@ public class GameManager : MonoBehaviour {
     public float noise { get; set; } // 현재 기차가 내는 소음
 
     public int trainindex; // 지금 기차 몇개 붙어있는지
-    // 몇개 붙어있는지 가지고 제일 마지막 위치 -> 기관총
-    // 제일 마지막 위치 -> enemy1 
+                           // 몇개 붙어있는지 가지고 제일 마지막 위치 -> 기관총
+                           // 제일 마지막 위치 -> enemy1 
+
+    public bool player_nowCeiling; // 천장에 있는지 (mousectrl에서 사다리 클릭받으면 얘 true시킴)
 
     private void Awake()
     {
         instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
+
 
 }

@@ -106,4 +106,9 @@ public class Player_Ctrl : MonoBehaviour {
         // 더 필요한 state들은 뒤로 추가하는걸로
     }
 
+    public void UpToCeiling()
+    {
+        // 천장으로 올라갈 때 호출되는 함수
+        player.UpToCeiling();
+    }
 }

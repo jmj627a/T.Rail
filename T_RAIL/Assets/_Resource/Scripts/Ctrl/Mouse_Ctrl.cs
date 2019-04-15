@@ -74,6 +74,7 @@ public class Mouse_Ctrl : MonoBehaviour
                 {
 
                     // 사다리 클릭하면 사다리 타러 움직임
+                    GameManager.instance.player_nowCeiling = true;
 
     
                 }

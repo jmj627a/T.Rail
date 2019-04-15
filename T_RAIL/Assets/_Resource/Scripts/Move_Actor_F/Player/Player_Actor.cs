@@ -12,11 +12,6 @@ public class Player_Actor : Move_Actor {
         speed = 3.0f; // speed 는 km/h 로 따지나 
         
     }
-
-
-    
-
-
     public override void Move(char key)
     {
        // base.Move(key);
@@ -60,5 +55,9 @@ public class Player_Actor : Move_Actor {
 
     }
 
-
+    public void UpToCeiling()
+    {
+        // playerctrl에서 천장으로 올라갈 때 호출할 함수.
+        // 왜 이름 똑같은거 또 실행하냐? -> 여기서만 움직이는 position 바꾸게
+    }
 }
