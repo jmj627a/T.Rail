@@ -20,6 +20,7 @@ public class Mouse_Ctrl : MonoBehaviour
 
     private void Start()
     {
+        
        // ScreenWidth = Screen.width;
        // ScreenHeight = Screen.height;
     }
@@ -69,14 +70,6 @@ public class Mouse_Ctrl : MonoBehaviour
                     ChoiceButton.transform.position = Input.mousePosition;
                     ChoiceButton.GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
 
-                }
-                else if (hit.collider.gameObject.layer.Equals(GameValue.ladder_layer))
-                {
-
-                    // 사다리 클릭하면 사다리 타러 움직임
-                    GameManager.instance.player_nowCeiling = true;
-
-    
                 }
             }
         }

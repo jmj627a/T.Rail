@@ -16,7 +16,7 @@ namespace HighlightingSystem.Demo
 		// 
 		void Update()
 		{
-			ProcessControls();
+			//ProcessControls();
 		}
 
 		// RaycastController should trigger this method via onHover event
@@ -44,18 +44,6 @@ namespace HighlightingSystem.Demo
 			}
 		}
 
-		// 
-		private void ProcessControls()
-		{
-			// Fade in/out constant highlighting
-			if (Input.GetKeyDown(KeyCode.Alpha1)) { TriggerAll(0); }
-			// Turn on/off constant highlighting
-			if (Input.GetKeyDown(KeyCode.Alpha2)) { TriggerAll(1); }
-			// Turn off all highlighting modes
-			if (Input.GetKeyDown(KeyCode.Alpha3)) { TriggerAll(2); }
-		}
-
-		// 
 		private void TriggerAll(int action)
 		{
 			var highlighters = HighlighterCore.highlighters;

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Train_Ctrl : MonoBehaviour {
+public class Train_Ctrl : MonoBehaviour
+{
 
 
     // 여기서 기차의 속성을 총 감독
@@ -15,20 +16,22 @@ public class Train_Ctrl : MonoBehaviour {
 
     public int InTrain_Passenger; // 기차안에 승객이 몇명있는지
 
-    int speed_count=1; // 스피드 몇단계인지 스피드 [1~4]단계
+    int speed_count = 1; // 스피드 몇단계인지 스피드 [1~4]단계
     public float Run_Meter { get; set; } // 달린미터
 
-   
+
     public GameObject Train_Prefab;
     public List<GameObject> train = new List<GameObject>();
     // 얘를 이렇게 하나 더 한 이유 -> 쓸 때 마다 호출하면 낭비
     public List<Train_Object> trainscript = new List<Train_Object>();
     public Animator[] Wheel_Anim;
 
+
+
     // 기차 처음 시작할 때 슬슬 빨라지는 애니메이션 추가하자
     // Mathf 로 계산해서
-    
-       
+
+
     private void Awake()
     {
         // 기본 초기화
@@ -38,7 +41,8 @@ public class Train_Ctrl : MonoBehaviour {
         GameManager.instance.noise = GameValue.noise;
     }
 
-    void Start () {
+    void Start()
+    {
         Train_Add();
     }
 
@@ -71,6 +75,20 @@ public class Train_Ctrl : MonoBehaviour {
             }
 
 
+
+            // 제일마지막 칸 ㅔ외하고 나머지는 기관총끄기
+            for (int i = 0; i < GameManager.instance.trainindex; i++)
+            {
+                if (i < GameManager.instance.trainindex-1)
+                {
+                    trainscript[i].Machine_Gun_OnOff(false);
+                }
+                else
+                {
+                    trainscript[i].Machine_Gun_OnOff(true);
+                }
+            }
+
         }
     }
 
@@ -78,8 +96,15 @@ public class Train_Ctrl : MonoBehaviour {
     {
         // 세상에나..! 기차의 hp가 다 떨어져서 끝났어
 
-        for(int i = GameManager.instance.trainindex - 1; i >= _removeindex ; i--)
+        for (int i = GameManager.instance.trainindex - 1; i >= _removeindex; i--)
         {
+
+            // 만약에 removeindex면 뭔가 더 추가적으로 뭘 해야될거같음
+            if (i.Equals(_removeindex))
+            {
+                // 추가적으로 실행할 파티클같은거
+                // 얘가 일단 펑 터지고 그 다음에 기차에 불 한다음에 끝에서부터 떨어ㅣ는걸로
+            }
             Destroy(train[i]);
             train.RemoveAt(i);
             trainscript.RemoveAt(i);
@@ -95,7 +120,7 @@ public class Train_Ctrl : MonoBehaviour {
         {
             speed_count += 1;
         }
-        GameManager.instance.speed = 10.0f*speed_count;
+        GameManager.instance.speed = 10.0f * speed_count;
     }
     public void SpeedDown()
     {

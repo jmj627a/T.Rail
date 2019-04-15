@@ -70,6 +70,8 @@ public class Move_Actor
     public int Direction { get; set; } // 방향
 
     public int Where_Train { get; set; } // 기차의 몇번칸에 있는지? 
+    public int Where_Floor { get; set; } // 기차 1층(안에) 2층(천장) 어디에 있는지
+
     // 몇ㅁ번칸에 있는지 해서 카메라 움직일거임
     // slerp써서 만약에 문이랑 충돌하면
     // 카메라는 다음 칸으로 slerp로 움직이고 (미리 저장된 position 값으로)
