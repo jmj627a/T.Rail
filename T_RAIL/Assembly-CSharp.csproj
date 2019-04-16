@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\_Resource\Scripts\Ctrl\Mouse_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Else\CamCtrl.cs" />
+    <Compile Include="Assets\_Resource\Scripts\Else\MachineGun_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\GameManager.cs" />
     <Compile Include="Assets\_Resource\Scripts\GameValue.cs" />
     <Compile Include="Assets\_Resource\Scripts\Item\Inventory.cs" />

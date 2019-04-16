@@ -62,8 +62,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\JsonExample.cs" />
+    <Compile Include="Assets\UIController\Examples\CSS\Square.cs" />
+    <Compile Include="Assets\UIController\Examples\Popups\Scripts\UIControllerExample.cs" />
+    <Compile Include="Assets\UIController\Examples\Popups\Scripts\UIControllerExample8.cs" />
+    <Compile Include="Assets\UIController\Scripts\UIController.cs" />
+    <Compile Include="Assets\UIController\Scripts\UIControllerStateMachine.cs" />
     <None Include="Assets\shader\fire.shader" />
     <None Include="Assets\shader\s1.shader" />
+    <None Include="Assets\UIController\ReleaseNote.txt" />
     <None Include="Assets\shader\fire2.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>E:/졸업작품/T.Rail/FunctionTest/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
