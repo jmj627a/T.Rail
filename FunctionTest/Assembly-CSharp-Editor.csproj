@@ -61,6 +61,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\Editor\MeshRendererEditor.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Shaders\Editor\ME_CustomShaderGUI.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Shaders\Editor\ME_UberParticleGUI.cs" />
+    <Compile Include="Assets\Smart Homing Missile\Editor\SmartMissileEditor.cs" />
     <Compile Include="Assets\UIController\Editor\UIControllerInspector.cs" />
     <Compile Include="Assets\UIController\Editor\UIControllerSettings.cs" />
     <Compile Include="Assets\UIController\OverrideControllerTools\Editor\AnimatorOverrideControllerExtensions.cs" />
@@ -366,9 +370,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{14E21BE6-2736-F403-9556-D11E45368870}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{D4D79984-D262-78EF-5E24-780481096A42}</Project>
       <Name>Assembly-CSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
+      <Project>{9FC0369F-C6D2-D830-33B7-C2B38A35F6E4}</Project>
+      <Name>Assembly-CSharp-Editor-firstpass</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
