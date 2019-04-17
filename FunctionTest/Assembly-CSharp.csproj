@@ -61,16 +61,111 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ashlot\effect\spark1_4\script\ButtonParticleScroll.cs" />
+    <Compile Include="Assets\ashlot\effect\spark1_4\script\MyGameObject.cs" />
+    <Compile Include="Assets\Casual Game Effects\Script\DestroyTime.cs" />
+    <Compile Include="Assets\Casual Game Effects\Script\SampleSceneUI.cs" />
+    <Compile Include="Assets\DAX\Shields Collection\Demo V1\Scripts\DAX_CameraControl.cs" />
+    <Compile Include="Assets\DAX\Shields Collection\Demo V1\Scripts\DAX_MainCamera.cs" />
+    <Compile Include="Assets\DAX\Shields Collection\Scripts\DAX_Rotator.cs" />
+    <Compile Include="Assets\DAX\Shields Collection\Scripts\DAX_Rotator_XYZ.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterBase.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterConstant.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterFlashing.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterInteractive.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterOccluder.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterSpectrum.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlightingUpgrade.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\HighlighterFilterAdvanced.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\HighlighterInteractionDemo.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\HighlighterRevealer.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\HighlighterRevealerManager.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\HighlighterToggle.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\HighlightingPresetLoop.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Basic\HighlighterBasic.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Basic\HighlighterFilterBasic.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Basic\HighlighterHover.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Helpers\BehaviourToggle.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Helpers\CompoundObjectController.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Helpers\GameObjectToggle.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Helpers\MovementController.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Helpers\RotationController.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Service\CameraFlyController.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\Service\RaycastController.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\UI\ControlsUI.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\UI\FPSCounter.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\UI\PresetSelector.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\UI\SceneLoader.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\UI\UI.cs" />
+    <Compile Include="Assets\HighlightingSystemDemo\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\JsonExample.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\DemoResources\Scripts\ME_DemoGUI.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\DemoResources\Scripts\ME_MouseOrbit.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\DemoResources\Scripts\ME_RealtimeReflection.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\ImagePostEffects\Mobile\ME_MobileBloom.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\Helpers\ME_AnimatorEvents.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\Helpers\ME_ColorHelper.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\Helpers\ME_EffectSettingColor.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_CustomLight.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_FixParticlesAligment.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_LightCurves.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_MeshMaterialEffect.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_ParticleCollisionDecal.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_ParticleGravityPoint.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_ParticleTrails.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_Reflection.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\ME_TrailRendererNoise.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\PSMeshRendererUpdater.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\Rendering\ME_LegacyRenderDistortion.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\Rendering\ME_LWRP_RenderDistortion.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\Rendering\ME_PerPlatformSettings.cs" />
+    <Compile Include="Assets\KriptoFX\MeshEffect\Scripts\Rendering\ME_Unity_LWRP_HDRP_Pain.cs" />
+    <Compile Include="Assets\Smart Homing Missile\Exemple\Scripts\Canon.cs" />
+    <Compile Include="Assets\Smart Homing Missile\Exemple\Scripts\Ennemy.cs" />
+    <Compile Include="Assets\Smart Homing Missile\Exemple\Scripts\LoadScene.cs" />
+    <Compile Include="Assets\Smart Homing Missile\Exemple\Scripts\MissileConfiguration.cs" />
+    <Compile Include="Assets\Smart Homing Missile\SmartMissile.cs" />
+    <Compile Include="Assets\Smart Homing Missile\SmartMissile2D.cs" />
+    <Compile Include="Assets\Smart Homing Missile\SmartMissile3D.cs" />
+    <Compile Include="Assets\Sugiyama\Shaders\Ghost\Sample\anim.cs" />
     <Compile Include="Assets\UIController\Examples\CSS\Square.cs" />
     <Compile Include="Assets\UIController\Examples\Popups\Scripts\UIControllerExample.cs" />
     <Compile Include="Assets\UIController\Examples\Popups\Scripts\UIControllerExample8.cs" />
     <Compile Include="Assets\UIController\Scripts\UIController.cs" />
     <Compile Include="Assets\UIController\Scripts\UIControllerStateMachine.cs" />
+    <None Include="Assets\Rim Lighting\Shaders\Rim Lighting.shader" />
+    <None Include="Assets\ashlot\effect\spark1_4\readme.txt" />
+    <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_UberDistortionStandard.shader" />
+    <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_DistortionPerlinMobile.shader" />
+    <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_LightningParticles.shader" />
+    <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_DistortionSlime.shader" />
+    <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_DistortionPasses.cginc" />
+    <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_UberDistortionStandardMobile.shader" />
+    <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_UberParticleShader.shader" />
+    <None Include="Assets\Sugiyama\Shaders\Ghost\_ghost_object.cginc" />
+    <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_DistortionPerlin.shader" />
+    <None Include="Assets\Smart Homing Missile\ReadMe.txt" />
     <None Include="Assets\shader\fire.shader" />
+    <None Include="Assets\KriptoFX\MeshEffect\ImagePostEffects\Mobile\Resources\ME_Bloom.shader" />
+    <None Include="Assets\Sugiyama\Shaders\Ghost\ghost_z_with_light.shader" />
     <None Include="Assets\shader\s1.shader" />
+    <None Include="Assets\Sugiyama\Shaders\Ghost\_ghost_texture.cginc" />
+    <None Include="Assets\DAX\Shields Collection\Shaders\DAX_AlphaBlend+Add.shader" />
+    <None Include="Assets\HighlightingSystemDemo\Assets\Shaders\InstancedSurface.shader" />
+    <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_GlowCutout.shader" />
+    <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_Gold.shader" />
+    <None Include="Assets\HighlightingSystemDemo\Assets\Shaders\InstancedTransparent.shader" />
+    <None Include="Assets\Sugiyama\Shaders\Ghost\ghost_texture.shader" />
     <None Include="Assets\UIController\ReleaseNote.txt" />
+    <None Include="Assets\HighlightingSystemDemo\Assets\Shaders\Dither.shader" />
+    <None Include="Assets\Confetti FX\Readme.txt" />
+    <None Include="Assets\KriptoFX\MeshEffect\Readme.txt" />
+    <None Include="Assets\Sugiyama\Shaders\Ghost\ghost_z.shader" />
+    <None Include="Assets\Sugiyama\Shaders\Ghost\ghost_object.shader" />
+    <None Include="Assets\KriptoFX\MeshEffect\ImagePostEffects\Mobile\Resources\ME_Bloom_Inc.cginc" />
+    <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_DistortionSlimeMobile.shader" />
     <None Include="Assets\shader\fire2.shader" />
+    <None Include="Assets\KriptoFX\MeshEffect\Shaders\ME_GlowCutoutGradient.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>E:/졸업작품/T.Rail/FunctionTest/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
@@ -314,6 +409,12 @@
     <Reference Include="Boo.Lang">
       <HintPath>C:/Program Files/Unity 2018.2.13/Editor/Data/MonoBleedingEdge/lib/mono/unity/Boo.Lang.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{14E21BE6-2736-F403-9556-D11E45368870}</Project>
+      <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

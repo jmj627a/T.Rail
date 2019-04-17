@@ -393,3 +393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd62775a145f7794786576bf508f3a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverColor: {r: 1, g: 1, b: 1, a: 1}
+  Push_Space_UI_pref: {fileID: 1782174305550394, guid: ecc3c7a01c6e2a347ae8a24c5b049ec7,
+    type: 2}

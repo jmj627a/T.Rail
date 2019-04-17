@@ -25,7 +25,10 @@ public class GameManager : MonoBehaviour {
                            // 몇개 붙어있는지 가지고 제일 마지막 위치 -> 기관총
                            // 제일 마지막 위치 -> enemy1 
 
-  
+
+    // # UI
+    public GameObject Info_Canvas;
+
     private void Awake()
     {
         instance = this;

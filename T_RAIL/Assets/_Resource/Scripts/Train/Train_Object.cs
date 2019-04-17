@@ -14,7 +14,7 @@ public class Train_Object : MonoBehaviour
 
     Transform tr;
 
-    bool Position_Set_Go; // 포지션을 세팅하면서 달려와서 붙는거
+    bool Position_Set_Go; // 포지션을 세팅하면서 달려와서 붙는거. slerp 연산 중에는 true, 연산 끝나면 false
     Vector3 Position_Set_Destination;
 
 
@@ -25,9 +25,12 @@ public class Train_Object : MonoBehaviour
     float Coroutine_calltime; // 코루틴 안끄곸ㅋㅋㅋㅋ 그 안에 호출할 상황이면 0.01
                               // 호출안할 상황이면 0.5
 
-    // 그러니까 position_set이 trrue가 되고 dest를 확인해서 거기까지 lerp
-
+   // 미리가지고 있어야 할 기차 내부의 메타
     public GameObject Machine_gun;
+    public GameObject Ladder;
+    public GameObject Ceiling; // 천장
+
+   // public GameObject Ladder_collider;
 
     private void Awake()
     {
@@ -63,7 +66,6 @@ public class Train_Object : MonoBehaviour
 
         // 근데 만약에 1번 기차가 떨어지면??
 
-
         if (index.Equals(1))
         {
             Position_Set_Go = false;
@@ -81,16 +83,12 @@ public class Train_Object : MonoBehaviour
 
         }
 
-        Debug.Log(GameManager.instance.trainindex);
-
-
-       
-
     }
 
     public void Machine_Gun_OnOff(bool onoff)
     {
-
+        // train_ctrl에서 기차가 새로 add되거나 delete되면서 기차의 index가 변하고
+        // 제일 마지막에 있는 머신건만 켜져야하니까 마지막이면 true 아니면 false
         if (onoff)
         {
             Machine_gun.SetActive(true);
@@ -118,9 +116,10 @@ public class Train_Object : MonoBehaviour
     }
     void Position_Set()
     {
+        // 기차가 slerp 연산을 통해 add가 될 때 자연스럽게 달려오면서 붙는것처럼 하기위한 position_set
+        // 코루틴에서 호출중 -> 굳이 update에서 호출할 필요없어서
         if (Position_Set_Go)
         {
-
             tr.position = Vector3.Slerp(tr.position, Position_Set_Destination, Time.deltaTime * 30.0f);
 
             if (tr.position.x == Position_Set_Destination.x)

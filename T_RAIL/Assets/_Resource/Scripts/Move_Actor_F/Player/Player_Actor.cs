@@ -55,6 +55,21 @@ public class Player_Actor : Move_Actor {
  
     }
     
+    public void To_UpStair(float _x)
+    {
+        // 윗층으로
+        Debug.Log(_x);
+        position.x = _x;
+        position.y += 0.005f * speed;
+        rotate.y = 180;
+        Direction = 3; // 근데 이거 direction 어따쓰려고 만들어뒀더라
+    }
+
+    public void To_DownStair(float _x)
+    {
+        // 아랫층으로
+        // 이건 floor2의 x 받아와야함
+    }
 
     public void Animate_State(int _key)
     {
@@ -62,9 +77,10 @@ public class Player_Actor : Move_Actor {
 
     }
 
-    public void UpToCeiling()
+
+
+    public void On_Floor2_yPosition()
     {
-        // playerctrl에서 천장으로 올라갈 때 호출할 함수.
-        // 왜 이름 똑같은거 또 실행하냐? -> 여기서만 움직이는 position 바꾸게
+        position.y = GameValue.player_2f_position_y;
     }
 }

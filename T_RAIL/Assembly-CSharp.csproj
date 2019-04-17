@@ -86,6 +86,8 @@
     <Compile Include="Assets\_Resource\Scripts\StateCtrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Train\Train_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Train\Train_Object.cs" />
+    <Compile Include="Assets\ashlot\effect\spark1_4\script\ButtonParticleScroll.cs" />
+    <Compile Include="Assets\ashlot\effect\spark1_4\script\MyGameObject.cs" />
     <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterBase.cs" />
     <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterConstant.cs" />
     <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterFlashing.cs" />
@@ -117,9 +119,11 @@
     <Compile Include="Assets\HighlightingSystemDemo\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\ReadMe.cs" />
     <Compile Include="Assets\Todo_Memo.cs" />
+    <None Include="Assets\ashlot\effect\spark1_4\readme.txt" />
     <None Include="Assets\HighlightingSystemDemo\Assets\Shaders\InstancedSurface.shader" />
     <None Include="Assets\HighlightingSystemDemo\Assets\Shaders\InstancedTransparent.shader" />
     <None Include="Assets\HighlightingSystemDemo\Assets\Shaders\Dither.shader" />
+    <None Include="Assets\Confetti FX\Readme.txt" />
     <None Include="Assets\_Resource\Shader\Train_shader.shader" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>E:/졸업작품/T.Rail/T_RAIL/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

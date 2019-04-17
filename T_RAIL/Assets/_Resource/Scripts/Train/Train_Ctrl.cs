@@ -105,12 +105,13 @@ public class Train_Ctrl : MonoBehaviour
                 // 추가적으로 실행할 파티클같은거
                 // 얘가 일단 펑 터지고 그 다음에 기차에 불 한다음에 끝에서부터 떨어ㅣ는걸로
             }
+            trainscript[i].Machine_Gun_OnOff(false);
             Destroy(train[i]);
             train.RemoveAt(i);
             trainscript.RemoveAt(i);
         }
 
-        GameManager.instance.trainindex = train.Count;
+        trainscript[_removeindex - 1].Machine_Gun_OnOff(true);
     }
 
 
