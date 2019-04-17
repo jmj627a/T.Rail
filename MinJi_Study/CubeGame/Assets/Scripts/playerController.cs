@@ -47,10 +47,25 @@ public class playerController : MonoBehaviourPunCallbacks, IPunObservable
 
     [PunRPC]
     void LogTest(object[] str)
-    {        
-        Debug.Log(str[0]);
-        Debug.Log(str[1]);
-        Debug.Log(str[2]);
+    {
+        switch ((int)str[0])
+        {
+            case 0:
+                PhotonNetwork.Instantiate("Cylinder", this.transform.position, this.transform.rotation);
+                break;
+            case 1:
+                Debug.Log(str[0]);
+                Debug.Log(str[1]);
+                Debug.Log(str[2]);
+                break;
+        }
+    }
+
+
+    [PunRPC]
+    void cilinderTest(object[] temp)
+    {
+        PhotonNetwork.Instantiate("Cylinder", this.transform.position, this.transform.rotation);
     }
 
 
@@ -94,7 +109,7 @@ public class playerController : MonoBehaviourPunCallbacks, IPunObservable
             isPush = true;
 
             object[] newTemp = new object[3];
-            newTemp[0] = 3;
+            newTemp[0] = 1;
             newTemp[1] = "logTest";
             newTemp[2] = 5;
             photonView.RPC("LogTest", RpcTarget.All, newTemp);
@@ -114,6 +129,18 @@ public class playerController : MonoBehaviourPunCallbacks, IPunObservable
         else if (Input.GetKey (KeyCode.Space))
         {
             thisObject.position += new Vector3(0, 5, 0) * Time.deltaTime;
+        }
+        else if(Input.GetKey(KeyCode.Z))
+        {
+            object[] newTemp = new object[3];
+            newTemp[0] = 0; //첫번째가 0이면 원기둥 생성
+            photonView.RPC("LogTest", RpcTarget.All, newTemp);
+        }
+        else if (Input.GetKey(KeyCode.X))
+        {
+            object[] newTemp = new object[3];
+            newTemp[0] = 0; //첫번째가 0이면 원기둥 생성
+            photonView.RPC("cilinderTest", RpcTarget.All, newTemp);
         }
     }
 }
