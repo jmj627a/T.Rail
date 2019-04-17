@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Train_Object : MonoBehaviour{
+public class Train_Object : MonoBehaviour
+{
 
 
     public float HP { get; set; } //  (기차의 체력) 
@@ -26,6 +27,7 @@ public class Train_Object : MonoBehaviour{
 
     // 그러니까 position_set이 trrue가 되고 dest를 확인해서 거기까지 lerp
 
+    public GameObject Machine_gun;
 
     private void Awake()
     {
@@ -46,7 +48,7 @@ public class Train_Object : MonoBehaviour{
         CoroutineCallTimeSet(Position_Set_Go);
         // 처음 기차의 초깃값 설정 
         // 여기로 처음에는 가야돼
-     }
+    }
 
     public void Run_TrainHPMinus(float meter)
     {
@@ -62,12 +64,12 @@ public class Train_Object : MonoBehaviour{
         // 근데 만약에 1번 기차가 떨어지면??
 
 
-        if (index == 1)
+        if (index.Equals(1))
         {
             Position_Set_Go = false;
             // 1번 기차는 그럴 필요가 없어서
             // 일단 꺼놨음
-            
+
             StopCoroutine(Train_Position_Setting_Change());
             // 코루틴도 껐음 1번기차는
         }
@@ -79,8 +81,25 @@ public class Train_Object : MonoBehaviour{
 
         }
 
+        Debug.Log(GameManager.instance.trainindex);
+
+
+       
+
     }
 
+    public void Machine_Gun_OnOff(bool onoff)
+    {
+
+        if (onoff)
+        {
+            Machine_gun.SetActive(true);
+        }
+        else
+        {
+            Machine_gun.SetActive(false);
+        }
+    }
     public void SetIndex(int _index)
     {
         index = _index;
@@ -102,9 +121,9 @@ public class Train_Object : MonoBehaviour{
         if (Position_Set_Go)
         {
 
-            tr.position = Vector3.Slerp(tr.position, Position_Set_Destination, Time.deltaTime*30.0f);
+            tr.position = Vector3.Slerp(tr.position, Position_Set_Destination, Time.deltaTime * 30.0f);
 
-            if(tr.position.x == Position_Set_Destination.x)
+            if (tr.position.x == Position_Set_Destination.x)
             {
                 Position_Set_Go = false;
                 CoroutineCallTimeSet(Position_Set_Go);
@@ -112,7 +131,7 @@ public class Train_Object : MonoBehaviour{
         }
     }
 
-    
+
     // startcoroutine쓰면서 stopcoroutine쓸거면
     // iEnumerator 변수명
     // 이렇게해서 startcoroutine(변수명)
@@ -128,5 +147,5 @@ public class Train_Object : MonoBehaviour{
         }
     }
 
-    
+
 }

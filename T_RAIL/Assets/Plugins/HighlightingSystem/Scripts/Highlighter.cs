@@ -378,6 +378,8 @@ namespace HighlightingSystem
 		/// </param>
 		public void Hover(Color color)
 		{
+
+            
 			_hoverColor = color;
 			hover = true;
 		}

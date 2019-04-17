@@ -13,7 +13,7 @@ public class Enemy1_Ctrl : MonoBehaviour {
 
     // Use this for initialization
     void Start()
-    {
+    { 
         anim = GetComponent<Animator>();
 
         enemy.speed = 10.0f;  // enemy1은 스피드 기본고정

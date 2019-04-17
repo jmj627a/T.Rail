@@ -10,8 +10,15 @@ public class Player_Actor : Move_Actor {
         base.Actor_Property = (int)Actor.Player; // property에 player 라고 정의
         position = new Pos(-1, 3.3f, -2.5f);
         speed = 3.0f; // speed 는 km/h 로 따지나 
-        
+
+       Where_Train = 1;
+       Where_Floor = 1; // 처음에는 1층, 1번째칸에 존재하니까 
+
     }
+
+
+    // 서버잘한다~~ 화ㅏ이팅 >_<~~
+
     public override void Move(char key)
     {
        // base.Move(key);
