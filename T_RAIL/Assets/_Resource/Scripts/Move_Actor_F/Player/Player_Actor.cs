@@ -69,6 +69,12 @@ public class Player_Actor : Move_Actor {
     {
         // 아랫층으로
         // 이건 floor2의 x 받아와야함
+        // 윗층으로
+        Debug.Log(_x);
+        position.x = _x;
+        position.y -= 0.005f * Time.deltaTime * 100.0f;
+        rotate.y = 180;
+        Direction = 3; // 근데 이거 direction 어따쓰려고 만들어뒀더라
     }
 
     public void Animate_State(int _key)
@@ -80,6 +86,10 @@ public class Player_Actor : Move_Actor {
 
 
     public void On_Floor2_yPosition()
+    {
+        position.y = GameValue.player_2f_position_y;
+    }
+    public void On_Floor1_yPosition()
     {
         position.y = GameValue.player_2f_position_y;
     }

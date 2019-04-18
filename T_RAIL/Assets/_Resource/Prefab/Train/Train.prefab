@@ -47,7 +47,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1090443184407812
 GameObject:
   m_ObjectHideFlags: 1
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 33757029919256776}
   - component: {fileID: 23165924645904794}
   - component: {fileID: 65027648388794442}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: floor1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -797,7 +797,7 @@ GameObject:
   - component: {fileID: 33052061090117774}
   - component: {fileID: 23615974262228628}
   - component: {fileID: 65270534217242850}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: floor2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

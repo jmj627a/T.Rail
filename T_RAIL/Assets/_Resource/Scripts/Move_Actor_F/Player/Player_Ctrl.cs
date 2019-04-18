@@ -9,7 +9,8 @@ enum player_space_state
 {
 
     Ladder = 1,
-    Machine_gun = 2
+    Machine_gun = 2,
+    bullet = 3
 }
 
 
@@ -26,7 +27,7 @@ public class Player_Ctrl : MonoBehaviour
     Transform Near_Object; // 사다리, 머신건 등 space_state로 할 모든 object담기
     Transform gun_child; // 머신건.... 각도 회전하려면 밑에 자식 오브젝트 담아와야 돼서 총전용
     bool stair_up; // 사다리 올라가고 있는 중
-
+ 
 
     int space_state = 0; // 기본은 0인데 space가 눌려지는 상황 (highlight되는 모든애들) 에서 state change
     bool near_stair; // 사다리근처
@@ -126,8 +127,6 @@ public class Player_Ctrl : MonoBehaviour
     void Update()
     {
 
-
-
         // 이 highlight는 나중에 따로 함수로 뺄고야 일단 정리ㅣ되면 빼겟음
         if (near_stair)
         {
@@ -160,16 +159,36 @@ public class Player_Ctrl : MonoBehaviour
             rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
             tr.rotation = rot;
 
-            if (transform.position.y >= floor2.position.y)
-            {
-                stair_up = false;
-                // 파티클도 추가하고 2층으로 올라간 위치에 생기게 해야함
-                player.Where_Floor = 2;
-                anim.SetBool("UpToLadder", false);
 
-                player.On_Floor2_yPosition();
-                Ceiling_CamSetting();
+            switch (player.Where_Floor)
+            {
+                case 1:
+                    if (tr.position.y >= floor2.position.y)
+                    {
+                        stair_up = false;
+                        // 파티클도 추가하고 2층으로 올라간 위치에 생기게 해야함
+                        player.Where_Floor = 2;
+                        anim.SetBool("UpToLadder", false);
+
+                        player.On_Floor2_yPosition();
+                        Ceiling_CamSetting();
+                    }
+                    break;
+                case 2:
+                    if (tr.position.y <= floor1.position.y)
+                    {
+                        stair_up = false;
+                        // 1층으로 내려와
+                        player.Where_Floor = 1;
+                        anim.SetBool("UpToLadder", false);
+
+                        player.On_Floor1_yPosition();
+                        InTrain_CamSetting();
+                    }
+                    break;
+
             }
+          
           
         }
 
@@ -369,7 +388,7 @@ public class Player_Ctrl : MonoBehaviour
     }
     void InTrain_CamSetting()
     {
-        // 기차 안에서
+        // 기차 안에서 -> 1층
         MCam.GetComponent<Camera>().fieldOfView = GameValue.Mcam_initFOV;
         Quaternion rot = Quaternion.identity;
         rot.eulerAngles = new Vector3(GameValue.Mcam_initrot_x, 0, 0);

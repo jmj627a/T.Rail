@@ -44,5 +44,6 @@ static class GameValue {
 
 
     public const float player_2f_position_y = 7.1f;
+    public const float player_1f_position_y = 3.3f;
 
 }
