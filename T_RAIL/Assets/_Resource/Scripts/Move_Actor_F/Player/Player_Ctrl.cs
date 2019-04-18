@@ -16,9 +16,11 @@ enum player_space_state
 public class Player_Ctrl : MonoBehaviour
 {
 
+    // 기본 플레이어에 달린 컴포넌트들
     Player_Actor player;
-
+    Transform tr;
     Animator anim;
+
     public Color hoverColor = Color.white;
     Highlighter highlighter;
     Transform Near_Object; // 사다리, 머신건 등 space_state로 할 모든 object담기
@@ -55,7 +57,7 @@ public class Player_Ctrl : MonoBehaviour
         MCam = Camera.main; // 메인카메라 찾기
         player = new Player_Actor();
         anim = GetComponent<Animator>();
-
+        tr = GetComponent<Transform>();
         Make_PushSpaceUI();
     }
 
@@ -126,7 +128,7 @@ public class Player_Ctrl : MonoBehaviour
 
 
 
-
+        // 이 highlight는 나중에 따로 함수로 뺄고야 일단 정리ㅣ되면 빼겟음
         if (near_stair)
         {
             // 근데 이것도 사다리 올라가는 중에는 X 
@@ -143,18 +145,20 @@ public class Player_Ctrl : MonoBehaviour
 
             Quaternion rot = Quaternion.identity;
             rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
-            this.gameObject.transform.position = new Vector3(player.position.x, player.position.y, player.position.z);
-            this.gameObject.transform.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 5.0f);
+            // tr.position = new Vector3(player.position.x, player.position.y, player.position.z);
+            tr.position = Vector3.Lerp(tr.position, new Vector3(player.position.x, player.position.y, player.position.z), Time.deltaTime * 10.0f);
+            tr.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 5.0f);
 
         }
         else if (stair_up)
         {
             player.To_UpStair(floor1.position.x);
 
-             this.gameObject.transform.position = new Vector3(player.position.x, player.position.y, player.position.z);
+            tr.position = new Vector3(player.position.x, player.position.y, player.position.z);
+
             Quaternion rot = Quaternion.identity;
             rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
-            this.gameObject.transform.rotation = rot;
+            tr.rotation = rot;
 
             if (transform.position.y >= floor2.position.y)
             {
@@ -378,6 +382,6 @@ public class Player_Ctrl : MonoBehaviour
     {
         Push_Space_UI = Instantiate(Push_Space_UI_pref);
         // Push_Space_UI.name = "player1_PushSpace_UI";
-        Push_Space_UI.transform.parent = GameManager.instance.Info_Canvas.transform;
+        Push_Space_UI.transform.parent = TrainGameManager.instance.Info_Canvas.transform;
     }
 }

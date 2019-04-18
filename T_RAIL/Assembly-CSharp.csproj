@@ -64,7 +64,6 @@
     <Compile Include="Assets\_Resource\Scripts\Ctrl\Mouse_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Else\CamCtrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Else\MachineGun_Ctrl.cs" />
-    <Compile Include="Assets\_Resource\Scripts\GameManager.cs" />
     <Compile Include="Assets\_Resource\Scripts\GameValue.cs" />
     <Compile Include="Assets\_Resource\Scripts\Item\Inventory.cs" />
     <Compile Include="Assets\_Resource\Scripts\Item\Item.cs" />
@@ -86,6 +85,7 @@
     <Compile Include="Assets\_Resource\Scripts\StateCtrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Train\Train_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Train\Train_Object.cs" />
+    <Compile Include="Assets\_Resource\Scripts\TrainGameManager.cs" />
     <Compile Include="Assets\ashlot\effect\spark1_4\script\ButtonParticleScroll.cs" />
     <Compile Include="Assets\ashlot\effect\spark1_4\script\MyGameObject.cs" />
     <Compile Include="Assets\HighlightingSystemDemo\Scripts\Advanced\Deprecated\HighlighterBase.cs" />
