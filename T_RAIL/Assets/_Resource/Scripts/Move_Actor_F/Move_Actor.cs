@@ -112,6 +112,7 @@ public class Move_Actor
         // 인자로 받는 키는 asdw를 구분하는 키
     }
 
+
     //public virtual void Animate_Act()
     //{
 

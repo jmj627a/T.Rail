@@ -23,6 +23,7 @@ public class Player_Ctrl : MonoBehaviour
     Animator anim;
 
     public Color hoverColor = Color.white;
+    [SerializeField]
     Highlighter highlighter;
     Transform Near_Object; // 사다리, 머신건 등 space_state로 할 모든 object담기
     Transform gun_child; // 머신건.... 각도 회전하려면 밑에 자식 오브젝트 담아와야 돼서 총전용
@@ -57,6 +58,7 @@ public class Player_Ctrl : MonoBehaviour
     {
         MCam = Camera.main; // 메인카메라 찾기
         player = new Player_Actor();
+        // player.initposition(_num);
         anim = GetComponent<Animator>();
         tr = GetComponent<Transform>();
         Make_PushSpaceUI();
@@ -168,6 +170,8 @@ public class Player_Ctrl : MonoBehaviour
                         stair_up = false;
                         // 파티클도 추가하고 2층으로 올라간 위치에 생기게 해야함
                         player.Where_Floor = 2;
+                        anim.speed = 1;
+                       
                         anim.SetBool("UpToLadder", false);
 
                         player.On_Floor2_yPosition();
@@ -180,6 +184,8 @@ public class Player_Ctrl : MonoBehaviour
                         stair_up = false;
                         // 1층으로 내려와
                         player.Where_Floor = 1;
+                        anim.speed = -1;
+
                         anim.SetBool("UpToLadder", false);
 
                         player.On_Floor1_yPosition();
@@ -349,11 +355,11 @@ public class Player_Ctrl : MonoBehaviour
         // 머신건의 각도 조절 
         if (Input.GetKey(KeyCode.S))
         {
-            gun_child.transform.Rotate(0,0,-10.0f*Time.deltaTime);
+            gun_child.transform.Rotate(0,0,10.0f*Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.W))
         {
-            gun_child.transform.Rotate(0, 0, 10.0f * Time.deltaTime);
+            gun_child.transform.Rotate(0, 0, -10.0f * Time.deltaTime);
         }
 
         // 총알 발사

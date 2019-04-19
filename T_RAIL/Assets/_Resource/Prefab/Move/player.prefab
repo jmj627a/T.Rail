@@ -989,7 +989,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &65825313018325184
 BoxCollider:
@@ -998,7 +998,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1014540451394702}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.76280797, y: 1.6992428, z: 1}
@@ -1033,6 +1033,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverColor: {r: 1, g: 1, b: 1, a: 1}
+  floor1: {fileID: 0}
+  floor2: {fileID: 0}
   Push_Space_UI_pref: {fileID: 1782174305550394, guid: ecc3c7a01c6e2a347ae8a24c5b049ec7,
     type: 2}
 --- !u!137 &137324106682157858

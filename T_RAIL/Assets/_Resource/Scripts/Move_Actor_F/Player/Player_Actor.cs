@@ -60,7 +60,7 @@ public class Player_Actor : Move_Actor {
         // 윗층으로
         Debug.Log(_x);
         position.x = _x;
-        position.y += 0.005f * Time.deltaTime * 100.0f;
+        position.y += 0.005f * Time.deltaTime * 120.0f;
         rotate.y = 180;
         Direction = 3; // 근데 이거 direction 어따쓰려고 만들어뒀더라
     }
@@ -72,7 +72,7 @@ public class Player_Actor : Move_Actor {
         // 윗층으로
         Debug.Log(_x);
         position.x = _x;
-        position.y -= 0.005f * Time.deltaTime * 100.0f;
+        position.y -= 0.005f * Time.deltaTime * 120.0f;
         rotate.y = 180;
         Direction = 3; // 근데 이거 direction 어따쓰려고 만들어뒀더라
     }
