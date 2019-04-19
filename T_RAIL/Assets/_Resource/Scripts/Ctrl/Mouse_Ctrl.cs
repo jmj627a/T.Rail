@@ -66,9 +66,19 @@ public class Mouse_Ctrl : MonoBehaviour
                 }
                 else if (hit.collider.gameObject.layer.Equals(GameValue.choice_layer))
                 {
+                    Debug.Log("엥");
                     ChoiceButton.SetActive(true);
                     ChoiceButton.transform.position = Input.mousePosition;
                     ChoiceButton.GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
+
+                }
+
+                else if (hit.collider.gameObject.layer.Equals(GameValue.sofa_layer))
+                {
+                    // 소파레이어
+                    //ChoiceButton.SetActive(true);
+                   // ChoiceButton.transform.position = Input.mousePosition;
+                   // ChoiceButton.GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
 
                 }
             }

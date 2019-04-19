@@ -8,7 +8,7 @@ public class Player_Actor : Move_Actor {
     public Player_Actor()
     {
         base.Actor_Property = (int)Actor.Player; // property에 player 라고 정의
-        position = new Pos(-1, 3.3f, -2.5f);
+        position = new Pos(-1, 3.8f, -2.5f);
         speed =100.0f; // speed 는 km/h 로 따지나 
 
        Where_Train = 1;

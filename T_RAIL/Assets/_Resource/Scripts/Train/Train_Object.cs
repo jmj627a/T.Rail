@@ -129,8 +129,6 @@ public class Train_Object : MonoBehaviour
             }
         }
     }
-
-
     // startcoroutine쓰면서 stopcoroutine쓸거면
     // iEnumerator 변수명
     // 이렇게해서 startcoroutine(변수명)

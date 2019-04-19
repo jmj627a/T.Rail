@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33715105362996162}
   - component: {fileID: 23712866372034746}
   - component: {fileID: 65197339013070674}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: sofa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
