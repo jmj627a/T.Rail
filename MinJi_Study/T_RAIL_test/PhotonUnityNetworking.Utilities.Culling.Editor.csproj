@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{777F14F2-559D-0715-D9FD-BB19C2574564}</ProjectGuid>
+    <ProjectGuid>{B2AB36DF-046C-9994-2D7F-8E739AE0C5F2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>PhotonUnityNetworking.Utilities.Culling.Editor</AssemblyName>
@@ -297,13 +297,13 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Photon3Unity3D">
-      <HintPath>D:/Photon/T_RAIL/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
+      <HintPath>D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/trailllllllll/MinJi_Study/T_RAIL_test/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>D:/Photon/T_RAIL/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
+      <HintPath>D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/trailllllllll/MinJi_Study/T_RAIL_test/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>D:/Photon/T_RAIL/Assets/Photon/PhotonUnityNetworking/Code/Editor/Newtonsoft.Json.dll</HintPath>
+      <HintPath>D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/trailllllllll/MinJi_Study/T_RAIL_test/Assets/Photon/PhotonUnityNetworking/Code/Editor/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/jmj62/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
@@ -350,7 +350,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
-      <Project>{D4C9E709-DECE-AFE1-4A8C-CA3CFADFA762}</Project>
+      <Project>{68D1C459-3BD9-A7E9-E043-37A794AD1F9D}</Project>
       <Name>PhotonUnityNetworking.Utilities</Name>
     </ProjectReference>
   </ItemGroup>

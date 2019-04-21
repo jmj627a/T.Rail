@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-D:/Photon/T_RAIL/Build/T_RAIL.exe
+D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/trailllllllll/MinJi_Study/T_RAIL_test/Build/T_RAIL.exe
 SceneListBegin?
 Assets/Scenes/LobbyScene.unity
 Assets/Scenes/Train_Stage1.unity

@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{ACF2BF8E-88E9-F939-B2B0-38FB306A6527}</ProjectGuid>
+    <ProjectGuid>{AA38B878-2853-2C37-64F3-E83FC96BB275}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -66,16 +66,16 @@
     <Compile Include="Assets\Photon\PhotonUnityNetworking\Demos\DemoSlotRacer\Scripts\BezierCurve\Editor\BezierSplineInspector.cs" />
     <Compile Include="Assets\Photon\PhotonUnityNetworking\Demos\DemoSlotRacer\Scripts\BezierCurve\Editor\LineInspector.cs" />
     <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>D:/Photon/T_RAIL/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+      <HintPath>D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/trailllllllll/MinJi_Study/T_RAIL_test/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Photon/T_RAIL/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/trailllllllll/MinJi_Study/T_RAIL_test/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>D:/Photon/T_RAIL/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/trailllllllll/MinJi_Study/T_RAIL_test/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Photon/T_RAIL/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/trailllllllll/MinJi_Study/T_RAIL_test/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -321,13 +321,13 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Photon3Unity3D">
-      <HintPath>D:/Photon/T_RAIL/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
+      <HintPath>D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/trailllllllll/MinJi_Study/T_RAIL_test/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>D:/Photon/T_RAIL/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
+      <HintPath>D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/trailllllllll/MinJi_Study/T_RAIL_test/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>D:/Photon/T_RAIL/Assets/Photon/PhotonUnityNetworking/Code/Editor/Newtonsoft.Json.dll</HintPath>
+      <HintPath>D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/trailllllllll/MinJi_Study/T_RAIL_test/Assets/Photon/PhotonUnityNetworking/Code/Editor/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/jmj62/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
@@ -374,47 +374,47 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{A218CFD5-AF1C-90F3-D51E-BADEFB52BD0D}</Project>
+      <Project>{B4084A02-743E-A832-9B73-160C86D0B10D}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{E1E74C14-D1A7-D346-FAB6-E74878057CBE}</Project>
+      <Project>{A93DE84D-22FD-6CE6-E8DA-64AA2AD70A5F}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
     <ProjectReference Include="Assembly-CSharp-Editor-firstpass.csproj">
-      <Project>{9B2739BB-9915-454A-665A-E6F7A447B755}</Project>
+      <Project>{1F53888A-3775-2400-B970-B18059C14068}</Project>
       <Name>Assembly-CSharp-Editor-firstpass</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Utilities.PhotonPlayer.Editor.csproj">
-      <Project>{AF080310-DE7D-E34A-B054-FF74877A04CC}</Project>
+      <Project>{3070E686-F060-62DE-F7B0-22B4B49FACB3}</Project>
       <Name>PhotonUnityNetworking.Utilities.PhotonPlayer.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
-      <Project>{D4C9E709-DECE-AFE1-4A8C-CA3CFADFA762}</Project>
+      <Project>{68D1C459-3BD9-A7E9-E043-37A794AD1F9D}</Project>
       <Name>PhotonUnityNetworking.Utilities</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonWebSocket.csproj">
-      <Project>{46A5E78B-51ED-CB56-F1D7-ED68F5865DE3}</Project>
+      <Project>{0C79A794-5ACA-3466-CE3B-F108B911681F}</Project>
       <Name>PhotonWebSocket</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonRealtime.csproj">
-      <Project>{B5D0804A-7C77-753B-F6D5-0EB25F0B87EB}</Project>
+      <Project>{F2A30F3B-10F5-53EF-9A6B-57D361C3A973}</Project>
       <Name>PhotonRealtime</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.csproj">
-      <Project>{0DABCD45-EBB2-574B-54E8-BBD1288C5ED3}</Project>
+      <Project>{EA9B7DC6-1149-08D6-3940-5E6E3C8F27EF}</Project>
       <Name>PhotonUnityNetworking</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonChat.csproj">
-      <Project>{27492ABA-FF98-3A57-7E25-8013669792BC}</Project>
+      <Project>{36A422FF-3BB8-A123-0F32-A776D12E2B0F}</Project>
       <Name>PhotonChat</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
-      <Project>{777F14F2-559D-0715-D9FD-BB19C2574564}</Project>
+      <Project>{B2AB36DF-046C-9994-2D7F-8E739AE0C5F2}</Project>
       <Name>PhotonUnityNetworking.Utilities.Culling.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Editor.csproj">
-      <Project>{E6E7FB86-9E98-796D-D65D-ABA828CD45D7}</Project>
+      <Project>{579E964C-2DC3-6FF2-C5E2-9DDB4399F714}</Project>
       <Name>PhotonUnityNetworking.Editor</Name>
     </ProjectReference>
   </ItemGroup>

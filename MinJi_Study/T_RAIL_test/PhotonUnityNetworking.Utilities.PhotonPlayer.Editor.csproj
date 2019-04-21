@@ -10,7 +10,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>
     </RootNamespace>
-    <ProjectGuid>{AF080310-DE7D-E34A-B054-FF74877A04CC}</ProjectGuid>
+    <ProjectGuid>{3070E686-F060-62DE-F7B0-22B4B49FACB3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>PhotonUnityNetworking.Utilities.PhotonPlayer.Editor</AssemblyName>
@@ -298,13 +298,13 @@
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="Photon3Unity3D">
-      <HintPath>D:/Photon/T_RAIL/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
+      <HintPath>D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/trailllllllll/MinJi_Study/T_RAIL_test/Assets/Photon/PhotonLibs/Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
-      <HintPath>D:/Photon/T_RAIL/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
+      <HintPath>D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/trailllllllll/MinJi_Study/T_RAIL_test/Assets/Photon/PhotonLibs/WebSocket/websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>D:/Photon/T_RAIL/Assets/Photon/PhotonUnityNetworking/Code/Editor/Newtonsoft.Json.dll</HintPath>
+      <HintPath>D:/정민지/1.하꾜새호ㅏ!        ㅇ ㄹ/trailllllllll/MinJi_Study/T_RAIL_test/Assets/Photon/PhotonUnityNetworking/Code/Editor/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/jmj62/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
@@ -351,15 +351,15 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="PhotonRealtime.csproj">
-      <Project>{B5D0804A-7C77-753B-F6D5-0EB25F0B87EB}</Project>
+      <Project>{F2A30F3B-10F5-53EF-9A6B-57D361C3A973}</Project>
       <Name>PhotonRealtime</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.csproj">
-      <Project>{0DABCD45-EBB2-574B-54E8-BBD1288C5ED3}</Project>
+      <Project>{EA9B7DC6-1149-08D6-3940-5E6E3C8F27EF}</Project>
       <Name>PhotonUnityNetworking</Name>
     </ProjectReference>
     <ProjectReference Include="PhotonUnityNetworking.Utilities.csproj">
-      <Project>{D4C9E709-DECE-AFE1-4A8C-CA3CFADFA762}</Project>
+      <Project>{68D1C459-3BD9-A7E9-E043-37A794AD1F9D}</Project>
       <Name>PhotonUnityNetworking.Utilities</Name>
     </ProjectReference>
   </ItemGroup>

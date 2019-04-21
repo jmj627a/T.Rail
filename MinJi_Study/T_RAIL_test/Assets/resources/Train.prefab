@@ -3448,7 +3448,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1595425419640846}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
   m_Name: 
@@ -3493,7 +3493,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114350257503191124}
   viewIdField: 0
-  InstantiationId: 0
+  InstantiationId: 3
   isRuntimeInstantiated: 0
 --- !u!114 &114805742212557884
 MonoBehaviour:
