@@ -78,6 +78,7 @@
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Passenger\Passenger_Ctrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player\Player_Actor.cs" />
     <Compile Include="Assets\_Resource\Scripts\Move_Actor_F\Player\Player_Ctrl.cs" />
+    <Compile Include="Assets\_Resource\Scripts\ObjectPooled\ObjectPool.cs" />
     <Compile Include="Assets\_Resource\Scripts\ObjectPooled\PooledObject.cs" />
     <Compile Include="Assets\_Resource\Scripts\SceneManager.cs" />
     <Compile Include="Assets\_Resource\Scripts\Setting\UI_ChoiceButton.cs" />

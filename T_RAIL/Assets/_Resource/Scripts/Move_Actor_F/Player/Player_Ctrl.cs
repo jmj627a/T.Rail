@@ -9,8 +9,9 @@ enum player_space_state
 {
 
     Ladder = 1,
+    Ladder_Down = 1,
     Machine_gun = 2,
-    bullet = 3
+    bullet = 4
 }
 
 
@@ -95,6 +96,13 @@ public class Player_Ctrl : MonoBehaviour
                 Push_Space_UI.SetActive(true);
                 Push_Space_UI.transform.position = MCam.WorldToScreenPoint(Near_Object.position) + new Vector3(10, 100, 0);
             }
+        }
+
+        if (other.gameObject.layer.Equals(floor2))
+        {
+            // 내려갈때 쓸거얌
+            space_state = (int)player_space_state.Ladder_Down;
+            
         }
     }
     private void OnTriggerExit(Collider other)
@@ -343,14 +351,13 @@ public class Player_Ctrl : MonoBehaviour
         //머신건에 앉아있음
 
         // 카메라 위치 조정
-        if (Input.GetKey(KeyCode.A))
-        {
-            //MCam
-        }
+
         if (Input.GetKey(KeyCode.D))
         {
-
+            // 기관총에서 벗어나자!
+            player.Where_Floor = 2;
         }
+        // 
 
         // 머신건의 각도 조절 
         if (Input.GetKey(KeyCode.S))
@@ -367,6 +374,8 @@ public class Player_Ctrl : MonoBehaviour
         {
 
         }
+
+    // 카메라 조절은 마우스로
 
     }
 
