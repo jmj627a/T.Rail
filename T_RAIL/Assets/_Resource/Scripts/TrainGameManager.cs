@@ -4,7 +4,23 @@ using UnityEngine;
 
 public class TrainGameManager : MonoBehaviour {
 
-    public static TrainGameManager instance;
+    public static TrainGameManager instance = null;
+
+    //public static TrainGameManager Instance
+    //{
+    //    get
+    //    {
+    //        if (instance == null)
+    //        {
+    //            instance = FindObjectOfType(typeof(TrainGameManager)) as TrainGameManager;
+    //            if(instance == null)
+    //            {
+    //                Debug.Log("no active managerclass object");
+    //            }
+    //        }
+    //        return instance;
+    //    }
+    //}
 
     public List<Train_Object> trainHP = new List<Train_Object>(); // ??
 
@@ -31,7 +47,7 @@ public class TrainGameManager : MonoBehaviour {
 
     private void Awake()
     {
-        instance = this;
+       instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
