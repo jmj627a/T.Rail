@@ -14,7 +14,7 @@ public class Mouse_Ctrl : MonoBehaviour
   //  float ScreenHeight;
 
     public GameObject Inventory;
-    public GameObject ChoiceButton;
+    public GameObject[] ChoiceButton;
 
     //   layerMask = (1 << LayerMask.NameToLayer("Furniture")); 
 
@@ -66,9 +66,13 @@ public class Mouse_Ctrl : MonoBehaviour
                 }
                 else if (hit.collider.gameObject.layer.Equals(GameValue.choice_layer))
                 {
-                    ChoiceButton.SetActive(true);
-                    ChoiceButton.transform.position = Input.mousePosition;
-                    ChoiceButton.GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
+                    ChoiceButton[0].SetActive(true);
+                    ChoiceButton[0].transform.position = Input.mousePosition;
+                    ChoiceButton[0].GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
+
+                    ChoiceButton[1].SetActive(true);
+                    ChoiceButton[1].transform.position = Input.mousePosition;
+                    ChoiceButton[1].GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
 
                 }
             }

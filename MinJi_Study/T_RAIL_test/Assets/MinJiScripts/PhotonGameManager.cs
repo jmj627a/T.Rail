@@ -186,7 +186,13 @@ namespace Photon.Pun.Demo.Asteroids
             else
             {
                 //PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0, 3.3f, -2.5f), Quaternion.Euler(0, 180, 0), 0);
-                PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(Random.Range(-10, 10), 3.3f, -2.5f), Quaternion.Euler(0, 180, 0), 0);
+                for (int i = 0; i <= PhotonNetwork.CountOfPlayersInRooms; ++i)
+                {
+                    if (PhotonNetwork.PlayerList[i].NickName == PhotonNetwork.LocalPlayer.NickName)
+                    {
+                        PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(-1 * i * 2, 3.3f, -2.5f), Quaternion.Euler(0, 180, 0), 0);
+                    }
+                }
                 //PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0, 3.3f, -2.5f), Quaternion.Euler(0, 180, 0), 0);
                 //PhotonNetwork.Instantiate("player", position, rotation, 0);
                 Debug.Log("프리팹 생성!" );

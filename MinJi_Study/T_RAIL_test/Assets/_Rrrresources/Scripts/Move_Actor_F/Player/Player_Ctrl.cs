@@ -144,59 +144,66 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
     }
 
 
+    private Vector3 CurPos = new Vector3(-1, 3.3f, -2.5f);
+    private Quaternion CurRot = Quaternion.identity;//네트워크에서는 선언과 동시에 초기화해야한다 
 
     // Update is called once per frame
     void Update()
     {
-        if(!photonView.IsMine)
+        if (photonView.IsMine)
         {
-            return;
-        }
+            //for (int i = 0; i <= PhotonNetwork.CountOfPlayersInRooms; ++i)
+            //    Debug.Log(PhotonNetwork.PlayerList[i].NickName + "플레이어");
 
-
-        // 이 highlight는 나중에 따로 함수로 뺄고야 일단 정리ㅣ되면 빼겟음
-        if (near_stair)
-        {
-            // 근데 이것도 사다리 올라가는 중에는 X 
-            highlighter.Hover(hoverColor);
-        }
-        if (near_gun)
-        {
-            highlighter.Hover(hoverColor);
-        }
-
-        if (!stair_up)
-        {
-            GetKeyInput();
-
-            Quaternion rot = Quaternion.identity;
-            rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
-            // tr.position = new Vector3(player.position.x, player.position.y, player.position.z);
-            tr.position = Vector3.Lerp(tr.position, new Vector3(player.position.x, player.position.y, player.position.z), Time.deltaTime * 10.0f);
-            tr.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 5.0f);
-
-        }
-        else if (stair_up)
-        {
-            player.To_UpStair(floor1.position.x);
-
-            tr.position = new Vector3(player.position.x, player.position.y, player.position.z);
-
-            Quaternion rot = Quaternion.identity;
-            rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
-            tr.rotation = rot;
-
-            if (transform.position.y >= floor2.position.y)
+            // 이 highlight는 나중에 따로 함수로 뺄고야 일단 정리ㅣ되면 빼겟음
+            if (near_stair)
             {
-                stair_up = false;
-                // 파티클도 추가하고 2층으로 올라간 위치에 생기게 해야함
-                player.Where_Floor = 2;
-                anim.SetBool("UpToLadder", false);
-
-                player.On_Floor2_yPosition();
-                Ceiling_CamSetting();
+                // 근데 이것도 사다리 올라가는 중에는 X 
+                highlighter.Hover(hoverColor);
             }
-          
+            if (near_gun)
+            {
+                highlighter.Hover(hoverColor);
+            }
+
+            if (!stair_up)
+            {
+                GetKeyInput();
+
+                Quaternion rot = Quaternion.identity;
+                rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
+                // tr.position = new Vector3(player.position.x, player.position.y, player.position.z);
+                tr.position = Vector3.Lerp(tr.position, new Vector3(player.position.x, player.position.y, player.position.z), Time.deltaTime * 10.0f);
+                tr.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 5.0f);
+
+            }
+            else if (stair_up)
+            {
+                player.To_UpStair(floor1.position.x);
+
+                tr.position = new Vector3(player.position.x, player.position.y, player.position.z);
+
+                Quaternion rot = Quaternion.identity;
+                rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
+                tr.rotation = rot;
+
+                if (transform.position.y >= floor2.position.y)
+                {
+                    stair_up = false;
+                    // 파티클도 추가하고 2층으로 올라간 위치에 생기게 해야함
+                    player.Where_Floor = 2;
+                    anim.SetBool("UpToLadder", false);
+
+                    player.On_Floor2_yPosition();
+                    Ceiling_CamSetting();
+                }
+
+            }
+        }
+        else
+        {
+            //tr.position = Vector3.Lerp(tr.position, CurPos, Time.deltaTime * 3.0f);
+            //tr.rotation = Quaternion.Slerp(tr.rotation, CurRot, Time.deltaTime * 3.0f);
         }
 
 
@@ -409,5 +416,21 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
         Push_Space_UI = Instantiate(Push_Space_UI_pref);
         // Push_Space_UI.name = "player1_PushSpace_UI";
         Push_Space_UI.transform.parent = TrainGameManager.instance.Info_Canvas.transform;
+    }
+
+
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {//원격 네트워크 플레이어가 만든 탱크의 위치와 회전 정보를 실시간으로 동기화하도록 하는 콜백 함수
+     //(쉽게 말해서 다른 유저의 실시간 위치와 회전 값이 보이게 하는것)
+        if (stream.IsWriting)
+        {//신호를 보낸다. 송신 로컬플레이의 위치 정보 송신(패킷을 날린다고 표현)
+            stream.SendNext(tr.position);
+            stream.SendNext(tr.rotation);
+        }
+        else // 원격 플레이어의 위치 정보 수신
+        {
+            CurPos = (Vector3)stream.ReceiveNext();
+            CurRot = (Quaternion)stream.ReceiveNext();
+        }
     }
 }

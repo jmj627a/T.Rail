@@ -52,8 +52,8 @@ public class Train_Ctrl : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        
-        Run_Meter += (TrainGameManager.instance.speed * 0.2f) * Time.deltaTime;
+      
+       Run_Meter += (TrainGameManager.instance.speed * 0.2f) * Time.deltaTime;
     }
 
     public void TrainSort()

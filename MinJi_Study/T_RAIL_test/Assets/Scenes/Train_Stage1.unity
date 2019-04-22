@@ -5938,6 +5938,7 @@ GameObject:
   - component: {fileID: 775256806}
   - component: {fileID: 775256805}
   - component: {fileID: 775256804}
+  - component: {fileID: 775256808}
   m_Layer: 14
   m_Name: ChoiceInTrainObject _3
   m_TagString: Untagged
@@ -6028,6 +6029,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 775256802}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &775256808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 775256802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 8
+  InstantiationId: 8
+  isRuntimeInstantiated: 0
 --- !u!1 &778385912
 GameObject:
   m_ObjectHideFlags: 0
@@ -7819,6 +7840,7 @@ GameObject:
   - component: {fileID: 1065104044}
   - component: {fileID: 1065104043}
   - component: {fileID: 1065104042}
+  - component: {fileID: 1065104046}
   m_Layer: 14
   m_Name: ChoiceInTrainObject_1
   m_TagString: Untagged
@@ -7909,6 +7931,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1065104040}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1065104046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1065104040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 7
+  InstantiationId: 7
+  isRuntimeInstantiated: 0
 --- !u!1 &1065885951
 GameObject:
   m_ObjectHideFlags: 0
@@ -9041,6 +9083,7 @@ GameObject:
   - component: {fileID: 1184166587}
   - component: {fileID: 1184166586}
   - component: {fileID: 1184166585}
+  - component: {fileID: 1184166589}
   m_Layer: 14
   m_Name: ChoiceInTrainObject_2
   m_TagString: Untagged
@@ -9131,6 +9174,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1184166583}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1184166589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1184166583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 5
+  InstantiationId: 5
+  isRuntimeInstantiated: 0
 --- !u!1 &1185199384
 GameObject:
   m_ObjectHideFlags: 0
@@ -9149,7 +9212,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1185199385
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9211,12 +9274,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1270815217}
-        m_MethodName: Box_Add
-        m_Mode: 1
+        m_MethodName: onChoiceButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -9663,7 +9726,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1217976273
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9725,8 +9788,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1270815217}
-        m_MethodName: Sofa_Add
-        m_Mode: 1
+        m_MethodName: onChoiceButton
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -10312,13 +10375,14 @@ GameObject:
   m_Component:
   - component: {fileID: 1270815216}
   - component: {fileID: 1270815217}
+  - component: {fileID: 1270815218}
   m_Layer: 5
   m_Name: Choice_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1270815216
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10353,6 +10417,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sofa: {fileID: 1444136991092984, guid: 774772c2dd5923c45bb30e0e626adcb9, type: 2}
   Box: {fileID: 1694444239006638, guid: c9cef94530244a44e96271268613d0d0, type: 2}
+--- !u!114 &1270815218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1270815215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 4
+  InstantiationId: 4
+  isRuntimeInstantiated: 0
 --- !u!1 &1271304916
 GameObject:
   m_ObjectHideFlags: 0
@@ -13680,6 +13765,7 @@ GameObject:
   - component: {fileID: 1796649458}
   - component: {fileID: 1796649457}
   - component: {fileID: 1796649456}
+  - component: {fileID: 1796649460}
   m_Layer: 14
   m_Name: ChoiceInTrainObject_4
   m_TagString: Untagged
@@ -13770,6 +13856,26 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1796649454}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1796649460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1796649454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents: []
+  viewIdField: 6
+  InstantiationId: 6
+  isRuntimeInstantiated: 0
 --- !u!1 &1804069960
 GameObject:
   m_ObjectHideFlags: 0

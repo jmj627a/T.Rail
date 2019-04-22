@@ -1,14 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Player_Actor : Move_Actor {
+using Photon.Pun;
+public class Player_Actor : Move_Actor
+{
 
 
     public Player_Actor()
     {
         base.Actor_Property = (int)Actor.Player; // property에 player 라고 정의
-        position = new Pos(-1, 3.3f, -2.5f);
+
+        for (int i = 0; i <= PhotonNetwork.CountOfPlayersInRooms; ++i)
+        {
+            if(PhotonNetwork.PlayerList[i].NickName == PhotonNetwork.LocalPlayer.NickName)
+            {
+                position = new Pos(-1 * i * 2 , 3.3f, -2.5f);
+            }
+        }
         speed =100.0f; // speed 는 km/h 로 따지나 
 
        Where_Train = 1;
@@ -84,4 +92,5 @@ public class Player_Actor : Move_Actor {
     {
         position.y = GameValue.player_2f_position_y;
     }
+
 }
