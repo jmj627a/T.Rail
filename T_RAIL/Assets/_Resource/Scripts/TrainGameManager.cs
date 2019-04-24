@@ -22,10 +22,6 @@ public class TrainGameManager : MonoBehaviour {
     //    }
     //}
 
-    public List<Train_Object> trainHP = new List<Train_Object>(); // ??
-
-    bool player_die = false; // 죽었는지
-    
 
     // 여기서 각 플레이어들 체력 관리해야되나?
     // 여기서 뭐해야될까
@@ -41,6 +37,9 @@ public class TrainGameManager : MonoBehaviour {
                            // 몇개 붙어있는지 가지고 제일 마지막 위치 -> 기관총
                            // 제일 마지막 위치 -> enemy1 
 
+
+    // # TrainCtrl
+    public Train_Ctrl TrainCtrl;
 
     // # UI
     public GameObject Info_Canvas;

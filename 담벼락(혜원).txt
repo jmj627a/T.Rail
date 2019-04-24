@@ -4,4 +4,9 @@
 material 폴더 정리하다가 기차 maintrain 바닥에 있는 material 분실;;
 그래서 일단 대충 material 08 갖다가 붙여놨음 시발 흑흑
 
+------------------------------------
 
+[19.04.24 ]
+
+2층 올라갔을 때 기차겉면 onoff 시키는 거 player_ctrl->update에
+switch문 안에 있음
