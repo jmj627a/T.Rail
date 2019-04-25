@@ -18,6 +18,8 @@ static class GameValue {
     public const int ladder_layer = 15;
     public const int machinegun_layer = 16;
     public const int sofa_layer = 17;
+    public const int floor1_layer = 18;
+    public const int floor2_layer = 19;
 
     // 기차 영역에 구성되어있는 오브젝트들의 값
     // local 좌표임

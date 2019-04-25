@@ -5,18 +5,19 @@ using HighlightingSystem;
 
 
 
-enum player_space_state
-{
 
-    Ladder = 1,
-    Ladder_Down = 1,
-    Machine_gun = 2,
-    bullet = 4
-}
 
 
 public class Player_Ctrl : MonoBehaviour
 {
+    enum player_space_state
+    {
+
+        Ladder = 1,
+        Ladder_Down = 2,
+        Machine_gun = 3,
+        bullet = 4
+    }
 
     // 기본 플레이어에 달린 컴포넌트들
     Player_Actor player;
@@ -29,7 +30,8 @@ public class Player_Ctrl : MonoBehaviour
     Transform Near_Object; // 사다리, 머신건 등 space_state로 할 모든 object담기
     Transform gun_child; // 머신건.... 각도 회전하려면 밑에 자식 오브젝트 담아와야 돼서 총전용
     bool stair_up; // 사다리 올라가고 있는 중
- 
+    bool stair_down; // 사다리 내려가고 있는 중
+
 
     int space_state = 0; // 기본은 0인데 space가 눌려지는 상황 (highlight되는 모든애들) 에서 state change
     bool near_stair; // 사다리근처
@@ -68,10 +70,10 @@ public class Player_Ctrl : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (!stair_up && other.gameObject.layer.Equals(GameValue.ladder_layer))
+        if (!stair_up && !stair_down)
         {
 
-            if (!near_stair)
+            if (!near_stair && other.gameObject.layer.Equals(GameValue.ladder_layer))
             {
                 space_state = (int)player_space_state.Ladder;
                 Near_Object = other.transform;
@@ -80,6 +82,12 @@ public class Player_Ctrl : MonoBehaviour
                 Push_Space_UI.SetActive(true);
 
                 Push_Space_UI.transform.position = MCam.WorldToScreenPoint(Near_Object.position) + new Vector3(10, 150, 0);
+            }
+            if (other.gameObject.layer.Equals(GameValue.floor2_layer))
+            {
+                // 내려갈때 쓸거얌
+                space_state = (int)player_space_state.Ladder_Down;
+
             }
         }
 
@@ -97,13 +105,8 @@ public class Player_Ctrl : MonoBehaviour
                 Push_Space_UI.transform.position = MCam.WorldToScreenPoint(Near_Object.position) + new Vector3(10, 100, 0);
             }
         }
+        // 자꾸 사다리가 더 먼저 걸린다 
 
-        if (other.gameObject.layer.Equals(floor2))
-        {
-            // 내려갈때 쓸거얌
-            space_state = (int)player_space_state.Ladder_Down;
-            
-        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -169,43 +172,50 @@ public class Player_Ctrl : MonoBehaviour
             rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
             tr.rotation = rot;
 
-
-            switch (player.Where_Floor)
+            if (tr.position.y >= floor2.position.y)
             {
-                case 1:
-                    if (tr.position.y >= floor2.position.y)
-                    {
-                        stair_up = false;
-                        // 파티클도 추가하고 2층으로 올라간 위치에 생기게 해야함
-                        player.Where_Floor = 2;
-                        anim.speed = 1;
-                       
-                        anim.SetBool("UpToLadder", false);
+                stair_up = false;
+                // 파티클도 추가하고 2층으로 올라간 위치에 생기게 해야함
+                player.Where_Floor = 2;
 
-                        player.On_Floor2_yPosition();
-                        Ceiling_CamSetting();
-                    }
-                    break;
-                case 2:
-                    if (tr.position.y <= floor1.position.y)
-                    {
-                        stair_up = false;
-                        // 1층으로 내려와
-                        player.Where_Floor = 1;
-                        anim.speed = -1;
 
-                        anim.SetBool("UpToLadder", false);
+                anim.SetBool("UpToLadder", false);
 
-                        player.On_Floor1_yPosition();
-                        InTrain_CamSetting();
-                    }
-                    break;
+                player.On_Floor2_yPosition();
+                Ceiling_CamSetting();
 
+                // trainmanager의 trainctrl에 연결해서 그 컨트롤의 list 중 trainscript에서 천장 onoff 변경
+                TrainGameManager.instance.TrainCtrl.trainscript[player.Where_Train - 1].Ceiling_OnOff(true);
+
+                //false는 여기가 아니고 space눌렀을 때ㄹ.
             }
-          
-          
-        }
 
+        }
+        if (stair_down)
+        {
+            // 분명 up과 다른건 +,- 뿐인데
+            // 얘는 제대로 안됨 왜일까?
+            player.To_DownStair(floor2.position.x);
+            tr.position = new Vector3(player.position.x, player.position.y, player.position.z);
+
+            Quaternion rot = Quaternion.identity;
+            rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
+            tr.rotation = rot;
+           // anim.speed = -1;
+
+
+            if (tr.position.y <= floor1.position.y)
+            {
+                stair_down = false;
+                // 1층으로 내려와
+                player.Where_Floor = 1;
+
+                anim.speed = 1;
+                anim.SetBool("UpToLadder", false);
+                player.On_Floor1_yPosition();
+                InTrain_CamSetting();
+            }
+        }
 
     }
 
@@ -278,9 +288,8 @@ public class Player_Ctrl : MonoBehaviour
                 // 사다리 가까이서 space누르면 올라가기 == 1
                 // 기관총 앞에서 space누르면 기관총에 장착되기 == 2
 
-                if (space_state.Equals(1))
+                if (space_state.Equals((int)player_space_state.Ladder))
                 {
-
                     stair_up = true;
                     anim.SetBool("UpToLadder", true);
                     near_stair = false;
@@ -289,7 +298,7 @@ public class Player_Ctrl : MonoBehaviour
                     floor1 = Near_Object.transform.GetChild(0);
                     floor2 = Near_Object.transform.GetChild(1);
 
-                    
+
                     // 그러고 나서사다리 끝나면
                     // 올라가고 stair_up = false; 하고
                     // 천장에 올라가면 뚜껑도 setactive.true해줘야되네
@@ -332,16 +341,22 @@ public class Player_Ctrl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // 머신건에 앉기
-            if (space_state.Equals(2))
+            if (space_state.Equals((int)player_space_state.Machine_gun))
             {
-                Debug.Log("앉아");
                 // 주변에 머신건이 있으면?
                 player.Where_Floor = 3;
                 space_state = 0;
-                near_gun = false; 
+                near_gun = false;
                 Push_Space_UI.SetActive(false);
             }
-            // 그러고나서  머신건에 고정시켜야됨
+
+            // 밑층으로 내려가기
+            if (space_state.Equals((int)player_space_state.Ladder_Down))
+            {
+                TrainGameManager.instance.TrainCtrl.trainscript[player.Where_Train - 1].Ceiling_OnOff(false);
+                anim.SetBool("UpToLadder", true);
+                stair_down = true;
+            }
         }
     }
 
@@ -362,7 +377,7 @@ public class Player_Ctrl : MonoBehaviour
         // 머신건의 각도 조절 
         if (Input.GetKey(KeyCode.S))
         {
-            gun_child.transform.Rotate(0,0,10.0f*Time.deltaTime);
+            gun_child.transform.Rotate(0, 0, 10.0f * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.W))
         {
@@ -375,7 +390,7 @@ public class Player_Ctrl : MonoBehaviour
 
         }
 
-    // 카메라 조절은 마우스로
+        // 카메라 조절은 마우스로
 
     }
 

@@ -74,7 +74,10 @@ public class Train_Ctrl : MonoBehaviour
                 train[TrainGameManager.instance.trainindex - 1].transform.position = new Vector3(GameValue.Train_distance * (train.Count - 1), GameValue.Train_y, GameValue.Train_z);
             }
 
-
+            // 그리고 여기서 add 되는 조건 설정
+            // -> 몬스터가 나와있는 상태에서는 add되면 안됨.
+            // -> 기차 추가 조건은 따로 함수 만들기
+            // -> 기관총에 붙어있는데 add 되면 바꿔야되니까 add되면 기관총설정ㅇ  reset
 
             // 제일마지막 칸 ㅔ외하고 나머지는 기관총끄기
             for (int i = 0; i < TrainGameManager.instance.trainindex; i++)

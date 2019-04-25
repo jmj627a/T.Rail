@@ -10484,8 +10484,7 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 95248696352318760, guid: 5d9648c5713c24c4ead0d991e0595880, type: 2}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d9648c5713c24c4ead0d991e0595880, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &213698524
@@ -45595,8 +45594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb5c91b23b0d764d8ea0b63c61ba339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trainHP: []
   trainindex: 0
+  TrainCtrl: {fileID: 1304048000}
   Info_Canvas: {fileID: 540288765}
 --- !u!4 &1113577655
 Transform:
