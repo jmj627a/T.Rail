@@ -35,5 +35,7 @@ MonoBehaviour:
   - Train_Add
   - Box_Add
   - Sofa_Add
+  - GetHitObject
+  - getHitObjectRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1

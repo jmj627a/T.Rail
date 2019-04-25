@@ -186,11 +186,12 @@ namespace Photon.Pun.Demo.Asteroids
             else
             {
                 //PhotonNetwork.Instantiate(this.playerPrefab.name, new Vector3(0, 3.3f, -2.5f), Quaternion.Euler(0, 180, 0), 0);
-                for (int i = 0; i <= PhotonNetwork.CountOfPlayersInRooms; ++i)
+                for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; ++i)
                 {
                     if (PhotonNetwork.PlayerList[i].NickName == PhotonNetwork.LocalPlayer.NickName)
                     {
                         PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(-1 * i * 2, 3.3f, -2.5f), Quaternion.Euler(0, 180, 0), 0);
+                        Debug.LogError(PhotonNetwork.CurrentRoom.PlayerCount);
                     }
                 }
                 //PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0, 3.3f, -2.5f), Quaternion.Euler(0, 180, 0), 0);

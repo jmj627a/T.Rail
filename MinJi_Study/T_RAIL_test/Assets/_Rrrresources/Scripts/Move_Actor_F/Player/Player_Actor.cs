@@ -10,9 +10,9 @@ public class Player_Actor : Move_Actor
     {
         base.Actor_Property = (int)Actor.Player; // property에 player 라고 정의
 
-        for (int i = 0; i <= PhotonNetwork.CountOfPlayersInRooms; ++i)
+        for (int i = 0; i < PhotonNetwork.CurrentRoom.PlayerCount; ++i)
         {
-            if(PhotonNetwork.PlayerList[i].NickName == PhotonNetwork.LocalPlayer.NickName)
+            if (PhotonNetwork.PlayerList[i].NickName == PhotonNetwork.LocalPlayer.NickName)
             {
                 position = new Pos(-1 * i * 2 , 3.3f, -2.5f);
             }

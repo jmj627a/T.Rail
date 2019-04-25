@@ -44,6 +44,7 @@ public class Train_Ctrl : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        Debug.Log("생성됨 ");
         if (PhotonNetwork.IsMasterClient)
         {
             photonView.RPC("Train_Add", RpcTarget.All);
@@ -52,8 +53,8 @@ public class Train_Ctrl : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-      
-       Run_Meter += (TrainGameManager.instance.speed * 0.2f) * Time.deltaTime;
+        if (photonView.IsMine)
+            Run_Meter += (TrainGameManager.instance.speed * 0.2f) * Time.deltaTime;
     }
 
     public void TrainSort()
@@ -64,75 +65,86 @@ public class Train_Ctrl : MonoBehaviourPunCallbacks
     // 기차 추가하기
     public void onTrainAddButtonClick()
     {
-        photonView.RPC("Train_Add", RpcTarget.All);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("Train_Add", RpcTarget.All);
+            Debug.Log("마스터 클라가 눌럿음 ");
+        }
+        else
+        {
+            photonView.RPC("Train_Add", RpcTarget.All);
+            Debug.Log("다른 클라가 눌렀음 ");
+        }
     }
+   
+
 
     [PunRPC]
     public void Train_Add()
-    {   
+    {
+        if (!PhotonNetwork.IsMasterClient) return;
+
         if (TrainGameManager.instance.trainindex < GameValue.MaxTrainNumber)
         {
-            // 나중에 과부하 너무크면 
-            GameObject newTrain = Instantiate(Train_Prefab);
-            //GameObject newTrain = PhotonNetwork.Instantiate(Train_Prefab.name, new Vector3(0, 0, 0), Quaternion.Euler(0,-90,0), 0);
-            Debug.Log("기차 붙음@@@@@@@@@@@@@@@@@. " + photonView.ViewID);
-            train.Add(newTrain);
-            TrainGameManager.instance.trainindex = train.Count;
-            trainscript.Add(train[TrainGameManager.instance.trainindex - 1].GetComponent<Train_Object>());
-            trainscript[TrainGameManager.instance.trainindex - 1].ChangeTrainSetting(train.Count);
-            // -14만큼 더 멀리 생성됨
+            GameObject newTrain = PhotonNetwork.InstantiateSceneObject(Train_Prefab.name, new Vector3(0, 2.5f, -2), Quaternion.Euler(0, -90, 0),0,null) as GameObject;
 
-            if (TrainGameManager.instance.trainindex != 1)
-            {
-                train[TrainGameManager.instance.trainindex - 1].transform.position = 
-                    new Vector3(GameValue.Train_distance * (train.Count), GameValue.Train_y, GameValue.Train_z);
-            }
-            else if (TrainGameManager.instance.trainindex == 1)
-            {
-                train[TrainGameManager.instance.trainindex - 1].transform.position = 
-                    new Vector3(GameValue.Train_distance * (train.Count - 1), GameValue.Train_y, GameValue.Train_z);
-            }
+            //train.Add(newTrain);
+            //TrainGameManager.instance.trainindex = train.Count;
+            //train[TrainGameManager.instance.trainindex-1].GetComponent<Train_Object>().ChangeTrainSetting(train.Count);
 
-            newTrain.SetActive(true);
+            //if (TrainGameManager.instance.trainindex != 1)
+            //{
+            //    train[TrainGameManager.instance.trainindex - 1].transform.position = 
+            //        new Vector3(GameValue.Train_distance * (train.Count), GameValue.Train_y, GameValue.Train_z);
+            //}
+            //else if (TrainGameManager.instance.trainindex == 1)
+            //{
+            //    train[TrainGameManager.instance.trainindex - 1].transform.position = 
+            //        new Vector3(GameValue.Train_distance * (train.Count - 1), GameValue.Train_y, GameValue.Train_z);
+            //}
 
-            // 제일마지막 칸 ㅔ외하고 나머지는 기관총끄기
-            //rpc호출
-            for (int i = 0; i < TrainGameManager.instance.trainindex; i++)
-            {
-                if (i < TrainGameManager.instance.trainindex-1)
-                {
-                    //object[] temp = new object[2];
-                    //temp[0] = i;
-                    //temp[1] = 0;
-                    //photonView.RPC("Machine_Gun_OnOff_RPC", RpcTarget.All, temp);
-                    trainscript[i].Machine_Gun_OnOff(false);
-                }
-                else
-                {
-                    //object[] temp = new object[2];
-                    //temp[0] = i;
-                    //temp[1] = 1;
-                    //photonView.RPC("Machine_Gun_OnOff_RPC", RpcTarget.All, temp);
-                    trainscript[i].Machine_Gun_OnOff(true);
-                }
-            }
+            //newTrain.SetActive(true);
 
+            //// 제일마지막 칸 ㅔ외하고 나머지는 기관총끄기
+            ////rpc호출
+            //photonView.RPC("Machine_Gun_OnOff_RPC", RpcTarget.All);
         }
     }
 
     [PunRPC]
-    public void Machine_Gun_OnOff_RPC(object[] temp)
+    public void Machine_Gun_OnOff_RPC()
     {
-        switch ((int)temp[1])
+        Debug.Log("train index 개수 : " + TrainGameManager.instance.trainindex);
+        for (int i = 0; i < TrainGameManager.instance.trainindex; i++)
         {
-            case 0:
-                trainscript[(int)temp[0]].Machine_Gun_OnOff(false);
-                break;
-
-            case 1:
-                trainscript[(int)temp[0]].Machine_Gun_OnOff(true);
-                break;
+            Debug.Log("train index 개수 : " + TrainGameManager.instance.trainindex + "현재 개수 : " + i);
+            if (i < TrainGameManager.instance.trainindex - 1)
+            {
+                //photonView.RPC("Machine_Gun_OnOff_RPC", RpcTarget.All, i, false, trainscript);
+                Debug.Log("false    train[i] 이름 : " + train[i].name);
+                train[i].GetComponent<Train_Object>().Machine_Gun_OnOff(false);
+            }
+            else
+            {
+                //photonView.RPC("Machine_Gun_OnOff_RPC", RpcTarget.All, i, true, trainscript);
+                //train[i].Machine_Gun_OnOff(true);
+                Debug.Log("true    train[i] 이름 : " + train[i].name);
+                train[i].GetComponent<Train_Object>().Machine_Gun_OnOff(true);
+            }
         }
+
+        //switch (flag)
+        //{
+        //    case false:
+        //        Debug.Log("RPC 함수는 불림 꺼라 @@@@@@@@@@@@@@@" + photonView.ViewID);
+        //        _trainscript[i].Machine_Gun_OnOff(false);
+        //        break;
+        //
+        //    case true:
+        //        Debug.Log("RPC 함수는 불림 켜라 @@@@@@@@@@@@@@@" + photonView.ViewID);
+        //        _trainscript[i].Machine_Gun_OnOff(true);
+        //        break;
+        //}
 
     }
 

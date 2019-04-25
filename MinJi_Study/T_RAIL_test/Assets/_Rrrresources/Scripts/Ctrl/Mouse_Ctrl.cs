@@ -2,51 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class Mouse_Ctrl : MonoBehaviour
+public class Mouse_Ctrl : MonoBehaviourPunCallbacks
 {
-
-    // 마우스 컨트롤.
-    // 말그대로 마우스로 클릭해서 하는 것들 관리
-    // UI 제외
-
-  //  float ScreenWidth;
-  //  float ScreenHeight;
-
     public GameObject Inventory;
-    public GameObject[] ChoiceButton;
+    public UI_ChoiceButton ChoiceButton;
 
-    //   layerMask = (1 << LayerMask.NameToLayer("Furniture")); 
-
-    private void Start()
-    {
-        
-       // ScreenWidth = Screen.width;
-       // ScreenHeight = Screen.height;
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        // 근데 maincamera에 tag가 maincamera로 안달려있어서
-        // 계속 null 오류가 떴었음
-
-        // 그러면 결국 maincamera에 태그 달아줬는데
-        // 이 ray가 카메라를 태그로 인식하는거면
-        // 얘도 결국 태그연산 아니야?
-
         if (Input.GetMouseButtonDown(0))
         {
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            // 만약에 마우스 클릭이 안된다?
-            // max distance 200.0f을 mathf.infinity로 바꿔볼것
-            //if (Physics.Raycast(ray, out hit))
-            //{
-            //   // Debug.Log(hit.collider.gameObject.layer);
-            //}
             if (Physics.Raycast(ray, out hit))
             {
                 // 아... Equals("12") 라고 해서 계속 안됐던거임 흑흑 젠장
@@ -66,16 +36,19 @@ public class Mouse_Ctrl : MonoBehaviour
                 }
                 else if (hit.collider.gameObject.layer.Equals(GameValue.choice_layer))
                 {
-                    ChoiceButton[0].SetActive(true);
-                    ChoiceButton[0].transform.position = Input.mousePosition;
-                    ChoiceButton[0].GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
-
-                    ChoiceButton[1].SetActive(true);
-                    ChoiceButton[1].transform.position = Input.mousePosition;
-                    ChoiceButton[1].GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
-
+                    ChoiceButton.gameObject.SetActive(true);
+                    ChoiceButton.transform.position = Input.mousePosition;
+                    //ChoiceButton.GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
+                    Debug.Log(hit.collider.gameObject.name + "  dkdkdkkdkdk   ");// + hit.collider.transform.root.gameObject.name);
+                    photonView.RPC("getHitObjectRPC", RpcTarget.AllBuffered ,hit.collider.gameObject.GetPhotonView().ViewID);
                 }
             }
         }
+    }
+
+    [PunRPC]
+    public void getHitObjectRPC(int hit_object_viewID)
+    {
+        ChoiceButton.GetHitObject(PhotonView.Find(hit_object_viewID).gameObject);
     }
 }

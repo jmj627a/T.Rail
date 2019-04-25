@@ -31,19 +31,60 @@ public class Train_Object : MonoBehaviourPunCallbacks
     public GameObject Ladder;
     public GameObject Ceiling; // 천장
 
+    public GameObject[] choiceInTrainObject;
+
+    public Train_Ctrl ctrl;
+
    // public GameObject Ladder_collider;
 
     private void Awake()
     {
+        ctrl = GameObject.Find("Train_Ctrl").GetComponent<Train_Ctrl>();
         photonView = GetComponent<PhotonView>();
         DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
+        Debug.Log("생성됨 ");
         tr = gameObject.transform;
         Coroutine_calltime = 0.5f;
         StartCoroutine(Train_Position_Setting_Change());
+
+        //
+        ctrl.train.Add(this.gameObject);
+        TrainGameManager.instance.trainindex = ctrl.train.Count;
+        ctrl.train[TrainGameManager.instance.trainindex - 1].GetComponent<Train_Object>().ChangeTrainSetting(ctrl.train.Count);
+
+        if (TrainGameManager.instance.trainindex != 1)
+        {
+            ctrl.train[TrainGameManager.instance.trainindex - 1].transform.position =
+                new Vector3(GameValue.Train_distance * (ctrl.train.Count), GameValue.Train_y, GameValue.Train_z);
+        }
+        else if (TrainGameManager.instance.trainindex == 1)
+        {
+            ctrl.train[TrainGameManager.instance.trainindex - 1].transform.position =
+                new Vector3(GameValue.Train_distance * (ctrl.train.Count - 1), GameValue.Train_y, GameValue.Train_z);
+        }
+
+        this.gameObject.SetActive(true);
+
+        // 제일마지막 칸 ㅔ외하고 나머지는 기관총끄기
+        //rpc호출
+        //photonView.RPC("Machine_Gun_OnOff_RPC", RpcTarget.All);
+        Debug.Log("train index 개수 : " + TrainGameManager.instance.trainindex);
+        for (int i = 0; i < TrainGameManager.instance.trainindex; i++)
+        {
+            Debug.Log("train index 개수 : " + TrainGameManager.instance.trainindex + "현재 개수 : " + i);
+            if (i < TrainGameManager.instance.trainindex - 1)
+            {
+                ctrl.train[i].GetComponent<Train_Object>().Machine_Gun_OnOff(false);
+            }
+            else
+            {
+                ctrl.train[i].GetComponent<Train_Object>().Machine_Gun_OnOff(true);
+            }
+        }
     }
 
     public Train_Object()
