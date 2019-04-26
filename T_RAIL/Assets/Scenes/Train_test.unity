@@ -4342,6 +4342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Inventory: {fileID: 537197169}
+  ChoiceButton: {fileID: 0}
 --- !u!114 &534669907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4983,6 +4984,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd62775a145f7794786576bf508f3a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoverColor: {r: 1, g: 1, b: 1, a: 1}
+  highlighter: {fileID: 0}
+  floor1: {fileID: 0}
+  floor2: {fileID: 0}
+  Push_Space_UI_pref: {fileID: 0}
 --- !u!1 &611816542
 GameObject:
   m_ObjectHideFlags: 0
@@ -5883,10 +5889,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e8fa04cab0f654e87dbad9aa3d00a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mountain1: {fileID: 0}
-  Mountain2: {fileID: 0}
-  Cloud: {fileID: 0}
-  plane: {fileID: 0}
+  Mountain1:
+  - {fileID: 0}
+  Cloud:
+  - {fileID: 0}
+  Mountain2:
+  - {fileID: 0}
+  plane:
+  - {fileID: 0}
+  RailRoad: []
+  TrainCtrl: {fileID: 0}
+  RunMeterText: {fileID: 0}
 --- !u!1 &762054084
 GameObject:
   m_ObjectHideFlags: 0
@@ -8665,6 +8678,48 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1215595400}
   m_CullTransparentMesh: 0
+--- !u!1001 &1232877234
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4439045333028086, guid: 66df08d7c8d70a44d9d722aa67820eef, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439045333028086, guid: 66df08d7c8d70a44d9d722aa67820eef, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439045333028086, guid: 66df08d7c8d70a44d9d722aa67820eef, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439045333028086, guid: 66df08d7c8d70a44d9d722aa67820eef, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439045333028086, guid: 66df08d7c8d70a44d9d722aa67820eef, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439045333028086, guid: 66df08d7c8d70a44d9d722aa67820eef, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439045333028086, guid: 66df08d7c8d70a44d9d722aa67820eef, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4439045333028086, guid: 66df08d7c8d70a44d9d722aa67820eef, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 66df08d7c8d70a44d9d722aa67820eef, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1238242204
 GameObject:
   m_ObjectHideFlags: 0
@@ -9711,6 +9766,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4cee2ca8f8d24458fd84481e93fd33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InTrain_Passenger: 0
+  Train_Prefab: {fileID: 0}
+  train: []
+  trainscript: []
+  Wheel_Anim: []
 --- !u!1 &1413140797
 GameObject:
   m_ObjectHideFlags: 0
