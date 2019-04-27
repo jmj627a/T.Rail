@@ -7,12 +7,23 @@ using Photon.Pun;
 public class Mouse_Ctrl : MonoBehaviourPunCallbacks
 {
     public GameObject Inventory;
-    public UI_ChoiceButton ChoiceButton;
+    public GameObject ChoiceButton;
+    //PhotonView photonView;
 
+    private void Awake()
+    {
+        //photonView = GetComponent<PhotonView>();
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            if (!photonView.IsMine)
+            {
+                //return;
+                //Debug.Log("mine이 아니다");
+                //photonView.ViewID = GetComponent<PhotonView>().ownerId;
+            }
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -49,6 +60,6 @@ public class Mouse_Ctrl : MonoBehaviourPunCallbacks
     [PunRPC]
     public void getHitObjectRPC(int hit_object_viewID)
     {
-        ChoiceButton.GetHitObject(PhotonView.Find(hit_object_viewID).gameObject);
+        ChoiceButton.transform.parent.GetComponent<UI_ChoiceButton>().GetHitObject(PhotonView.Find(hit_object_viewID).gameObject);
     }
 }

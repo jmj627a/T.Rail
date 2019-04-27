@@ -3434,7 +3434,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 0
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 0}
   viewIdField: 0
@@ -3488,8 +3488,9 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 0
-  OwnershipTransfer: 0
-  ObservedComponents: []
+  OwnershipTransfer: 1
+  ObservedComponents:
+  - {fileID: 0}
   viewIdField: 0
   InstantiationId: 12
   isRuntimeInstantiated: 0
@@ -3540,7 +3541,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 0
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 0}
   viewIdField: 0
@@ -3561,7 +3562,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 114350257503191124}
   viewIdField: 0
@@ -3643,7 +3644,7 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 0
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: 0}
   viewIdField: 0

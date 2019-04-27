@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4792310511338930}
   - component: {fileID: 114894942313408042}
+  - component: {fileID: 114798647480385718}
   m_Layer: 12
   m_Name: Box
   m_TagString: Untagged
@@ -212,6 +213,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02588226, y: 0.02400408, z: 0.023605512}
   m_Center: {x: -0.00019630331, y: 0.0002973159, z: 0.00008236383}
+--- !u!114 &114798647480385718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1694444239006638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 3
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 0
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
 --- !u!114 &114894942313408042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -226,10 +259,10 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 0
+  Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 114798647480385718}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
