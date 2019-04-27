@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using HighlightingSystem;
+using Photon.Pun;
 
 
 
 
 
-
-public class Player_Ctrl : MonoBehaviour
+public class Player_Ctrl : MonoBehaviourPunCallbacks
 {
     enum player_space_state
     {
@@ -86,6 +86,7 @@ public class Player_Ctrl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!photonView.IsMine) return;
 
         if (!stair_up && !stair_down)
         {
@@ -127,6 +128,8 @@ public class Player_Ctrl : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        if (!photonView.IsMine) return;
+
         // 사다리! 올라가는 중이 아니며 
         if (!stair_up && other.gameObject.layer.Equals(GameValue.ladder_layer))
         {
@@ -151,10 +154,13 @@ public class Player_Ctrl : MonoBehaviour
     }
 
 
+    private Vector3 CurPos = new Vector3(-1, 3.3f, -2.5f);
+    private Quaternion CurRot = Quaternion.identity;//네트워크에서는 선언과 동시에 초기화해야한다 
 
     // Update is called once per frame
     void Update()
     {
+        if (!photonView.IsMine) return;
 
         // 이 highlight는 나중에 따로 함수로 뺄고야 일단 정리ㅣ되면 빼겟음
         if (near_stair)
@@ -456,5 +462,20 @@ public class Player_Ctrl : MonoBehaviour
         Push_Space_UI = Instantiate(Push_Space_UI_pref);
         // Push_Space_UI.name = "player1_PushSpace_UI";
         Push_Space_UI.transform.parent = TrainGameManager.instance.Info_Canvas.transform;
+    }
+
+    void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {//원격 네트워크 플레이어가 만든 탱크의 위치와 회전 정보를 실시간으로 동기화하도록 하는 콜백 함수
+     //(쉽게 말해서 다른 유저의 실시간 위치와 회전 값이 보이게 하는것)
+        if (stream.IsWriting)
+        {//신호를 보낸다. 송신 로컬플레이의 위치 정보 송신(패킷을 날린다고 표현)
+            stream.SendNext(tr.position);
+            stream.SendNext(tr.rotation);
+        }
+        else // 원격 플레이어의 위치 정보 수신
+        {
+            CurPos = (Vector3)stream.ReceiveNext();
+            CurRot = (Quaternion)stream.ReceiveNext();
+        }
     }
 }

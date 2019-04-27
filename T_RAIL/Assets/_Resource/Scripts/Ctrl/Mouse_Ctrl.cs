@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class Mouse_Ctrl : MonoBehaviour
+public class Mouse_Ctrl : MonoBehaviourPunCallbacks
 {
 
     // 마우스 컨트롤.
@@ -69,7 +70,9 @@ public class Mouse_Ctrl : MonoBehaviour
                     Debug.Log("엥");
                     ChoiceButton.SetActive(true);
                     ChoiceButton.transform.position = Input.mousePosition;
-                    ChoiceButton.GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
+                    //ChoiceButton.GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
+                    Debug.Log(hit.collider.gameObject.name + "  dkdkdkkdkdk   ");// + hit.collider.transform.root.gameObject.name);
+                    photonView.RPC("getHitObjectRPC", RpcTarget.AllBuffered, hit.collider.gameObject.GetPhotonView().ViewID);
 
                 }
 
@@ -84,4 +87,11 @@ public class Mouse_Ctrl : MonoBehaviour
             }
         }
     }
+
+    [PunRPC]
+    public void getHitObjectRPC(int hit_object_viewID)
+    {
+        ChoiceButton.transform.parent.GetComponent<UI_ChoiceButton>().GetHitObject(PhotonView.Find(hit_object_viewID).gameObject);
+    }
+
 }

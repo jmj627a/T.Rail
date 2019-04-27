@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
-public class Train_Object : MonoBehaviour
+public class Train_Object : MonoBehaviourPunCallbacks
 {
 
 
@@ -31,10 +32,16 @@ public class Train_Object : MonoBehaviour
     public GameObject Ladder;
     public GameObject Ceiling; // 천장
 
-   // public GameObject Ladder_collider;
+    public GameObject[] choiceInTrainObject;
+    public Train_Ctrl ctrl;
+    PhotonView photonView;
+
+    // public GameObject Ladder_collider;
 
     private void Awake()
     {
+        ctrl = GameObject.Find("Train_Ctrl").GetComponent<Train_Ctrl>();
+        photonView = GetComponent<PhotonView>();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -43,6 +50,37 @@ public class Train_Object : MonoBehaviour
         tr = gameObject.transform;
         Coroutine_calltime = 0.5f;
         StartCoroutine(Train_Position_Setting_Change());
+
+
+        //train Add부분 한번 호출했으니 여기로 옮김
+        ctrl.train.Add(this.gameObject);
+        TrainGameManager.instance.trainindex = ctrl.train.Count;
+        ctrl.train[TrainGameManager.instance.trainindex - 1].GetComponent<Train_Object>().ChangeTrainSetting(ctrl.train.Count);
+
+        if (TrainGameManager.instance.trainindex != 1)
+        {
+            ctrl.train[TrainGameManager.instance.trainindex - 1].transform.position =
+                new Vector3(GameValue.Train_distance * (ctrl.train.Count), GameValue.Train_y, GameValue.Train_z);
+        }
+        else if (TrainGameManager.instance.trainindex == 1)
+        {
+            ctrl.train[TrainGameManager.instance.trainindex - 1].transform.position =
+                new Vector3(GameValue.Train_distance * (ctrl.train.Count - 1), GameValue.Train_y, GameValue.Train_z);
+        }
+
+        this.gameObject.SetActive(true);
+
+        for (int i = 0; i < TrainGameManager.instance.trainindex; i++)
+        {
+            if (i < TrainGameManager.instance.trainindex - 1)
+            {
+                ctrl.train[i].GetComponent<Train_Object>().Machine_Gun_OnOff(false);
+            }
+            else
+            {
+                ctrl.train[i].GetComponent<Train_Object>().Machine_Gun_OnOff(true);
+            }
+        }
     }
 
     public Train_Object()

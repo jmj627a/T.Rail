@@ -1,0 +1,38 @@
+4/28 (토)
+1. Resource 폴더로 프리팹 옮김 
+	-Box
+	-sofa
+	-Player
+	-Train
+
+2. ScneneManager 삭제 + 포톤 에셋 임포트
+	-포톤에셋이랑 충돌나고 아직 아무 내용도 없어서 지움
+	-필요할때 이름 안겹치게 다시 만들면 될 듯!
+
+3. LobbyScene 추가 
+	기존에 혼자 test로 쓰던걸 갖다 붙임 
+
+4. Player_Actor.cs에 position 초기화 설정하는 부분 포톤형식으로 수정
+
+5. GameManger에 photonGameManager 추가, countdownTimer 추가
+
+6. Mouse_Ctrl.cs -> choice_layer부분에 GetHitObject함수 호출 부분 수정
+
+7. UI_ChoiceButton.cs -> onChoiceButton 함수를 누르면 sofa_add, box_add 함수를 호출하는걸로 수정
+			그리고  instanceiate를 포톤 방식으로 수정
+			그리고 sofa.transform.parent = Train_Object;, box.transform.parent = Train_Object; 주석으로 지움,, 바로 위에서 gameobject로 box랑 sofa를 당장 받아올 수 없어서
+
+8. Train_ctrl.cs에 -> Train_add()함수의 내용을 포톤방식으로 수정
+	-start부분에 맨 처음음 방을 만든 master client만 기차를 add하도록 rpc로 add_train함수 호출
+	-근데 trainscript 변수 부분을 어케해야할지 모르겠어서 일단 지워놈 ;; 그래서 머신건 onoff함수부분도 그냥 GetComponent<Train_Object>해서 호출함..
+
+<포톤으로 붙인 부분>
+1. 박스랑 소파 add하는거 동기화
+2. 플레이어 위치 동기화
+3. 기차 add버튼 + 머신건 뒤로 옮기는거 동기화
+
+★그리고 기차 delete가 원래 됐으면 지금 그건 안될거야 
+★내가 이것저것 붙이다가 지워진부분 있을수도있는데 컴플릭트 나거나 그럼 알려줘!!!
+★이 직전 커밋까지 (포톤 붙이기 직전) 복원해놧으니까 잘 안되면 그걸로 살리자
+
+---------------------------------------------------------------------------------

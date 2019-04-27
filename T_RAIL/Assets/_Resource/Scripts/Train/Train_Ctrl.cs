@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
-public class Train_Ctrl : MonoBehaviour
+public class Train_Ctrl : MonoBehaviourPunCallbacks
 {
 
 
@@ -43,55 +44,100 @@ public class Train_Ctrl : MonoBehaviour
 
     void Start()
     {
-        Train_Add();
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("Train_Add", RpcTarget.All);
+        }
     }
 
     private void Update()
     {
-        Run_Meter += (TrainGameManager.instance.speed * 0.2f) * Time.deltaTime;
+        if (photonView.IsMine)
+            Run_Meter += (TrainGameManager.instance.speed * 0.2f) * Time.deltaTime;
 
     }
 
     // 기차 추가하기
+    public void onTrainAddButtonClick()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("Train_Add", RpcTarget.All);
+            Debug.Log("마스터 클라가 눌럿음 ");
+        }
+        else
+        {
+            photonView.RPC("Train_Add", RpcTarget.All);
+            Debug.Log("다른 클라가 눌렀음 ");
+        }
+    }
+
+    [PunRPC]
     public void Train_Add()
     {
+        if (!PhotonNetwork.IsMasterClient) return;
+
         if (TrainGameManager.instance.trainindex < GameValue.MaxTrainNumber)
         {
-            // 나중에 과부하 너무크면 
-            GameObject newTrain = Instantiate(Train_Prefab);
-            train.Add(newTrain);
-            TrainGameManager.instance.trainindex = train.Count;
-            trainscript.Add(train[TrainGameManager.instance.trainindex - 1].GetComponent<Train_Object>());
-            trainscript[TrainGameManager.instance.trainindex - 1].ChangeTrainSetting(train.Count);
-            // -14만큼 더 멀리 생성됨
+            GameObject newTrain = PhotonNetwork.InstantiateSceneObject(Train_Prefab.name, new Vector3(0, 2.5f, -2), Quaternion.Euler(0, -90, 0), 0, null) as GameObject;
 
-            if (TrainGameManager.instance.trainindex != 1)
+        }
+
+        {
+            //if (TrainGameManager.instance.trainindex < GameValue.MaxTrainNumber)
+            //{
+            //    // 나중에 과부하 너무크면 
+            //    GameObject newTrain = Instantiate(Train_Prefab);
+            //    train.Add(newTrain);
+            //    TrainGameManager.instance.trainindex = train.Count;
+            //    trainscript.Add(train[TrainGameManager.instance.trainindex - 1].GetComponent<Train_Object>());
+            //    trainscript[TrainGameManager.instance.trainindex - 1].ChangeTrainSetting(train.Count);
+            //    // -14만큼 더 멀리 생성됨
+            //
+            //    if (TrainGameManager.instance.trainindex != 1)
+            //    {
+            //        train[TrainGameManager.instance.trainindex - 1].transform.position = new Vector3(GameValue.Train_distance * (train.Count), GameValue.Train_y, GameValue.Train_z);
+            //    }
+            //    else if (TrainGameManager.instance.trainindex == 1)
+            //    {
+            //        train[TrainGameManager.instance.trainindex - 1].transform.position = new Vector3(GameValue.Train_distance * (train.Count - 1), GameValue.Train_y, GameValue.Train_z);
+            //    }
+            //
+            //    // 그리고 여기서 add 되는 조건 설정
+            //    // -> 몬스터가 나와있는 상태에서는 add되면 안됨.
+            //    // -> 기차 추가 조건은 따로 함수 만들기
+            //    // -> 기관총에 붙어있는데 add 되면 바꿔야되니까 add되면 기관총설정ㅇ  reset
+            //
+            //    // 제일마지막 칸 ㅔ외하고 나머지는 기관총끄기
+            //    for (int i = 0; i < TrainGameManager.instance.trainindex; i++)
+            //    {
+            //        if (i < TrainGameManager.instance.trainindex-1)
+            //        {
+            //            trainscript[i].Machine_Gun_OnOff(false);
+            //        }
+            //        else
+            //        {
+            //            trainscript[i].Machine_Gun_OnOff(true);
+            //        }
+            //    }
+            //
+            //}
+        }
+    }
+
+    [PunRPC]
+    public void Machine_Gun_OnOff_RPC()
+    {
+        for (int i = 0; i < TrainGameManager.instance.trainindex; i++)
+        {
+            if (i < TrainGameManager.instance.trainindex - 1)
             {
-                train[TrainGameManager.instance.trainindex - 1].transform.position = new Vector3(GameValue.Train_distance * (train.Count), GameValue.Train_y, GameValue.Train_z);
+                train[i].GetComponent<Train_Object>().Machine_Gun_OnOff(false);
             }
-            else if (TrainGameManager.instance.trainindex == 1)
+            else
             {
-                train[TrainGameManager.instance.trainindex - 1].transform.position = new Vector3(GameValue.Train_distance * (train.Count - 1), GameValue.Train_y, GameValue.Train_z);
+                train[i].GetComponent<Train_Object>().Machine_Gun_OnOff(true);
             }
-
-            // 그리고 여기서 add 되는 조건 설정
-            // -> 몬스터가 나와있는 상태에서는 add되면 안됨.
-            // -> 기차 추가 조건은 따로 함수 만들기
-            // -> 기관총에 붙어있는데 add 되면 바꿔야되니까 add되면 기관총설정ㅇ  reset
-
-            // 제일마지막 칸 ㅔ외하고 나머지는 기관총끄기
-            for (int i = 0; i < TrainGameManager.instance.trainindex; i++)
-            {
-                if (i < TrainGameManager.instance.trainindex-1)
-                {
-                    trainscript[i].Machine_Gun_OnOff(false);
-                }
-                else
-                {
-                    trainscript[i].Machine_Gun_OnOff(true);
-                }
-            }
-
         }
     }
 
@@ -108,6 +154,8 @@ public class Train_Ctrl : MonoBehaviour
                 // 추가적으로 실행할 파티클같은거
                 // 얘가 일단 펑 터지고 그 다음에 기차에 불 한다음에 끝에서부터 떨어ㅣ는걸로
             }
+
+            //이부분을 rpc로 바꿔서 삭제하면 그 함수를 부르기로. trainscript는 머신건 호출처럼 수정
             trainscript[i].Machine_Gun_OnOff(false);
             Destroy(train[i]);
             train.RemoveAt(i);

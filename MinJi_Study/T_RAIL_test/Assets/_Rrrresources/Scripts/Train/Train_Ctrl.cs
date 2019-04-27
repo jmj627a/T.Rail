@@ -88,26 +88,6 @@ public class Train_Ctrl : MonoBehaviourPunCallbacks
         {
             GameObject newTrain = PhotonNetwork.InstantiateSceneObject(Train_Prefab.name, new Vector3(0, 2.5f, -2), Quaternion.Euler(0, -90, 0),0,null) as GameObject;
 
-            //train.Add(newTrain);
-            //TrainGameManager.instance.trainindex = train.Count;
-            //train[TrainGameManager.instance.trainindex-1].GetComponent<Train_Object>().ChangeTrainSetting(train.Count);
-
-            //if (TrainGameManager.instance.trainindex != 1)
-            //{
-            //    train[TrainGameManager.instance.trainindex - 1].transform.position = 
-            //        new Vector3(GameValue.Train_distance * (train.Count), GameValue.Train_y, GameValue.Train_z);
-            //}
-            //else if (TrainGameManager.instance.trainindex == 1)
-            //{
-            //    train[TrainGameManager.instance.trainindex - 1].transform.position = 
-            //        new Vector3(GameValue.Train_distance * (train.Count - 1), GameValue.Train_y, GameValue.Train_z);
-            //}
-
-            //newTrain.SetActive(true);
-
-            //// 제일마지막 칸 ㅔ외하고 나머지는 기관총끄기
-            ////rpc호출
-            //photonView.RPC("Machine_Gun_OnOff_RPC", RpcTarget.All);
         }
     }
 
