@@ -51,6 +51,12 @@ public class Player_Ctrl : MonoBehaviour
     public GameObject Push_Space_UI_pref; // space 누르라고 뜨는 ui. 얘는 프리팹 연결
     GameObject Push_Space_UI; // space 누르라고 뜨는 ui
 
+
+    // particle
+
+    public GameObject parti_player_move;
+
+
     /// ////////////////////////////////////////////////////////////////////////
     private void Awake()
     {
@@ -59,12 +65,23 @@ public class Player_Ctrl : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        MCam = Camera.main; // 메인카메라 찾기
+
         player = new Player_Actor();
-        // player.initposition(_num);
+
+        Make_PushSpaceUI();
+        Init_Set_Value();
+
+    }
+
+    void Init_Set_Value()
+    {
+        // 파티클찾기
+        //  parti_player_move = this.transform.GetChild(0).gameObject;
+        MCam = Camera.main; // 메인카메라 찾기
         anim = GetComponent<Animator>();
         tr = GetComponent<Transform>();
-        Make_PushSpaceUI();
+        
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -102,7 +119,7 @@ public class Player_Ctrl : MonoBehaviour
                 highlighter = Near_Object.GetComponent<Highlighter>();
                 near_gun = true;
                 Push_Space_UI.SetActive(true);
-                Push_Space_UI.transform.position = MCam.WorldToScreenPoint(Near_Object.position) + new Vector3(10, 100, 0);
+                Push_Space_UI.transform.position = MCam.WorldToScreenPoint(Near_Object.position) + new Vector3(-20, 130, 0);
             }
         }
         // 자꾸 사다리가 더 먼저 걸린다 
@@ -113,7 +130,6 @@ public class Player_Ctrl : MonoBehaviour
         // 사다리! 올라가는 중이 아니며 
         if (!stair_up && other.gameObject.layer.Equals(GameValue.ladder_layer))
         {
-
             if (near_stair)
             {
                 space_state = 0;
@@ -144,10 +160,6 @@ public class Player_Ctrl : MonoBehaviour
         if (near_stair)
         {
             // 근데 이것도 사다리 올라가는 중에는 X 
-            highlighter.Hover(hoverColor);
-        }
-        if (near_gun)
-        {
             highlighter.Hover(hoverColor);
         }
 
@@ -217,6 +229,17 @@ public class Player_Ctrl : MonoBehaviour
             }
         }
 
+    }
+
+    private void LateUpdate()
+    {
+        // 마우스 이동에 따른 카메라 변환 -> lateupdate
+
+        if(player.Where_Floor >= 2 && player.Where_Floor <= 3)
+        {
+            // 2층 이상
+
+        }
     }
 
     /// ////////////////////////////////////////////////////////////////////////
@@ -298,7 +321,8 @@ public class Player_Ctrl : MonoBehaviour
                     floor1 = Near_Object.transform.GetChild(0);
                     floor2 = Near_Object.transform.GetChild(1);
 
-
+                    //parti_player_move.SetActive(true);
+                   // Instantiate(parti_player_move, tr.position+ Vector3.up*2.0f, Quaternion.identity);
                     // 그러고 나서사다리 끝나면
                     // 올라가고 stair_up = false; 하고
                     // 천장에 올라가면 뚜껑도 setactive.true해줘야되네
