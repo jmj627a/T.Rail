@@ -24,6 +24,7 @@ public class Train_Ctrl : MonoBehaviourPunCallbacks
     public GameObject Train_Prefab;
     public List<GameObject> train = new List<GameObject>();
     // 얘를 이렇게 하나 더 한 이유 -> 쓸 때 마다 호출하면 낭비
+    [SerializeField]
     public List<Train_Object> trainscript = new List<Train_Object>();
     public Animator[] Wheel_Anim;
 
@@ -125,6 +126,12 @@ public class Train_Ctrl : MonoBehaviourPunCallbacks
         }
     }
 
+    // 임시용
+    public void AddTrainscript(int index)
+    {
+        trainscript.Add(train[index].GetComponent<Train_Object>());
+    }
+
     [PunRPC]
     public void Machine_Gun_OnOff_RPC()
     {
@@ -132,11 +139,11 @@ public class Train_Ctrl : MonoBehaviourPunCallbacks
         {
             if (i < TrainGameManager.instance.trainindex - 1)
             {
-                train[i].GetComponent<Train_Object>().Machine_Gun_OnOff(false);
+                trainscript[i].Machine_Gun_OnOff(false);
             }
             else
             {
-                train[i].GetComponent<Train_Object>().Machine_Gun_OnOff(true);
+                trainscript[i].Machine_Gun_OnOff(true);
             }
         }
     }
