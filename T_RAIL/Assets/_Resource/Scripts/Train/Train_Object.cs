@@ -174,6 +174,7 @@ public class Train_Object : MonoBehaviourPunCallbacks
         ctrl.train.Add(this.gameObject);
         ctrl.trainscript.Add(this);
         TrainGameManager.instance.trainindex = ctrl.train.Count;
+        Debug.Log(TrainGameManager.instance.trainindex);
         ChangeTrainSetting(ctrl.train.Count);
 
         if (TrainGameManager.instance.trainindex != 1)
@@ -194,11 +195,11 @@ public class Train_Object : MonoBehaviourPunCallbacks
         {
             if (i < TrainGameManager.instance.trainindex - 1)
             {
-                Machine_Gun_OnOff(false);
+                ctrl.trainscript[i].Machine_Gun_OnOff(false);
             }
             else
             {
-                Machine_Gun_OnOff(true);
+                ctrl.trainscript[i].Machine_Gun_OnOff(true);
             }
         }
     }
