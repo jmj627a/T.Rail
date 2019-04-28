@@ -50,6 +50,10 @@ public class TrainGameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
+    public void Error_print()
+    {
+        Debug.Log("Error Somewhere");
+    }
 
 
 }

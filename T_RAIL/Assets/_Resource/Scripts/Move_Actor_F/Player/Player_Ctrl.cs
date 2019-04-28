@@ -29,6 +29,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
     Highlighter highlighter;
     Transform Near_Object; // 사다리, 머신건 등 space_state로 할 모든 object담기
     Transform gun_child; // 머신건.... 각도 회전하려면 밑에 자식 오브젝트 담아와야 돼서 총전용
+    MachineGun_Ctrl gun_ctrl; // 그 머신건에 달린 ctrl 스크립트. 머신건을 받아올 떄 마다 얘도 같이
     bool stair_up; // 사다리 올라가고 있는 중
     bool stair_down; // 사다리 내려가고 있는 중
 
@@ -46,6 +47,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
 
     // render 
     Camera MCam; // maincamera
+    CamCtrl MCam_Ctrl; // 카메라에 달린 camctrl
 
     // ui
     public GameObject Push_Space_UI_pref; // space 누르라고 뜨는 ui. 얘는 프리팹 연결
@@ -78,9 +80,10 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
         // 파티클찾기
         //  parti_player_move = this.transform.GetChild(0).gameObject;
         MCam = Camera.main; // 메인카메라 찾기
+        MCam_Ctrl = MCam.GetComponent<CamCtrl>();
         anim = GetComponent<Animator>();
         tr = GetComponent<Transform>();
-        
+
 
     }
 
@@ -117,6 +120,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
                 space_state = (int)player_space_state.Machine_gun;
                 Near_Object = other.transform;
                 gun_child = other.transform.GetChild(0);
+                gun_ctrl = gun_child.GetComponent<MachineGun_Ctrl>();
                 highlighter = Near_Object.GetComponent<Highlighter>();
                 near_gun = true;
                 Push_Space_UI.SetActive(true);
@@ -125,6 +129,26 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
         }
         // 자꾸 사다리가 더 먼저 걸린다 
 
+
+        // 다음칸 trigger
+        if (other.gameObject.layer.Equals(GameValue.NextTrain_layer)) {
+
+            if(player.Where_Train < GameValue.machinegun_layer)
+            {
+                Debug.Log("n");
+            }
+
+        }
+
+        // 이전칸 trigger
+        if (other.gameObject.layer.Equals(GameValue.PrevTrain_layer)) {
+            
+            if(player.Where_Train != 0)
+            {
+                Debug.Log("p");
+            }
+
+        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -200,7 +224,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
                 anim.SetBool("UpToLadder", false);
 
                 player.On_Floor2_yPosition();
-                Ceiling_CamSetting();
+                MCam_Ctrl.uptoCeiling();
 
                 // trainmanager의 trainctrl에 연결해서 그 컨트롤의 list 중 trainscript에서 천장 onoff 변경
                 TrainGameManager.instance.TrainCtrl.trainscript[player.Where_Train - 1].Ceiling_OnOff(true);
@@ -219,7 +243,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
             Quaternion rot = Quaternion.identity;
             rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
             tr.rotation = rot;
-           // anim.speed = -1;
+            // anim.speed = -1;
 
 
             if (tr.position.y <= floor1.position.y)
@@ -231,7 +255,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
                 anim.speed = 1;
                 anim.SetBool("UpToLadder", false);
                 player.On_Floor1_yPosition();
-                InTrain_CamSetting();
+                MCam_Ctrl.inTrain();
             }
         }
 
@@ -239,13 +263,23 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
 
     private void LateUpdate()
     {
-        // 마우스 이동에 따른 카메라 변환 -> lateupdate
 
-        if(player.Where_Floor >= 2 && player.Where_Floor <= 3)
+        switch (player.Where_Floor)
         {
-            // 2층 이상
+
+            case 1:
+                // 1층에서 칸 이동이나 그런거할 떄
+
+                break;
+            case 2:
+            case 3:
+                // 마우스 이동에 따른 카메라 변환
+                // 뚜껑에서
+
+                break;
 
         }
+
     }
 
     /// ////////////////////////////////////////////////////////////////////////
@@ -328,7 +362,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
                     floor2 = Near_Object.transform.GetChild(1);
 
                     //parti_player_move.SetActive(true);
-                   // Instantiate(parti_player_move, tr.position+ Vector3.up*2.0f, Quaternion.identity);
+                    // Instantiate(parti_player_move, tr.position+ Vector3.up*2.0f, Quaternion.identity);
                     // 그러고 나서사다리 끝나면
                     // 올라가고 stair_up = false; 하고
                     // 천장에 올라가면 뚜껑도 setactive.true해줘야되네
@@ -407,17 +441,17 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
         // 머신건의 각도 조절 
         if (Input.GetKey(KeyCode.S))
         {
-            gun_child.transform.Rotate(0, 0, 10.0f * Time.deltaTime);
+            gun_ctrl.gun_down();
         }
         if (Input.GetKey(KeyCode.W))
         {
-            gun_child.transform.Rotate(0, 0, -10.0f * Time.deltaTime);
+            gun_ctrl.gun_up();
         }
 
         // 총알 발사
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
+            gun_ctrl.gun_fire(); // 아직x 
         }
 
         // 카메라 조절은 마우스로
@@ -434,26 +468,6 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
     }
 
 
-    /// ////////////////////////////////////////////////////////////////////////
-
-
-    // 카메라 세팅 변화
-    void Ceiling_CamSetting()
-    {
-        //천장에 올라갔을 때
-        MCam.GetComponent<Camera>().fieldOfView = GameValue.Mcam_changeFOV;
-        Quaternion rot = Quaternion.identity;
-        rot.eulerAngles = new Vector3(GameValue.Mcam_changerot_x, 0, 0);
-        MCam.GetComponent<Transform>().rotation = rot;
-    }
-    void InTrain_CamSetting()
-    {
-        // 기차 안에서 -> 1층
-        MCam.GetComponent<Camera>().fieldOfView = GameValue.Mcam_initFOV;
-        Quaternion rot = Quaternion.identity;
-        rot.eulerAngles = new Vector3(GameValue.Mcam_initrot_x, 0, 0);
-        MCam.GetComponent<Transform>().rotation = rot;
-    }
     /// ////////////////////////////////////////////////////////////////////////
     ///// UI
 
