@@ -42,6 +42,7 @@ namespace Photon.Pun.Demo.Asteroids
         {
             base.OnEnable();
 
+            
             CountdownTimer.OnCountdownTimerHasExpired += OnCountdownTimerIsExpired;
         }
 

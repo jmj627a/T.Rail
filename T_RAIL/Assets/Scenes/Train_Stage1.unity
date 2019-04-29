@@ -45954,7 +45954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Text: {fileID: 915476116}
-  Countdown: 5
+  Countdown: 0
 --- !u!1 &1113703630
 GameObject:
   m_ObjectHideFlags: 0
@@ -79706,7 +79706,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1304048000}
-        m_MethodName: Train_Delete
+        m_MethodName: onTrainDeleteButton
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

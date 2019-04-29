@@ -83,47 +83,7 @@ public class Train_Ctrl : MonoBehaviourPunCallbacks
             GameObject newTrain = PhotonNetwork.InstantiateSceneObject(Train_Prefab.name, new Vector3(0, 2.5f, -2), Quaternion.Euler(0, -90, 0), 0, null) as GameObject;
 
         }
-
-        {
-            //if (TrainGameManager.instance.trainindex < GameValue.MaxTrainNumber)
-            //{
-            //    // 나중에 과부하 너무크면 
-            //    GameObject newTrain = Instantiate(Train_Prefab);
-            //    train.Add(newTrain);
-            //    TrainGameManager.instance.trainindex = train.Count;
-            //    trainscript.Add(train[TrainGameManager.instance.trainindex - 1].GetComponent<Train_Object>());
-            //    trainscript[TrainGameManager.instance.trainindex - 1].ChangeTrainSetting(train.Count);
-            //    // -14만큼 더 멀리 생성됨
-            //
-            //    if (TrainGameManager.instance.trainindex != 1)
-            //    {
-            //        train[TrainGameManager.instance.trainindex - 1].transform.position = new Vector3(GameValue.Train_distance * (train.Count), GameValue.Train_y, GameValue.Train_z);
-            //    }
-            //    else if (TrainGameManager.instance.trainindex == 1)
-            //    {
-            //        train[TrainGameManager.instance.trainindex - 1].transform.position = new Vector3(GameValue.Train_distance * (train.Count - 1), GameValue.Train_y, GameValue.Train_z);
-            //    }
-            //
-            //    // 그리고 여기서 add 되는 조건 설정
-            //    // -> 몬스터가 나와있는 상태에서는 add되면 안됨.
-            //    // -> 기차 추가 조건은 따로 함수 만들기
-            //    // -> 기관총에 붙어있는데 add 되면 바꿔야되니까 add되면 기관총설정ㅇ  reset
-            //
-            //    // 제일마지막 칸 ㅔ외하고 나머지는 기관총끄기
-            //    for (int i = 0; i < TrainGameManager.instance.trainindex; i++)
-            //    {
-            //        if (i < TrainGameManager.instance.trainindex-1)
-            //        {
-            //            trainscript[i].Machine_Gun_OnOff(false);
-            //        }
-            //        else
-            //        {
-            //            trainscript[i].Machine_Gun_OnOff(true);
-            //        }
-            //    }
-            //
-            //}
-        }
+        
     }
 
     // 임시용
@@ -148,10 +108,23 @@ public class Train_Ctrl : MonoBehaviourPunCallbacks
         }
     }
 
+
+    public void onTrainDeleteButton(int _removeindex)
+    {
+        //instance.trainindex-1 자리에 _removeindex를 그 인덱스가 Train_Delete로 전달됨
+        photonView.RPC("Train_Delete", RpcTarget.All, TrainGameManager.instance.trainindex-1);
+    }
+
+    [PunRPC]
     public void Train_Delete(int _removeindex)
     {
-        // 세상에나..! 기차의 hp가 다 떨어져서 끝났어
+        //일단 제일 마지막 칸이면 지워지지 않게
+        if(TrainGameManager.instance.trainindex == 1)
+        {
+            return;
+        }
 
+        // 세상에나..! 기차의 hp가 다 떨어져서 끝났어
         for (int i = TrainGameManager.instance.trainindex - 1; i >= _removeindex; i--)
         {
 
@@ -166,6 +139,7 @@ public class Train_Ctrl : MonoBehaviourPunCallbacks
             trainscript[i].Machine_Gun_OnOff(false);
             Destroy(train[i]);
             train.RemoveAt(i);
+            TrainGameManager.instance.trainindex = train.Count;
             trainscript.RemoveAt(i);
         }
 

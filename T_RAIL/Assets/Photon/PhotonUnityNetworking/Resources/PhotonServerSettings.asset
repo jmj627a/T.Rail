@@ -36,5 +36,6 @@ MonoBehaviour:
   - Sofa_Add
   - Machine_Gun_OnOff_RPC
   - Train_Add
+  - Train_Delete
   DisableAutoOpenWizard: 1
   ShowSettings: 1
