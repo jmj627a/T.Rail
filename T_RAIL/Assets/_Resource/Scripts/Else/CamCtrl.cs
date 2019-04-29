@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CamCtrl : MonoBehaviour {
+public class CamCtrl : MonoBehaviour
+{
 
 
     // 혹시 카메라 전환할때?
@@ -14,46 +15,57 @@ public class CamCtrl : MonoBehaviour {
     int player_floor;
     bool move_nextTrain { get; set; } // 다음칸으로
     bool CamSetMove { get; set; } // 카메라 움직일건지
-	// Use this for initialization
-	void Start () {
+
+    float player_position_x;
+
+
+    // Use this for initialization
+    void Start()
+    {
         tr = GetComponent<Transform>();
-        MouseSpeed = 3.0f;
-	}
+        MouseSpeed = 0.5f;
+    }
 
     private void LateUpdate()
     {
-        if (CamSetMove)
+
+        float positionX = tr.position.x;
+
+        switch (player_floor)
         {
-            float positionX = tr.position.x;
 
-            switch (player_floor)
-            {
 
-                case 1:
-                    if (move_nextTrain)
-                    {
 
-                    }
-                    else
-                    {
-                        // ㅎ므
-                    }
-                    break;
-                case 2:
-                case 3:
-                    positionX -= Input.GetAxis("Mouse X") * MouseSpeed;
-                    break;
-                default:
-                    TrainGameManager.instance.Error_print();
-                    break;
+            case 1:
+                if (move_nextTrain)
+                {
 
-            }
+                }
+                else
+                {
+                    // ㅎ므
+                }
+                break;
+            case 2:
+            case 3:
+                // 얘는 마우스임 
+                // 혹시몰라서 일단 남겨놓기는 함
+                positionX += Input.GetAxis("Mouse X") * MouseSpeed;
+                positionX = Mathf.Clamp(positionX, player_position_x - 5.0f, player_position_x + 5.0f);
+                float temp_x;
+                temp_x = Mathf.Lerp(positionX, tr.position.x, Time.deltaTime);
+                tr.position = new Vector3(temp_x, tr.position.y, tr.position.z);
+
+
+
+
+
+                break;
+            default:
+                TrainGameManager.instance.Error_print();
+                break;
+
         }
-
-        // 범위제한
-       // positionX = Mathf.Clamp("")
-       // tr.Translate(Input.GetAxis("Mouse X") * 3.0f, 0 , 0);
-       // 카메라 좌우 움직이는거
     }
 
     public void uptoCeiling()
@@ -72,10 +84,26 @@ public class CamCtrl : MonoBehaviour {
         tr.rotation = rot;
     }
 
-    public void GetPlayerX()
+    public void GetPlayerX(float position_x)
     {
-        // 얼마나 더 갈수있는지 제한하려고
-        // 2층에서는 필요없음? 
-        // 아니지
+        player_position_x = position_x;
+    }
+
+    public void Change_floor(int _floor)
+    {
+        player_floor = _floor;
+    }
+
+    public void Camera_LeftSide()
+    {
+        // 왼쪽으로 
+
+        
+    }
+    public void Camera_standSide()
+    {
+        // 기본으로 
+
+
     }
 }

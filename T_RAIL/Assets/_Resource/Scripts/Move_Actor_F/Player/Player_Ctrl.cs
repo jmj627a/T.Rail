@@ -32,7 +32,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
     MachineGun_Ctrl gun_ctrl; // 그 머신건에 달린 ctrl 스크립트. 머신건을 받아올 떄 마다 얘도 같이
     bool stair_up; // 사다리 올라가고 있는 중
     bool stair_down; // 사다리 내려가고 있는 중
-
+    bool jump_nextTrain; // 다른칸으로 점프 중
 
     int space_state = 0; // 기본은 0인데 space가 눌려지는 상황 (highlight되는 모든애들) 에서 state change
     bool near_stair; // 사다리근처
@@ -63,17 +63,13 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-    }
-    // Use this for initialization
-    void Start()
-    {
 
         player = new Player_Actor();
 
         Make_PushSpaceUI();
         Init_Set_Value();
-
     }
+
 
     void Init_Set_Value()
     {
@@ -135,7 +131,9 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
 
             if(player.Where_Train < GameValue.machinegun_layer)
             {
-                Debug.Log("n");
+                Debug.Log("?");
+                anim.SetBool("IsJump", true);
+                jump_nextTrain = true;
             }
 
         }
@@ -145,7 +143,8 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
             
             if(player.Where_Train != 0)
             {
-                Debug.Log("p");
+                anim.SetBool("IsJump", true);
+                jump_nextTrain = true;
             }
 
         }
@@ -193,19 +192,12 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
             highlighter.Hover(hoverColor);
         }
 
-        if (!stair_up)
-        {
-            GetKeyInput();
+         // 키입력
+        GetKeyInput();
 
-            Quaternion rot = Quaternion.identity;
-            rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
-            // tr.position = new Vector3(player.position.x, player.position.y, player.position.z);
-            tr.position = Vector3.Lerp(tr.position, new Vector3(player.position.x, player.position.y, player.position.z), Time.deltaTime * 10.0f);
-            tr.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 5.0f);
-
-        }
-        else if (stair_up)
+        if (stair_up)
         {
+            // 사다리 오르고 있을 때
             player.To_UpStair(floor1.position.x);
 
             tr.position = new Vector3(player.position.x, player.position.y, player.position.z);
@@ -259,28 +251,57 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
             }
         }
 
-    }
+        // 점프하고 있을 떄 
+        if (jump_nextTrain)
+        {
+            // 일단 가는방향 받아와야 하고
 
-    private void LateUpdate()
-    {
+            // 여기서 계속 증가하고 
+
+            if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f)
+            {
+                // 다시 
+                // 여기 들어오면 뭐지? 그 걸어다니던것? 그런것도 다 멈ㅇ춰야되네
+                anim.SetBool("IsJump",false);
+
+                jump_nextTrain = false;
+
+
+                // 여기서 이제 player가 존재하는 기차의 인덱스가 몇번인지도 넘겨주기
+            }
+
+            
+        }
+
+            
+
+        
+        // 카메라에 플레이어가 몇층에 있는지 전달 
+        MCam_Ctrl.Change_floor(player.Where_Floor);
+
 
         switch (player.Where_Floor)
         {
 
             case 1:
                 // 1층에서 칸 이동이나 그런거할 떄
-
+                
+                // 플레이어의 x좌표를 전달해줌(카메라 이동관련)
+                MCam_Ctrl.GetPlayerX(player.position.x);
+                
                 break;
             case 2:
             case 3:
                 // 마우스 이동에 따른 카메라 변환
                 // 뚜껑에서
-
+                MCam_Ctrl.GetPlayerX(player.position.x);
                 break;
 
         }
 
+
     }
+
 
     /// ////////////////////////////////////////////////////////////////////////
     // key 관련
@@ -309,7 +330,11 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
                 break;
         }
 
-
+        Quaternion rot = Quaternion.identity;
+        rot.eulerAngles = new Vector3(player.rotate.x, player.rotate.y, player.rotate.z);
+        // tr.position = new Vector3(player.position.x, player.position.y, player.position.z);
+        tr.position = Vector3.Lerp(tr.position, new Vector3(player.position.x, player.position.y, player.position.z), Time.deltaTime * 10.0f);
+        tr.rotation = Quaternion.Slerp(transform.rotation, rot, Time.deltaTime * 5.0f);
 
     }
 
@@ -317,7 +342,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
     void Player_key_floor1()
     {
         // 사다리 올라가는 중 아닐때만 가능
-        if (!stair_up)
+        if (!stair_up && !jump_nextTrain)
         {
             if (Input.GetKey(KeyCode.A))
             {
@@ -377,49 +402,49 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
     // 2층에 올라갔을 때의 키입력 함수
     void Player_key_floor2()
     {
-        // 이거 space_state로하면 안돼 바꿔
-        // 어차피 이 함수느 ㄴ2층에서만 호출됨
-
-        // 그냥 2층으로 올라온 상태
-        if (Input.GetKey(KeyCode.A))
+        if (!stair_up && !stair_down)
         {
-            // x = -1
-            // 임시 이동
-            Move('a');
-            anim.SetBool("IsWalk", true);
-
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            // x = +1  
-            Move('d');
-            anim.SetBool("IsWalk", true);
-        }
-
-        if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) ||
-            Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.W))
-        {
-            anim.SetBool("IsWalk", false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // 머신건에 앉기
-            if (space_state.Equals((int)player_space_state.Machine_gun))
+            // 그냥 2층으로 올라온 상태
+            if (Input.GetKey(KeyCode.A))
             {
-                // 주변에 머신건이 있으면?
-                player.Where_Floor = 3;
-                space_state = 0;
-                near_gun = false;
-                Push_Space_UI.SetActive(false);
+                // x = -1
+                // 임시 이동
+                Move('a');
+                anim.SetBool("IsWalk", true);
+
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                // x = +1  
+                Move('d');
+                anim.SetBool("IsWalk", true);
             }
 
-            // 밑층으로 내려가기
-            if (space_state.Equals((int)player_space_state.Ladder_Down))
+            if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S) ||
+                Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.W))
             {
-                TrainGameManager.instance.TrainCtrl.trainscript[player.Where_Train - 1].Ceiling_OnOff(false);
-                anim.SetBool("UpToLadder", true);
-                stair_down = true;
+                anim.SetBool("IsWalk", false);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                // 머신건에 앉기
+                if (space_state.Equals((int)player_space_state.Machine_gun))
+                {
+                    // 주변에 머신건이 있으면?
+                    player.Where_Floor = 3;
+                    space_state = 0;
+                    near_gun = false;
+                    Push_Space_UI.SetActive(false);
+                }
+
+                // 밑층으로 내려가기
+                if (space_state.Equals((int)player_space_state.Ladder_Down))
+                {
+                    TrainGameManager.instance.TrainCtrl.trainscript[player.Where_Train - 1].Ceiling_OnOff(false);
+                    anim.SetBool("UpToLadder", true);
+                    stair_down = true;
+                }
             }
         }
     }

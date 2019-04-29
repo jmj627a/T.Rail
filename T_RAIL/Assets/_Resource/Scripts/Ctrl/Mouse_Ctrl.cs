@@ -67,13 +67,11 @@ public class Mouse_Ctrl : MonoBehaviourPunCallbacks
                 }
                 else if (hit.collider.gameObject.layer.Equals(GameValue.choice_layer))
                 {
-                    Debug.Log("엥");
                     ChoiceButton.SetActive(true);
                     ChoiceButton.transform.position = Input.mousePosition;
                     //ChoiceButton.GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
                     Debug.Log(hit.collider.gameObject.name + "  dkdkdkkdkdk   ");// + hit.collider.transform.root.gameObject.name);
                     photonView.RPC("getHitObjectRPC", RpcTarget.AllBuffered, hit.collider.gameObject.GetPhotonView().ViewID);
-
                 }
 
                 else if (hit.collider.gameObject.layer.Equals(GameValue.sofa_layer))

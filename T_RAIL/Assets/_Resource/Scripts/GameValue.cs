@@ -37,7 +37,7 @@ static class GameValue {
 
 
     // 기차 간격
-    public const float Train_distance = -14.0f;
+    public const float Train_distance = -13.0f;
 
     // 기차의 기본 위치
     public const float Train_y = 3.0f;
