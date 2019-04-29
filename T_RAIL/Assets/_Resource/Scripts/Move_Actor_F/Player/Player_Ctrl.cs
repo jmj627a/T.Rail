@@ -16,7 +16,8 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
         Ladder = 1,
         Ladder_Down = 2,
         Machine_gun = 3,
-        bullet = 4
+        bullet = 4,
+
     }
 
     // 기본 플레이어에 달린 컴포넌트들
@@ -32,7 +33,11 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
     MachineGun_Ctrl gun_ctrl; // 그 머신건에 달린 ctrl 스크립트. 머신건을 받아올 떄 마다 얘도 같이
     bool stair_up; // 사다리 올라가고 있는 중
     bool stair_down; // 사다리 내려가고 있는 중
-    bool jump_nextTrain; // 다른칸으로 점프 중
+    bool jump_nextTrain; // 다음칸으로 점프 중
+    bool jump_prevTrain; // 이전칸으로 점프 중
+    bool jump_ok; // 점프 가능한 상태
+    // jump_ok 일때만 triggerenter에서 jump 관련 prev와 next를 인식할 수 있으며 점프 후에는 jump_ok 를 true시키는
+    // 함수가 3초 후에 invoke로 실행되면서 true가 된다.
 
     int space_state = 0; // 기본은 0인데 space가 눌려지는 상황 (highlight되는 모든애들) 에서 state change
     bool near_stair; // 사다리근처
@@ -79,7 +84,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
         MCam_Ctrl = MCam.GetComponent<CamCtrl>();
         anim = GetComponent<Animator>();
         tr = GetComponent<Transform>();
-
+        jump_ok = true;
 
     }
 
@@ -126,27 +131,39 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
         // 자꾸 사다리가 더 먼저 걸린다 
 
 
-        // 다음칸 trigger
-        if (other.gameObject.layer.Equals(GameValue.NextTrain_layer)) {
-
-            if(player.Where_Train < GameValue.machinegun_layer)
+        if (jump_ok)
+        {
+            // 다음칸 trigger
+            if (other.gameObject.layer.Equals(GameValue.NextTrain_layer))
             {
-                Debug.Log("?");
-                anim.SetBool("IsJump", true);
-                jump_nextTrain = true;
+
+                if (player.Where_Train + 1 <= TrainGameManager.instance.trainindex)
+                {
+                    jump_nextTrain = true;
+                    anim.SetBool("IsWalk", false);
+                    anim.SetBool("IsJump", true);
+                    
+                   // 왜 점프가 부드럽게 안되지?
+                    jump_ok = false;
+                }
+
             }
 
-        }
-
-        // 이전칸 trigger
-        if (other.gameObject.layer.Equals(GameValue.PrevTrain_layer)) {
-            
-            if(player.Where_Train != 0)
+            // 이전칸 trigger
+            if (other.gameObject.layer.Equals(GameValue.PrevTrain_layer))
             {
-                anim.SetBool("IsJump", true);
-                jump_nextTrain = true;
-            }
 
+                if (player.Where_Train != 0)
+                {
+                    jump_prevTrain = true;
+                    anim.SetBool("IsWalk", false);
+                    anim.SetBool("IsJump", true);
+                    
+                   
+                    jump_ok = false;
+                }
+
+            }
         }
     }
     private void OnTriggerExit(Collider other)
@@ -192,7 +209,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
             highlighter.Hover(hoverColor);
         }
 
-         // 키입력
+        // 키입력
         GetKeyInput();
 
         if (stair_up)
@@ -252,30 +269,41 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
         }
 
         // 점프하고 있을 떄 
-        if (jump_nextTrain)
+        if (jump_nextTrain || jump_prevTrain)
         {
             // 일단 가는방향 받아와야 하고
 
-            // 여기서 계속 증가하고 
-
-            if(anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f)
-            {
-                // 다시 
-                // 여기 들어오면 뭐지? 그 걸어다니던것? 그런것도 다 멈ㅇ춰야되네
-                anim.SetBool("IsJump",false);
-
-                jump_nextTrain = false;
-
-
-                // 여기서 이제 player가 존재하는 기차의 인덱스가 몇번인지도 넘겨주기
-            }
-
+            player.Jump_NextTrain(jump_prevTrain, jump_nextTrain);
             
+            // 여기서 계속 증가하고 
+            if (anim.GetBool("IsJump"))
+            {
+                if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f)
+                {
+                    if (jump_prevTrain)
+                    {
+                        player.Where_Train -= 1;
+                    }
+                    else if (jump_nextTrain)
+                    {
+                        player.Where_Train += 1;
+                    }
+
+                    jump_nextTrain = false;
+                    jump_prevTrain = false;
+
+
+                    anim.SetBool("IsJump", false);
+                   
+
+                    Invoke("Set_JumpOk", 1.0f);
+                    // 여기서 이제 player가 존재하는 기차의 인덱스가 몇번인지도 넘겨주기
+                }
+
+            }
         }
 
-            
 
-        
         // 카메라에 플레이어가 몇층에 있는지 전달 
         MCam_Ctrl.Change_floor(player.Where_Floor);
 
@@ -285,10 +313,10 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
 
             case 1:
                 // 1층에서 칸 이동이나 그런거할 떄
-                
+
                 // 플레이어의 x좌표를 전달해줌(카메라 이동관련)
                 MCam_Ctrl.GetPlayerX(player.position.x);
-                
+
                 break;
             case 2:
             case 3:
@@ -342,7 +370,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
     void Player_key_floor1()
     {
         // 사다리 올라가는 중 아닐때만 가능
-        if (!stair_up && !jump_nextTrain)
+        if (!stair_up && !jump_nextTrain && !jump_prevTrain)
         {
             if (Input.GetKey(KeyCode.A))
             {
@@ -517,4 +545,26 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
             CurRot = (Quaternion)stream.ReceiveNext();
         }
     }
+
+
+    /// ////////////////////////////////////////////////////////////////////////
+    // 기차 칸 이동
+    void MoveToNextTrain()
+    {
+        player.Jump_ToNextTrain();
+    }
+    void MoveToPrevTrain()
+    {
+        player.Jump_ToPrevTrain();
+    }
+
+    void Set_JumpOk()
+    {
+        jump_ok = true;
+
+        Debug.Log("jump_ok true");
+    }
+
+
+    /// ////////////////////////////////////////////////////////////////////////
 }

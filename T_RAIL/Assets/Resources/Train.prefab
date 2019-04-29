@@ -1187,8 +1187,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1413048764710382}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 1.88, z: -5.85}
-  m_LocalScale: {x: 3, y: 2, z: 0.20000012}
+  m_LocalPosition: {x: 0, y: 1.88, z: -5.38}
+  m_LocalScale: {x: 3, y: 2, z: 0.6}
   m_Children: []
   m_Father: {fileID: 4831777227345060}
   m_RootOrder: 1
@@ -1200,8 +1200,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1018958215290030}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.83, z: 5.8}
-  m_LocalScale: {x: 3, y: 2, z: 0.20000012}
+  m_LocalPosition: {x: -0, y: 1.83, z: 5.4}
+  m_LocalScale: {x: 3, y: 2, z: 0.6}
   m_Children: []
   m_Father: {fileID: 4831777227345060}
   m_RootOrder: 0
@@ -3776,7 +3776,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   viewIdField: 0
-  InstantiationId: 8
+  InstantiationId: 3
   isRuntimeInstantiated: 0
 --- !u!114 &114505191909343002
 MonoBehaviour:
@@ -3797,7 +3797,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   viewIdField: 0
-  InstantiationId: 7
+  InstantiationId: 5
   isRuntimeInstantiated: 0
 --- !u!114 &114714715675578268
 MonoBehaviour:
@@ -3839,7 +3839,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 114246163877717286}
   viewIdField: 0
-  InstantiationId: 5
+  InstantiationId: 7
   isRuntimeInstantiated: 0
 --- !u!114 &114926657734411050
 MonoBehaviour:
@@ -3860,7 +3860,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 0}
   viewIdField: 0
-  InstantiationId: 3
+  InstantiationId: 8
   isRuntimeInstantiated: 0
 --- !u!137 &137085497657877282
 SkinnedMeshRenderer:

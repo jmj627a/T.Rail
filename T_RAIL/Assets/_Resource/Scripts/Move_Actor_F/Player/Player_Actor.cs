@@ -101,4 +101,41 @@ public class Player_Actor : Move_Actor {
     {
         position.y = GameValue.player_1f_position_y;
     }
+
+
+    public void Jump_ToNextTrain()
+    {
+        // 여기서 해야될거 position 증가 
+        position.x -= 0.3f * speed * Time.deltaTime;
+        rotate.y = -90.0f;
+        Direction = 1;
+
+
+    }
+
+    public void Jump_ToPrevTrain()
+    {
+        // 여기서 해야 할것 position - 
+        position.x += 0.3f * speed * Time.deltaTime;
+        rotate.y = 90.0f;
+        Direction = 3;
+
+    }
+
+    public void Jump_NextTrain(bool prev, bool next)
+    {
+        // prev, next bool 변수를 ctrl에서 받아서 prev가 true이면 jump_toprevtrain 호출하고
+        // next가 true이면 jump_tonexttrain 호출
+
+        if (prev)
+        {
+            Jump_ToPrevTrain();
+        }
+
+        else if (next)
+        { 
+            Jump_ToNextTrain();
+        }
+    }
+
 }

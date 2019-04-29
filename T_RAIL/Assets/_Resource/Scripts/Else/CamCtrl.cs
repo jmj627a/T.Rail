@@ -82,6 +82,8 @@ public class CamCtrl : MonoBehaviour
         Quaternion rot = Quaternion.identity;
         rot.eulerAngles = new Vector3(GameValue.Mcam_initrot_x, 0, 0);
         tr.rotation = rot;
+
+        Cam_1FloorInitPosition();
     }
 
     public void GetPlayerX(float position_x)
@@ -105,5 +107,23 @@ public class CamCtrl : MonoBehaviour
         // 기본으로 
 
 
+    }
+
+    public void Cam_1FloorInitPosition()
+    {
+        // 2층에서 카메라 옮기다가 1층 내려오면 거기에 고정.
+        // 1층 camera position 다시 셋팅하는 함수
+
+        // 이것도 호출하면 뭐 bool되게 해서 부드럽게 내려가게 해야될듯
+    }
+
+    public void NextTrain_CamPositionChange(int index)
+    {
+        // index -> 몇번 기차로 넘어갔는지
+    }
+
+    public void PrevTrain_CamPositionChange(int index)
+    {
+        // index -> 몇번 기차로 넘어갔는지
     }
 }

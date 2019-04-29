@@ -174,7 +174,6 @@ public class Train_Object : MonoBehaviourPunCallbacks
         ctrl.train.Add(this.gameObject);
         ctrl.trainscript.Add(this);
         TrainGameManager.instance.trainindex = ctrl.train.Count;
-        Debug.Log(TrainGameManager.instance.trainindex);
         ChangeTrainSetting(ctrl.train.Count);
 
         if (TrainGameManager.instance.trainindex != 1)
