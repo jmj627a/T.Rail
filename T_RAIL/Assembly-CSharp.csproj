@@ -82,6 +82,7 @@
     <Compile Include="Assets\_Resource\Scripts\ObjectPooled\ObjectPool.cs" />
     <Compile Include="Assets\_Resource\Scripts\ObjectPooled\PooledObject.cs" />
     <Compile Include="Assets\_Resource\Scripts\Setting\UI_ChoiceButton.cs" />
+    <Compile Include="Assets\_Resource\Scripts\Setting\UI_SettingCtrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Setting\UI_StateBook.cs" />
     <Compile Include="Assets\_Resource\Scripts\StateCtrl.cs" />
     <Compile Include="Assets\_Resource\Scripts\Train\Train_Ctrl.cs" />
