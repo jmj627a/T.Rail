@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 95811661900204776}
   - component: {fileID: 65825313018325184}
   - component: {fileID: 114265445870221514}
+  - component: {fileID: 114749372244307306}
   - component: {fileID: 54955156114969888}
   - component: {fileID: 114561383226387818}
   - component: {fileID: 114560943422132080}
@@ -1120,6 +1121,18 @@ MonoBehaviour:
   viewIdField: 0
   InstantiationId: 4
   isRuntimeInstantiated: 0
+--- !u!114 &114749372244307306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1014540451394702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa5570284b2eefc47b006eff205ef7b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerUiPrefab: {fileID: 170056, guid: e41946a981c3b444a84d15eb7c608ca4, type: 2}
 --- !u!137 &137324106682157858
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
