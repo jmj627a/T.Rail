@@ -12,15 +12,11 @@ public class MachineGun_Ctrl : MonoBehaviour
     // 만약에 list.count == 기차 인덱스하면 setactive true할까?
 
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
 
 
     public void gun_up()
     {
+        
         transform.Rotate(0, 0, -10.0f * Time.deltaTime);
     }
     public void gun_down()

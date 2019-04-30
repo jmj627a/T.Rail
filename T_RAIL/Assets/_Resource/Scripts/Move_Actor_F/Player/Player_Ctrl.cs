@@ -30,6 +30,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
     Highlighter highlighter;
     Transform Near_Object; // 사다리, 머신건 등 space_state로 할 모든 object담기
     Transform gun_child; // 머신건.... 각도 회전하려면 밑에 자식 오브젝트 담아와야 돼서 총전용
+    [SerializeField]
     MachineGun_Ctrl gun_ctrl; // 그 머신건에 달린 ctrl 스크립트. 머신건을 받아올 떄 마다 얘도 같이
     bool stair_up; // 사다리 올라가고 있는 중
     bool stair_down; // 사다리 내려가고 있는 중

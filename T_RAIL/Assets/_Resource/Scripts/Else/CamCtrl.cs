@@ -18,7 +18,6 @@ public class CamCtrl : MonoBehaviour
 
     float player_position_x;
 
-
     // Use this for initialization
     void Start()
     {
@@ -26,6 +25,19 @@ public class CamCtrl : MonoBehaviour
         MouseSpeed = 0.5f;
     }
 
+    //private void FixedUpdate()
+    //{
+    //    if (player_floor.Equals(1))
+    //    {
+    //        float targetX = tr.position.x;
+
+    //        if (Mathf.Abs(tr.position.x - player_position_x) > 3)
+    //        {
+    //            targetX = Mathf.Lerp(tr.position.x, player_position_x, 15.0f * Time.deltaTime);
+    //        }
+    //        tr.position = new Vector3(targetX, tr.position.y, tr.position.z);
+    //    }
+    //}
     private void LateUpdate()
     {
 
@@ -37,14 +49,23 @@ public class CamCtrl : MonoBehaviour
 
 
             case 1:
-                if (move_nextTrain)
-                {
 
-                }
-                else
+
+                //if (Mathf.Abs(player_position_x - tr.position.x) > 3)  
+                //{
+                //    float tempx = Mathf.Lerp(player_position_x, tr.position.x, Time.deltaTime *2.0f);
+
+                //    tr.position = new Vector3(tempx, tr.position.y, tr.position.z);
+                //}
+                float targetX = tr.position.x;
+
+               // if (Mathf.Abs(tr.position.x - player_position_x) > 3)
                 {
-                    // ㅎ므
+                    targetX = Mathf.Lerp(tr.position.x, player_position_x, 15.0f * Time.deltaTime);
                 }
+                tr.position = new Vector3(targetX, tr.position.y, tr.position.z);
+
+
                 break;
             case 2:
             case 3:
