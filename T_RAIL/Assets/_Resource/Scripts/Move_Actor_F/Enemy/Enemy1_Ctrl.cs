@@ -16,7 +16,15 @@ public class Enemy1_Ctrl : MonoBehaviour
     public int E_damage;
 
     Vector3 Position_Set_Destination;
+    Vector3 Position_Set_Move;
     bool Position_Set_Go = false;
+
+    public Transform Rhino_child; // 아니 이거 fbx가 이렇게 안잡으면 제대로 안움직임
+
+
+    Vector3 Init_Rhino_child;
+    Vector3 Init_Rhino;
+
     private void Awake()
     {
         tr = GetComponent<Transform>();
@@ -27,6 +35,10 @@ public class Enemy1_Ctrl : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
+
+        Init_Rhino = tr.position;
+        Init_Rhino_child = Rhino_child.position;
 
         enemy.speed = 10.0f;  // enemy1은 스피드 기본고정
         enemy.Damage = E_damage;
@@ -56,13 +68,19 @@ public class Enemy1_Ctrl : MonoBehaviour
         {
             Position_Set();
         }
+        else
+        {
+            tr.position = Vector3.Slerp(tr.position, Position_Set_Move, Time.deltaTime);
+        }
+
+
     }
     public void Enemy1_On()
     {
-        // 미리 만들어놔서 on될 때 position 셋팅이 필요하고 달려오는 느낌 
-        Debug.Log(TrainGameManager.instance.trainindex - 1);
         Position_Set_Destination = new Vector3((GameValue.Train_distance * (TrainGameManager.instance.trainindex) -12), tr.position.y, tr.position.z);
         Position_Set_Go = true;
+
+        StartCoroutine(Enemy_ActRoutine());
     }
 
     void Position_Set()
@@ -71,6 +89,7 @@ public class Enemy1_Ctrl : MonoBehaviour
 
         if (tr.position.x == Position_Set_Destination.x)
         {
+            Debug.Log("false됐다");
             Position_Set_Go = false;
         }
 
@@ -84,16 +103,19 @@ public class Enemy1_Ctrl : MonoBehaviour
 
             if (!Position_Set_Go)
             {
-
+                Debug.Log("??");
+                // Rhino_child.position -= new Vector3(0, 0, 0.3f);
+                Position_Set_Move = new Vector3(tr.position.x + 20 * Time.deltaTime, tr.position.y, tr.position.z);
             }
 
-            yield return new WaitForSeconds(5.0f);
+            yield return new WaitForSeconds(0.05f);
         }
     }
 
+    private void OnDisable()
+    {
+        tr.position = Init_Rhino;
+        Rhino_child.position = Init_Rhino_child;
+    }
 
-
-
-
-    // 
 }
