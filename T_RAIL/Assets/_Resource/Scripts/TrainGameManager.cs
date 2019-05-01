@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TrainGameManager : MonoBehaviour {
 
@@ -24,6 +25,8 @@ public class TrainGameManager : MonoBehaviour {
     // # TrainCtrl
     public Train_Ctrl TrainCtrl;
 
+    public GameObject InGame_Notice; // 게임 내에서의 알림사항 ex) 몬스터 등장
+    public Text InGame_Text;
     // # UI
     public GameObject Info_Canvas;
 
@@ -39,4 +42,9 @@ public class TrainGameManager : MonoBehaviour {
     }
 
 
+    public void Notice_EnemyAppear()
+    {
+        InGame_Notice.SetActive(true);
+        InGame_Text.text = "코뿔소 등장 ! ";
+    }
 }

@@ -17,6 +17,11 @@ public class Mouse_Ctrl : MonoBehaviourPunCallbacks
     public GameObject Inventory;
     public GameObject ChoiceButton;
 
+    public GameObject StateControllerCam;
+    public GameObject ExitStateController; // 일단 ㅇ녀기다가 갖다놨음 
+
+
+
     //   layerMask = (1 << LayerMask.NameToLayer("Furniture")); 
 
     private void Start()
@@ -82,6 +87,17 @@ public class Mouse_Ctrl : MonoBehaviourPunCallbacks
                    // ChoiceButton.GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
 
                 }
+
+                else if (hit.collider.CompareTag("state"))
+                {
+                    // headtrain의 state판을 클릭하면
+                    Debug.Log("ㅑㅜ");
+                    this.GetComponent<Camera>().enabled = false;
+                    StateControllerCam.GetComponent<Camera>().enabled = true;
+                    ExitStateController.SetActive(true);
+                }
+
+                
             }
         }
     }
@@ -90,6 +106,14 @@ public class Mouse_Ctrl : MonoBehaviourPunCallbacks
     public void getHitObjectRPC(int hit_object_viewID)
     {
         ChoiceButton.transform.parent.GetComponent<UI_ChoiceButton>().GetHitObject(PhotonView.Find(hit_object_viewID).gameObject);
+    }
+
+
+    public void Exit_StateController()
+    {
+        this.GetComponent<Camera>().enabled = true;
+        StateControllerCam.GetComponent<Camera>().enabled = false;
+        ExitStateController.SetActive(false);
     }
 
 }

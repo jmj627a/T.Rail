@@ -77,10 +77,11 @@ public class Enemy1_Ctrl : MonoBehaviour
     }
     public void Enemy1_On()
     {
-        Position_Set_Destination = new Vector3((GameValue.Train_distance * (TrainGameManager.instance.trainindex) -12), tr.position.y, tr.position.z);
+        Position_Set_Destination = new Vector3((GameValue.Train_distance * (TrainGameManager.instance.trainindex) -10), tr.position.y, tr.position.z);
         Position_Set_Go = true;
 
         StartCoroutine(Enemy_ActRoutine());
+        TrainGameManager.instance.Notice_EnemyAppear();
     }
 
     void Position_Set()
@@ -105,7 +106,7 @@ public class Enemy1_Ctrl : MonoBehaviour
             {
                 Debug.Log("??");
                 // Rhino_child.position -= new Vector3(0, 0, 0.3f);
-                Position_Set_Move = new Vector3(tr.position.x + 20 * Time.deltaTime, tr.position.y, tr.position.z);
+                Position_Set_Move = new Vector3(tr.position.x + 17 * Time.deltaTime, tr.position.y, tr.position.z);
             }
 
             yield return new WaitForSeconds(0.05f);

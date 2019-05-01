@@ -61,4 +61,8 @@ public class UI_ChoiceButton : MonoBehaviourPunCallbacks
         Hit_Object.transform.SetParent(Hit_Object.transform.parent);
     }
 
+
+    
+
+
 }
