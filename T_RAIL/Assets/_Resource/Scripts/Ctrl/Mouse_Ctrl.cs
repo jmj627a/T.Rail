@@ -55,9 +55,11 @@ public class Mouse_Ctrl : MonoBehaviourPunCallbacks
             //}
             if (Physics.Raycast(ray, out hit))
             {
+                Debug.Log("클릭" + hit.collider.gameObject.layer);
                 // 아... Equals("12") 라고 해서 계속 안됐던거임 흑흑 젠장
                 if (hit.collider.gameObject.layer.Equals(GameValue.itembox_layer))
                 {
+                     Debug.Log("클릭1");
                     // 상자일 경우!
                     Inventory.SetActive(true);
                     // Vector3 m_Position = Input.mousePosition;
@@ -68,10 +70,12 @@ public class Mouse_Ctrl : MonoBehaviourPunCallbacks
 
                 else if (hit.collider.gameObject.layer.Equals(GameValue.passenger_layer))
                 {
+                     Debug.Log("클릭2");
                     // 승객일 경우 
                 }
                 else if (hit.collider.gameObject.layer.Equals(GameValue.choice_layer))
                 {
+                     Debug.Log("클릭3");
                     ChoiceButton.SetActive(true);
                     ChoiceButton.transform.position = Input.mousePosition;
                     //ChoiceButton.GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
@@ -81,23 +85,28 @@ public class Mouse_Ctrl : MonoBehaviourPunCallbacks
 
                 else if (hit.collider.gameObject.layer.Equals(GameValue.sofa_layer))
                 {
+                    Debug.Log("클릭4");
+
                     // 소파레이어
                     //ChoiceButton.SetActive(true);
-                   // ChoiceButton.transform.position = Input.mousePosition;
-                   // ChoiceButton.GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
+                    // ChoiceButton.transform.position = Input.mousePosition;
+                    // ChoiceButton.GetComponent<UI_ChoiceButton>().GetHitObject(hit.collider.gameObject);
 
                 }
-
                 else if (hit.collider.CompareTag("state"))
                 {
                     // headtrain의 state판을 클릭하면
-                    Debug.Log("ㅑㅜ");
+                    Debug.Log("클릭5");
                     this.GetComponent<Camera>().enabled = false;
                     StateControllerCam.GetComponent<Camera>().enabled = true;
                     ExitStateController.SetActive(true);
                 }
+                else
+                {
+                    Debug.Log("클릭6");
 
-                
+                }
+
             }
         }
     }
