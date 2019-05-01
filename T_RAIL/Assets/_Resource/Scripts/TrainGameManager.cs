@@ -6,23 +6,6 @@ public class TrainGameManager : MonoBehaviour {
 
     public static TrainGameManager instance = null;
 
-    //public static TrainGameManager Instance
-    //{
-    //    get
-    //    {
-    //        if (instance == null)
-    //        {
-    //            instance = FindObjectOfType(typeof(TrainGameManager)) as TrainGameManager;
-    //            if(instance == null)
-    //            {
-    //                Debug.Log("no active managerclass object");
-    //            }
-    //        }
-    //        return instance;
-    //    }
-    //}
-
-
     // 여기서 각 플레이어들 체력 관리해야되나?
     // 여기서 뭐해야될까
 

@@ -26,7 +26,6 @@ public class Train_Ctrl : MonoBehaviourPunCallbacks
     // 얘를 이렇게 하나 더 한 이유 -> 쓸 때 마다 호출하면 낭비
     [SerializeField]
     public List<Train_Object> trainscript = new List<Train_Object>();
-    public Animator[] Wheel_Anim;
 
 
 
@@ -186,9 +185,9 @@ public class Train_Ctrl : MonoBehaviourPunCallbacks
     }
     public void Wheel_Animation_Speed()
     {
-        for (int i = 0; i < Wheel_Anim.Length; i++)
+      //  for (int i = 0; i < Wheel_Anim.Length; i++)
         {
-            Wheel_Anim[i].speed = TrainGameManager.instance.speed / 20;
+       //     Wheel_Anim[i].speed = TrainGameManager.instance.speed / 20;
         }
     }
 

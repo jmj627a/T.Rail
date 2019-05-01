@@ -138,7 +138,7 @@ public class Map_Ctrl : MonoBehaviour
         
         // 휠애니메이션의 속도 
         // 이거 아예 trainctrl로 옮길거임
-        TrainCtrl.Wheel_Animation_Speed();
+       // TrainCtrl.Wheel_Animation_Speed();
     }
 }
 

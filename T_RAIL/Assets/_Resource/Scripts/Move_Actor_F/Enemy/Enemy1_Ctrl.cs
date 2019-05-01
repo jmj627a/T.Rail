@@ -11,14 +11,32 @@ public class Enemy1_Ctrl : MonoBehaviour {
 
     Animator anim;
 
+    public int E_damage;
+
+
+    private void Awake()
+    {
+        StartCoroutine(Enemy_ActRoutine());
+    }
     // Use this for initialization
     void Start()
     { 
         anim = GetComponent<Animator>();
 
         enemy.speed = 10.0f;  // enemy1은 스피드 기본고정
+
+        enemy.Damage = E_damage;
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer.Equals(GameValue.bullet_layer))
+        {
+            // 총알맞으면
+
+        }
+    }
 
 
     // Update is called once per frame
@@ -27,21 +45,29 @@ public class Enemy1_Ctrl : MonoBehaviour {
 
     }
 
-    public void Enemy1_Appear_Condition()
+
+    void OnEnemy1_On()
     {
-        // enemy1이 등장할 조건같은거
+        // 미리 만들어놔서 on될 때 position 셋팅이 필요하고 달려오는 느낌 
 
-        // 1. 기차의 소음 확률
 
-        //if(GameManager.instance.noise)
-        {
-
-        }
-
-        
 
     }
 
+
+    IEnumerator Enemy_ActRoutine()
+    {
+        while (true)
+        {
+
+
+
+            yield return new WaitForSeconds(3.0f);
+        }
+    }
+
+
+   
 
 
     // 

@@ -17,6 +17,8 @@ public class CamCtrl : MonoBehaviour
     bool CamSetMove { get; set; } // 카메라 움직일건지
 
     float player_position_x;
+    float floor2_MinX;
+    bool position_once; // 잉ㅁ시ㅏ방편
 
     // Use this for initialization
     void Start()
@@ -50,13 +52,6 @@ public class CamCtrl : MonoBehaviour
 
             case 1:
 
-
-                //if (Mathf.Abs(player_position_x - tr.position.x) > 3)  
-                //{
-                //    float tempx = Mathf.Lerp(player_position_x, tr.position.x, Time.deltaTime *2.0f);
-
-                //    tr.position = new Vector3(tempx, tr.position.y, tr.position.z);
-                //}
                 float targetX = tr.position.x;
 
                // if (Mathf.Abs(tr.position.x - player_position_x) > 3)
@@ -65,21 +60,23 @@ public class CamCtrl : MonoBehaviour
                 }
                 tr.position = new Vector3(targetX, tr.position.y, tr.position.z);
 
-
+                position_once = true;
                 break;
             case 2:
             case 3:
                 // 얘는 마우스임 
                 // 혹시몰라서 일단 남겨놓기는 함
+                if (position_once)
+                {
+                    floor2_MinX = player_position_x;
+                    position_once = false;
+                }
+
                 positionX += Input.GetAxis("Mouse X") * MouseSpeed;
-                positionX = Mathf.Clamp(positionX, player_position_x - 5.0f, player_position_x + 5.0f);
+                positionX = Mathf.Clamp(positionX, floor2_MinX - 12.0f, floor2_MinX + 3.0f);
                 float temp_x;
                 temp_x = Mathf.Lerp(positionX, tr.position.x, Time.deltaTime);
                 tr.position = new Vector3(temp_x, tr.position.y, tr.position.z);
-
-
-
-
 
                 break;
             default:
@@ -104,7 +101,7 @@ public class CamCtrl : MonoBehaviour
         rot.eulerAngles = new Vector3(GameValue.Mcam_initrot_x, 0, 0);
         tr.rotation = rot;
 
-        Cam_1FloorInitPosition();
+       // Cam_1FloorInitPosition();
     }
 
     public void GetPlayerX(float position_x)
@@ -117,34 +114,5 @@ public class CamCtrl : MonoBehaviour
         player_floor = _floor;
     }
 
-    public void Camera_LeftSide()
-    {
-        // 왼쪽으로 
 
-        
-    }
-    public void Camera_standSide()
-    {
-        // 기본으로 
-
-
-    }
-
-    public void Cam_1FloorInitPosition()
-    {
-        // 2층에서 카메라 옮기다가 1층 내려오면 거기에 고정.
-        // 1층 camera position 다시 셋팅하는 함수
-
-        // 이것도 호출하면 뭐 bool되게 해서 부드럽게 내려가게 해야될듯
-    }
-
-    public void NextTrain_CamPositionChange(int index)
-    {
-        // index -> 몇번 기차로 넘어갔는지
-    }
-
-    public void PrevTrain_CamPositionChange(int index)
-    {
-        // index -> 몇번 기차로 넘어갔는지
-    }
 }

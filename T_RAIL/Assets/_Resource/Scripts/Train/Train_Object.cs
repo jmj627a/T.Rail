@@ -203,4 +203,12 @@ public class Train_Object : MonoBehaviourPunCallbacks
         }
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer.Equals(GameValue.enemy_layer))
+        {
+            // 기차 hp감소 . enemy의 damage에 따라
+        }
+    }
 }

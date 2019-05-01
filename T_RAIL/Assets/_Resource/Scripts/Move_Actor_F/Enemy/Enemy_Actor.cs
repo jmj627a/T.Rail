@@ -13,4 +13,5 @@ public class Enemy_Actor : Move_Actor {
 	void Update () {
 		
 	}
+    // 여기서 position 다 
 }

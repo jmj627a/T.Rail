@@ -26,9 +26,9 @@ TagManager:
   - NextTrain
   - PrevTrain
   - floor2
-  - 
-  - 
-  - 
+  - Player
+  - bullet
+  - enemy
   - 
   - 
   - 

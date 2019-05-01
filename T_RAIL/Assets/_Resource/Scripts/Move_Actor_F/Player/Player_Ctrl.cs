@@ -129,8 +129,6 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
                 Push_Space_UI.transform.position = MCam.WorldToScreenPoint(Near_Object.position) + new Vector3(-20, 130, 0);
             }
         }
-        // 자꾸 사다리가 더 먼저 걸린다 
-
 
         if (jump_ok)
         {
