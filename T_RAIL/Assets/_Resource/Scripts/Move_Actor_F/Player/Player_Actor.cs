@@ -106,7 +106,7 @@ public class Player_Actor : Move_Actor {
     public void Jump_ToNextTrain()
     {
         // 여기서 해야될거 position 증가 
-        position.x -= 0.2f * speed * Time.deltaTime;
+        position.x -= 0.3f * speed * Time.deltaTime;
         rotate.y = -90.0f;
         Direction = 1;
 
@@ -116,7 +116,7 @@ public class Player_Actor : Move_Actor {
     public void Jump_ToPrevTrain()
     {
         // 여기서 해야 할것 position - 
-        position.x += 0.2f * speed * Time.deltaTime;
+        position.x += 0.3f * speed * Time.deltaTime;
         rotate.y = 90.0f;
         Direction = 3;
 

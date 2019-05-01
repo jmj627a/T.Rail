@@ -18,6 +18,8 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
         Machine_gun = 3,
         bullet = 4,
 
+        prevjump = 5,
+        nextjump = 6
     }
 
     // 기본 플레이어에 달린 컴포넌트들
@@ -93,6 +95,46 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
     {
         if (!photonView.IsMine) return;
 
+
+        if (jump_ok)
+        {
+            // 다음칸 trigger
+            if (other.gameObject.layer.Equals(GameValue.NextTrain_layer))
+            {
+
+                if (player.Where_Train + 1 <= TrainGameManager.instance.trainindex)
+                {
+
+                    space_state = (int)player_space_state.nextjump;
+
+                    Debug.Log("n");
+                    //  jump_nextTrain = true;
+                    //  anim.SetBool("IsWalk", false);
+                    //   anim.SetBool("IsJump", true);
+
+                    jump_ok = false;
+                }
+
+            }
+
+            // 이전칸 trigger
+            if (other.gameObject.layer.Equals(GameValue.PrevTrain_layer))
+            {
+
+                if (player.Where_Train != 0)
+                {
+                    Debug.Log("p");
+                    //jump_prevTrain = true;
+                    //anim.SetBool("IsWalk", false);
+                    //anim.SetBool("IsJump", true);
+
+
+                    jump_ok = false;
+                    space_state = (int)player_space_state.prevjump;
+                }
+
+            }
+        }
         if (!stair_up && !stair_down)
         {
 
@@ -130,40 +172,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
             }
         }
 
-        if (jump_ok)
-        {
-            // 다음칸 trigger
-            if (other.gameObject.layer.Equals(GameValue.NextTrain_layer))
-            {
 
-                if (player.Where_Train + 1 <= TrainGameManager.instance.trainindex)
-                {
-                    jump_nextTrain = true;
-                    anim.SetBool("IsWalk", false);
-                    anim.SetBool("IsJump", true);
-                    
-                   // 왜 점프가 부드럽게 안되지?
-                    jump_ok = false;
-                }
-
-            }
-
-            // 이전칸 trigger
-            if (other.gameObject.layer.Equals(GameValue.PrevTrain_layer))
-            {
-
-                if (player.Where_Train != 0)
-                {
-                    jump_prevTrain = true;
-                    anim.SetBool("IsWalk", false);
-                    anim.SetBool("IsJump", true);
-                    
-                   
-                    jump_ok = false;
-                }
-
-            }
-        }
     }
     private void OnTriggerExit(Collider other)
     {
@@ -189,6 +198,20 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
                 near_gun = false;
                 Push_Space_UI.SetActive(false);
             }
+        }
+
+
+        if (other.gameObject.layer.Equals(GameValue.NextTrain_layer))
+        {
+            space_state = 0;
+            jump_ok = true;
+        }
+
+        // 이전칸 trigger
+        if (other.gameObject.layer.Equals(GameValue.PrevTrain_layer))
+        {
+            space_state = 0;
+            jump_ok = true;
         }
     }
 
@@ -273,7 +296,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
             // 일단 가는방향 받아와야 하고
 
             player.Jump_NextTrain(jump_prevTrain, jump_nextTrain);
-            
+
             // 여기서 계속 증가하고 
             if (anim.GetBool("IsJump"))
             {
@@ -293,9 +316,9 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
 
 
                     anim.SetBool("IsJump", false);
-                   
 
-                    Invoke("Set_JumpOk", 1.0f);
+
+                    // Invoke("Set_JumpOk", 1.0f);
                     // 여기서 이제 player가 존재하는 기차의 인덱스가 몇번인지도 넘겨주기
                 }
 
@@ -348,7 +371,6 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
                 Player_key_floor2();
                 break;
             case 3:
-
                 // player가 머신건 근처에 있으면 space_state가 2가 되고
                 // 2층에 있을 때 머신건 근처에서 스페이스를 누르면 where_floor가 3됨
                 Player_key_MachinGun();
@@ -369,7 +391,7 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
     void Player_key_floor1()
     {
         // 사다리 올라가는 중 아닐때만 가능
-        if (!stair_up && !jump_nextTrain && !jump_prevTrain)
+        if (!stair_up)
         {
             if (Input.GetKey(KeyCode.A))
             {
@@ -420,6 +442,19 @@ public class Player_Ctrl : MonoBehaviourPunCallbacks
                     // 천장에 올라가면 뚜껑도 setactive.true해줘야되네
                 }
 
+
+                if (space_state.Equals((int)player_space_state.prevjump))
+                {
+                    jump_prevTrain = true;
+                    anim.SetBool("IsWalk", false);
+                    anim.SetBool("IsJump", true);
+                }
+                else if (space_state.Equals((int)player_space_state.nextjump))
+                {
+                    jump_nextTrain = true;
+                    anim.SetBool("IsWalk", false);
+                    anim.SetBool("IsJump", true);
+                }
 
             }
         }

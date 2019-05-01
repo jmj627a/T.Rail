@@ -24,6 +24,7 @@ static class GameValue {
     public const int player_layer = 21;
     public const int bullet_layer = 22;
     public const int enemy_layer = 23;
+    public const int train_layer = 24;
 
     // 기차 영역에 구성되어있는 오브젝트들의 값
     // local 좌표임
@@ -52,5 +53,9 @@ static class GameValue {
 
     public const float player_2f_position_y = 7.6f;
     public const float player_1f_position_y = 3.8f;
+
+
+    // enemy1 
+    public const int enemy1_FullHp = 100; // 한 텀
 
 }
